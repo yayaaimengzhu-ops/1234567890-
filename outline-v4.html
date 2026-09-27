@@ -1,0 +1,2010 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>二手奢侈品回收 · 全渠道全链路课程大纲 v4</title>
+<style>
+:root{
+  --paper:#F1F2EC;
+  --card:#FBFBF8;
+  --ink:#17231E;
+  --ink2:#4A5951;
+  --ink3:#78857C;
+  --line:#CBD0C6;
+  --line2:#E0E3DA;
+  --brass:#8F6E30;
+  --brass-soft:#EFE7D4;
+  --seal:#A5382A;
+  --seal-soft:#F3E3DF;
+  --serif:"Songti SC","STSong","Source Han Serif SC","Noto Serif SC","SimSun",serif;
+  --sans:"PingFang SC","HarmonyOS Sans SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:15px;
+  line-height:1.85;
+}
+.wrap{max-width:980px;margin:0 auto;padding:0 28px}
+
+header.top{padding:64px 0 34px}
+.doc-title{
+  font-family:var(--serif);
+  font-size:37px;line-height:1.35;font-weight:600;
+  margin:0 0 14px;letter-spacing:.02em;
+}
+.doc-sub{max-width:38em;color:var(--ink2);font-size:15.5px;margin:0 0 14px}
+.doc-sub b{color:var(--ink);font-weight:600}
+.claim{
+  border:1px solid var(--ink);
+  padding:22px 26px;
+  margin:26px 0 22px;
+  max-width:42em;
+  background:var(--card);
+}
+.claim .lb{
+  font-family:var(--serif);font-size:13px;color:var(--brass);
+  letter-spacing:.16em;display:block;margin-bottom:8px;
+}
+.claim p{
+  font-family:var(--serif);font-size:21px;line-height:1.6;
+  margin:0;color:var(--ink);font-weight:600;
+}
+.claim small{
+  display:block;margin-top:12px;font-family:var(--sans);
+  font-size:14px;font-weight:400;color:var(--ink2);line-height:1.8;
+}
+.doc-meta{
+  display:flex;flex-wrap:wrap;gap:10px 22px;
+  padding-top:18px;border-top:1px solid var(--line);
+  color:var(--ink3);font-size:13.5px;
+}
+.doc-meta b{color:var(--ink2);font-weight:500}
+
+.diff{background:var(--card);border:1px solid var(--line);padding:26px 28px 24px;margin:34px 0 10px}
+.diff h2{font-family:var(--serif);font-size:21px;font-weight:600;margin:0 0 4px}
+.diff p.lead{color:var(--ink3);font-size:13.5px;margin:0 0 20px}
+.diff ol{margin:0;padding:0;counter-reset:d;list-style:none}
+.diff ol li{padding-left:30px;margin-bottom:13px;color:var(--ink2);counter-increment:d}
+.diff ol li::before{
+  content:counter(d);position:absolute;left:0;top:0;
+  width:19px;height:19px;display:flex;align-items:center;justify-content:center;
+  background:var(--ink);color:var(--card);font-family:var(--serif);font-size:12px;margin-top:.42em;
+}
+.diff ol li strong{color:var(--ink);font-weight:600;display:block}
+
+.chain{padding:34px 0 52px}
+.chain-head{font-family:var(--serif);font-size:23px;font-weight:600;margin:0 0 6px}
+.chain-note{color:var(--ink3);font-size:13.5px;margin:0 0 26px;max-width:46em}
+.rail{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line);background:var(--card)}
+.stop{
+  position:relative;padding:16px 15px 18px;
+  border-right:1px solid var(--line2);border-bottom:1px solid var(--line2);
+  text-decoration:none;color:inherit;display:block;background:var(--card);
+}
+.stop:nth-child(5n){border-right:none}
+.stop:nth-child(n+6){border-bottom:none}
+.stop:hover,.stop:focus-visible{background:#F4F5EE}
+.stop:focus-visible{outline:2px solid var(--brass);outline-offset:-2px}
+.stop-n{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:22px;height:22px;background:var(--brass);color:#FBFBF8;
+  font-size:12.5px;font-family:var(--serif);margin-bottom:9px;
+}
+.stop.core .stop-n{background:var(--ink)}
+.stop-name{font-family:var(--serif);font-size:18px;font-weight:600;margin:0 0 8px;letter-spacing:.02em}
+.flow{font-size:12px;line-height:1.6;color:var(--ink3)}
+.flow .to{color:var(--ink);display:block;padding-left:13px;position:relative;margin-top:2px}
+.flow .to::before{
+  content:"";position:absolute;left:2px;top:.72em;width:6px;height:6px;
+  border-right:1px solid var(--brass);border-bottom:1px solid var(--brass);transform:rotate(-45deg);
+}
+
+.index{
+  position:sticky;top:0;z-index:20;
+  background:rgba(241,242,236,.94);backdrop-filter:blur(6px);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.index-inner{max-width:980px;margin:0 auto;padding:0 28px;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.index-inner::-webkit-scrollbar{display:none}
+.index a{
+  flex:0 0 auto;padding:10px 11px;font-size:13px;color:var(--ink3);
+  text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap;
+}
+.index a:hover{color:var(--ink)}
+.index a.on{color:var(--ink);border-bottom-color:var(--brass)}
+.index a:focus-visible{outline:2px solid var(--brass);outline-offset:-4px}
+
+.stage{padding:54px 0 6px;border-top:1px solid var(--line);margin-top:44px}
+.stage:first-of-type{margin-top:38px}
+.stage-head{display:flex;gap:16px;align-items:flex-start;margin-bottom:8px}
+.stage-n{
+  flex:0 0 auto;width:34px;height:34px;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--brass);color:var(--brass);
+  font-family:var(--serif);font-size:17px;margin-top:5px;
+}
+.stage-n.pre{border-color:var(--ink3);color:var(--ink3);font-size:13px}
+.stage-n.core{background:var(--ink);border-color:var(--ink);color:var(--card)}
+.stage-title{font-family:var(--serif);font-size:28px;font-weight:600;margin:0;letter-spacing:.03em}
+.stage-title span{color:var(--ink3);font-size:16px;font-weight:400;margin-left:12px;letter-spacing:0}
+.stage-goal{color:var(--ink2);margin:0 0 30px 50px;max-width:44em}
+.stage-goal b{color:var(--ink);font-weight:600}
+.stage-body{margin-left:50px}
+
+.block{margin-bottom:30px;break-inside:avoid}
+.block h3{
+  font-family:var(--serif);font-size:18px;font-weight:600;
+  margin:0 0 4px;padding-bottom:7px;border-bottom:1px solid var(--line2);letter-spacing:.02em;
+}
+.block h4{font-size:14.5px;font-weight:600;color:var(--brass);margin:18px 0 2px}
+.path h3{border-bottom:2px solid var(--brass)}
+ul{margin:8px 0 0;padding:0;list-style:none}
+li{position:relative;padding-left:16px;margin-bottom:4px;color:var(--ink2)}
+li::before{content:"";position:absolute;left:1px;top:.85em;width:5px;height:1px;background:var(--line)}
+li b{color:var(--ink);font-weight:600}
+.diff ol li::before{width:19px;height:19px;background:var(--ink);top:0}
+
+.note{
+  background:var(--brass-soft);border-left:2px solid var(--brass);
+  padding:13px 16px;margin:0 0 26px;font-size:14px;color:#5B4A22;line-height:1.75;
+}
+.note.mid{margin:18px 0 0}
+.note b{color:#3E3216}
+.output{
+  border:1px solid var(--line);border-left:3px solid var(--ink);
+  background:var(--card);padding:14px 17px;margin-top:24px;font-size:14px;break-inside:avoid;
+}
+.output .lb{font-family:var(--serif);font-weight:600;color:var(--ink);margin-right:10px}
+.output span{color:var(--ink2)}
+.output ul{margin-top:6px}
+.output li{font-size:14px}
+.deliver{
+  border:1px solid var(--seal-soft);border-left:2px solid var(--seal);
+  background:#FCF8F7;padding:12px 16px;margin-top:12px;font-size:14px;break-inside:avoid;
+}
+.deliver .lb{color:var(--seal);font-family:var(--serif);font-weight:600;margin-right:10px}
+.deliver span{color:var(--ink2)}
+
+.t{
+  display:inline-block;font-family:var(--serif);font-size:11.5px;line-height:1.6;
+  padding:0 6px;margin-left:8px;vertical-align:2px;letter-spacing:.06em;font-weight:400;
+}
+.t-core{background:var(--ink);color:var(--card)}
+.t-full{background:transparent;color:var(--brass);box-shadow:inset 0 0 0 1px var(--brass)}
+.t-new{background:var(--brass);color:#FBFBF8}
+.legend{
+  display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13px;color:var(--ink3);
+  padding:14px 0 0;margin-top:22px;border-top:1px solid var(--line2);
+}
+
+.appendix{margin:56px 0 0;padding:44px 0 0;border-top:2px solid var(--ink)}
+.appendix > h2{font-family:var(--serif);font-size:26px;font-weight:600;margin:0 0 6px}
+.appendix > p.lead{color:var(--ink3);font-size:13.5px;margin:0 0 8px;max-width:44em}
+.sub{font-family:var(--serif);font-size:20px;font-weight:600;margin:46px 0 4px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.kit{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line2);border:1px solid var(--line2);margin-top:26px}
+.kit-item{background:var(--card);padding:20px 20px 22px}
+.kit-item h3{font-family:var(--serif);font-size:17px;font-weight:600;margin:0 0 6px}
+.kit-item ul{margin-top:6px}
+.kit-item li{font-size:14px}
+
+.tbl{width:100%;border-collapse:collapse;margin-top:22px;font-size:13.5px}
+.tbl th,.tbl td{border:1px solid var(--line2);padding:10px 13px;text-align:left;vertical-align:top}
+.tbl th{background:var(--card);font-family:var(--serif);font-weight:600;color:var(--ink);font-size:14.5px}
+.tbl td{color:var(--ink2)}
+.tbl td.hi{color:var(--ink);font-weight:600;font-family:var(--serif);font-size:15px}
+.tbl td.nw{white-space:nowrap}
+
+.route{margin-top:22px}
+.route dt{font-family:var(--serif);font-size:16px;font-weight:600;margin:20px 0 2px;color:var(--ink)}
+.route dd{margin:0;color:var(--ink2);max-width:46em}
+
+footer{margin-top:56px;padding:24px 0 70px;border-top:1px solid var(--line);color:var(--ink3);font-size:13px}
+footer b{color:var(--ink2);font-weight:500}
+
+@media (max-width:1000px){
+  .rail{grid-template-columns:repeat(3,1fr)}
+  .stop:nth-child(5n){border-right:1px solid var(--line2)}
+  .stop:nth-child(3n){border-right:none}
+  .stop:nth-child(n+6){border-bottom:1px solid var(--line2)}
+  .stop:nth-child(n+10){border-bottom:none}
+}
+@media (max-width:900px){.kit{grid-template-columns:1fr}}
+@media (max-width:640px){
+  body{font-size:14.5px}
+  .wrap{padding:0 18px}
+  .index-inner{padding:0 18px}
+  header.top{padding:40px 0 26px}
+  .doc-title{font-size:27px}
+  .claim{padding:18px 20px}
+  .claim p{font-size:18px}
+  .diff{padding:22px 20px 20px}
+  .rail{grid-template-columns:1fr}
+  .stop{border-right:none !important;border-bottom:1px solid var(--line2) !important}
+  .stop:last-child{border-bottom:none !important}
+  .stage-title{font-size:23px}
+  .stage-title span{display:block;margin:4px 0 0;font-size:14px}
+  .stage-goal,.stage-body{margin-left:0}
+  .stage-n{width:28px;height:28px;font-size:15px}
+  .tbl,.tbl tbody,.tbl tr,.tbl td,.tbl th{display:block;width:100%}
+  .tbl thead{display:none}
+  .tbl tr{border:1px solid var(--line2);margin-bottom:12px}
+  .tbl td{border:none;border-bottom:1px solid var(--line2)}
+  .tbl td:last-child{border-bottom:none}
+  .tbl td.hi{background:var(--card)}
+  .tbl td.nw{white-space:normal}
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+@media print{
+  body{background:#fff;font-size:11pt}
+  .index{display:none}
+  .stage{break-before:page;border-top:none}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <h1 class="doc-title">二手奢侈品回收<br>全渠道 · 全链路课程大纲</h1>
+
+    <div class="claim">
+      <span class="lb">核心主张</span>
+      <p>手上有什么资源，就 all in 什么路。</p>
+      <small>三百六十行，行行出状元。短视频是现在的主流，但不是唯一。有人脉走关系路径，有预算走付费路径，有门店有腿脚走本地路径，会写文案走平台路径——只要资源是真的，哪条路都能出单。这门课把五条路都讲到能独立跑通，然后让你选一条 all in。</small>
+    </div>
+
+    <p class="doc-sub">课程解决四件事：<b>人从哪来、货是真是假、怎么把人聊到愿意卖、收进来的货怎么安全变成钱。</b></p>
+    <p class="doc-sub">三条原则贯穿全课。第一，<b>按资源选路，选定就 all in</b>。第二，<b>按能力依赖顺序讲</b>——先会看货，才会算价；先会算价，才守得住价。第三，<b>先避损，再谈赚</b>——鉴定和估价的目标不是把你变成鉴定师，是把损失降到最低，而做到这件事最快的方式是借力，不是硬扛。</p>
+
+    <div class="doc-meta">
+      <div><b>版本</b> 大纲 v4 · 五路径并行 · 避损优先</div>
+      <div><b>适用</b> 有获客需求，或有二手成交意向的任何人</div>
+      <div><b>重点交付</b> 五条获客路径 · 鉴定避损 · 风险防控</div>
+    </div>
+  </header>
+
+  <section class="diff">
+    <h2>v3 → v4 改了什么</h2>
+    <p class="lead">六处。第一处是定位层的，其余是落地层的。</p>
+    <ol>
+      <li><strong>获客改为五条平行路径，all in 逻辑提到定位主张</strong>关系 / 内容 / 付费 / 本地 / 平台，五条路各自独立成路，每条配启动动作、见效周期、天花板、30 天落地表。短视频只是内容路径里的一支，不再是默认答案。<b>第二站的出课标准按路径分列</b>——让一个决定 all in 地推的人交"一条已发布的视频"，这个要求本身就是错的。</li>
+      <li><strong>鉴定站重心从"教你判"改为"教你不亏"</strong>外部兜底体系（上游兜底、机构送检、同行复核、结构性规避）从末尾提到 5.2，成为这一站的第一根支柱。因为对多数人来说，借力兜底才是主路，自己判是长期能力。同时新增决策表：什么货自己判、什么送检、什么找上游、什么直接转撮合。</li>
+      <li><strong>新增认知升级模块（1.2）</strong>课程要打开认知，不只是给动作。八个常见误解逐个拆——不会鉴定就不能入行、必须自己出镜、必须有店有钱、必须做短视频、收得越多赚得越多。这一节是整门课的认知锚。</li>
+      <li><strong>出镜从一行扩成一整节</strong>不出镜的四种做法 + 找人出镜的完整方法：找谁、怎么谈、怎么分工、怎么让不懂行的人把内容讲对、协议怎么签、人走了账号怎么办。出镜人风险同步进第八站风控。</li>
+      <li><strong>付费投流压缩</strong>从八节收成一节。正课只讲什么阶段该投、投什么目标、ROI 怎么算、什么时候停，各平台的具体操作走分册手册。</li>
+      <li><strong>资源盘点加真实性校验</strong>"我人脉广"是自我感觉，得转成可数的。All in 一条真实存在的路是对的，all in 一条自以为存在的路，比分散做更危险。</li>
+    </ol>
+  </section>
+
+  <section class="chain">
+    <h2 class="chain-head">业务链路图</h2>
+    <p class="chain-note">十站，沿这条线走一遍。每一站看的不是讲了什么，而是把手上的东西变成了什么。深色三站是重点交付。第二站内部按五条路径并行，学员按资源选一条走。</p>
+    <div class="rail">
+      <a class="stop" href="#s1"><span class="stop-n">一</span><div class="stop-name">定位</div><div class="flow">一个想入行的人<span class="to">认知打开、手上的牌盘清楚</span></div></a>
+      <a class="stop core" href="#s2"><span class="stop-n">二</span><div class="stop-name">获客</div><div class="flow">五条路摆在面前<span class="to">选定一条并 all in</span></div></a>
+      <a class="stop" href="#s3"><span class="stop-n">三</span><div class="stop-name">承接</div><div class="flow">各条路径带来的人<span class="to">躺在微信里的好友</span></div></a>
+      <a class="stop" href="#s4"><span class="stop-n">四</span><div class="stop-name">转化</div><div class="flow">加了但没聊的好友<span class="to">愿意把货和图拿出来的客户</span></div></a>
+      <a class="stop core" href="#s5"><span class="stop-n">五</span><div class="stop-name">鉴定</div><div class="flow">一件不知道真假的货<span class="to">敢下判断，或知道该找谁兜底</span></div></a>
+      <a class="stop" href="#s6"><span class="stop-n">六</span><div class="stop-name">估价与报价</div><div class="flow">一件确认过的货<span class="to">敢报、报得准、守得住的价</span></div></a>
+      <a class="stop" href="#s7"><span class="stop-n">七</span><div class="stop-name">成交</div><div class="flow">谈好的价格<span class="to">收进来的货</span></div></a>
+      <a class="stop core" href="#s8"><span class="stop-n">八</span><div class="stop-name">风控</div><div class="flow">一门随时可能归零的生意<span class="to">一套能扛事的制度</span></div></a>
+      <a class="stop" href="#s9"><span class="stop-n">九</span><div class="stop-name">出货</div><div class="flow">压在手里的库存<span class="to">回到账上的现金</span></div></a>
+      <a class="stop" href="#s10"><span class="stop-n">十</span><div class="stop-name">复购</div><div class="flow">成交过一次的客户<span class="to">持续供货的渠道</span></div></a>
+    </div>
+    <div class="legend">
+      <div><span class="t t-core" style="margin-left:0">主讲</span> 展开讲透，配实操与对练</div>
+      <div><span class="t t-full" style="margin-left:0">通讲</span> 完整讲一遍，配操作手册</div>
+      <div><span class="t t-new" style="margin-left:0">新增</span> v4 新加入的内容</div>
+    </div>
+  </section>
+</div>
+
+<nav class="index">
+  <div class="index-inner">
+    <a href="#s0">课前</a>
+    <a href="#s1">一 定位</a>
+    <a href="#s2">二 获客</a>
+    <a href="#s3">三 承接</a>
+    <a href="#s4">四 转化</a>
+    <a href="#s5">五 鉴定</a>
+    <a href="#s6">六 估价报价</a>
+    <a href="#s7">七 成交</a>
+    <a href="#s8">八 风控</a>
+    <a href="#s9">九 出货</a>
+    <a href="#s10">十 复购</a>
+    <a href="#s11">结营</a>
+    <a href="#ap">附录</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- 课前 -->
+  <section class="stage" id="s0">
+    <div class="stage-head">
+      <div class="stage-n pre">课前</div>
+      <h2 class="stage-title">准备包<span>带着东西来上课</span></h2>
+    </div>
+    <p class="stage-goal">开课前一周发出，第一天签到时检查。目的是让学员进教室时手上已经有素材，第一站的资源盘点当场就能填、能验真。</p>
+    <div class="stage-body">
+      <div class="block">
+        <h3>0.1 课前必做四件事</h3>
+        <ul>
+          <li>按资源盘点表把通讯录、微信好友、已加的群预填一遍，<b>要填可数的数字，不填形容词</b></li>
+          <li>截图现有的所有线上账号：粉丝数、内容方向、最近三条数据</li>
+          <li>列出能直接联系上的行业相关的人：金店、典当、修表、洗护、婚庆、美容、房产、二手车、保险</li>
+          <li>手上有货的，带 1–3 件来，第五站盲测时用自己的货练</li>
+        </ul>
+      </div>
+      <div class="block">
+        <h3>0.2 课前发放资料</h3>
+        <ul>
+          <li>各品牌基础资料与款式图册（第五站的前置阅读）</li>
+          <li>行业词汇表与黑话对照</li>
+          <li>行业参考书单与阅读顺序</li>
+          <li>资源盘点表、单店测算表空白版</li>
+        </ul>
+      </div>
+      <div class="output"><span class="lb">出课标准</span><span>开课当天交出：预填完的资源盘点表 · 账号现状截图 · 可联系的行业关系名单</span></div>
+    </div>
+  </section>
+
+  <!-- 一 定位 -->
+  <section class="stage" id="s1">
+    <div class="stage-head">
+      <div class="stage-n">一</div>
+      <h2 class="stage-title">定位<span>把认知打开，把手上的牌盘清楚</span></h2>
+    </div>
+    <p class="stage-goal">这一站做两件事：<b>打开认知</b>——让学员知道这行远不止他以为的那一种做法；<b>盘清资源</b>——让他知道自己该 all in 哪条路。两件事做完，第二站的选路才有依据。</p>
+    <div class="stage-body">
+
+      <div class="block">
+        <h3>1.1 行业全景：货从哪来，钱从哪赚</h3>
+        <ul>
+          <li>二手奢侈品行业现状：市场规模、增速、为什么这两年能做</li>
+          <li>一条完整的货流：C 端卖家 → 回收商 → 渠道 / 同行 / 平台 → C 端买家</li>
+          <li>行业角色全景：回收商、鉴定师、渠道商、寄卖平台、批发档口、拍卖行、维修保养、清洗改色、上游大户</li>
+          <li>每个角色赚什么钱、门槛多高、天花板在哪</li>
+          <li>我们站在回收端：靠差价和周转赚钱</li>
+          <li>行业的季节性与周期：什么时候货多、什么时候好出</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>1.2 认知升级：你以为的，和实际的 <span class="t t-new">新增</span></h3>
+        <h4>八个误解，逐个拆</h4>
+        <ul>
+          <li><b>以为不会鉴定就不能入行</b> —— 实际有三条路绕开：上游兜底、机构送检、撮合规避。会鉴定是加分项，不是入场券（第五站展开）</li>
+          <li><b>以为必须自己出镜</b> —— 实际可以不露脸、可以找人出镜、可以做图文，也可以根本不走内容路径</li>
+          <li><b>以为必须有店有钱</b> —— 实际零库存起步的三条路都不需要压资金</li>
+          <li><b>以为短视频是唯一的路</b> —— 实际关系、付费、本地、平台四条路都能独立出单，看你手上有什么</li>
+          <li><b>以为这行暴利</b> —— 实际毛利区间是多少、周转怎么吃掉毛利</li>
+          <li><b>以为要做全品类</b> —— 实际先做透一个品类的人跑得最快</li>
+          <li><b>以为收得越多赚得越多</b> —— 实际压货是这行最大的死因</li>
+          <li><b>以为客户都想卖高价</b> —— 实际卖家的动机分四类，只有一类是价格敏感</li>
+        </ul>
+        <h4>这行真正的门槛在哪</h4>
+        <ul>
+          <li>不是鉴定技术，是获客能力和风险意识</li>
+          <li>赚钱的人在赚哪几种钱：差价、周转、信息差、渠道差、服务费</li>
+          <li>你可能不知道的几条路：居间撮合、代收、导流分成、做渠道商、鉴定服务、寄卖代运营、给同行供货</li>
+        </ul>
+        <div class="note mid">这一节是整门课的认知锚。多数人卡在门口，不是因为不会做，是因为以为自己必须先成为某种人才能开始。把这八条拆开，剩下的九站才有人愿意听下去。</div>
+      </div>
+
+      <div class="block">
+        <h3>1.3 五种链路模式，分别适合什么人</h3>
+        <ul>
+          <li><b>纯回收赚差价</b>：压资金，单笔利润高，吃估价能力</li>
+          <li><b>居间撮合</b>：先谈好买家再收，零库存零压力，利润薄但适合起步</li>
+          <li><b>寄卖代卖</b>：不压钱，赚佣金，回款周期长</li>
+          <li><b>鉴定服务收费</b>：轻资产，靠专业变现</li>
+          <li><b>门店零售</b>：重资产，靠客流和溢价，回本慢</li>
+          <li>组合打法：回收为主，撮合和寄卖做补充，大货吃不下就转撮合</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>1.4 把这门生意的账算清楚</h3>
+        <ul>
+          <li>单笔毛利怎么算：收价、出价、差价，再扣物流、鉴定费、平台手续费、退货损耗</li>
+          <li>各品类的真实毛利区间</li>
+          <li><b>行业基准区间</b>：各品类的参考成交率、参考客单毛利、参考复购次数</li>
+          <li>一个客户值多少钱：成交率 × 客单毛利 × 复购次数</li>
+          <li>月目标倒推：想赚多少 → 成交几单 → 谈几个客户 → 加几个微信 → 每天做几个动作</li>
+          <li><b>动作量按路径换算</b>：走内容路径是发几条视频，走关系路径是打几个电话，走本地路径是跑几家店，走付费路径是花多少钱</li>
+          <li>周转率比毛利率更重要</li>
+          <li>多少钱起步、第一个月这笔钱怎么花</li>
+        </ul>
+        <h4>课堂动作</h4>
+        <ul><li>现场填测算表，当场念出自己每天要完成的动作量</li></ul>
+        <div class="note mid">基准数据必须先备好，否则新手填出来的是想象。允许按自己选的品类取值，当场标注"这是假设，结营前校准"。</div>
+      </div>
+
+      <div class="block">
+        <h3>1.5 我手上已经有什么 —— 资源盘点</h3>
+        <h4>八类底牌，逐项盘</h4>
+        <ul>
+          <li><b>人脉存量</b>：通讯录、微信好友数、已加的群、老同学老同事、亲戚邻居</li>
+          <li><b>职业与身份资产</b>：现在或过去的职业带来的信任度，能接触到什么人群</li>
+          <li><b>线上存量资产</b>：已有账号、粉丝、社群、公众号、闲鱼号、朋友圈体量</li>
+          <li><b>线下存量资产</b>：门店、客流、场地、库存、车</li>
+          <li><b>行业关系</b>：金店、典当行、修表店、洗护店、名品折扣、美容院、会所、房产中介、保险、二手车、婚庆、律师、财务</li>
+          <li><b>客户名单</b>：做过其他生意积累的客户，哪些人群和二奢重合</li>
+          <li><b>地缘与圈层</b>：本地社群、商会、老乡会、车友会、宝妈群、业主群、健身房、宠物群、兴趣圈</li>
+          <li><b>时间、资金与配合资源</b>：全职兼职、每天几小时、启动资金、<b>身边有没有能帮你出镜的人</b></li>
+        </ul>
+        <h4>真实性校验：把形容词换成数字 <span class="t t-new">新增</span></h4>
+        <ul>
+          <li>"人脉广" → 能直接打电话不尴尬的有几个？其中和二奢人群重合的有几个？上次联系是什么时候？</li>
+          <li>"有行业关系" → 能直接约出来吃饭的有几家？谈过合作没有？</li>
+          <li>"有客户名单" → 名单上有多少人？多久没联系了？还认得你吗？</li>
+          <li>"有账号" → 真实粉丝多少？最近三条数据？还能不能发</li>
+          <li>"有预算" → 能亏掉不影响生活的是多少？</li>
+          <li>校验后重新排序，圈出<b>经得起数字检验的三张牌</b></li>
+        </ul>
+        <div class="note mid"><b>这一节是整门课的分岔口，也是最容易自欺的一节。</b>All in 一条真实存在的路是对的；all in 一条自以为存在的路，比分散做还危险。所以盘点必须走完校验，形容词一律换成可数的数字。</div>
+      </div>
+
+      <div class="block">
+        <h3>1.6 零库存起步路径与新手安全通道</h3>
+        <h4>零库存怎么起步</h4>
+        <ul>
+          <li>三条不压钱的路：居间撮合、代收、先谈好买家再收货</li>
+          <li>第一个月只做撮合能赚到什么、赚不到什么</li>
+          <li>什么时候可以开始压第一笔货</li>
+        </ul>
+        <h4>安全通道：风险敞口随能力递增</h4>
+        <ul>
+          <li><b>第 1 阶段</b>：只做撮合，或只碰有小票保卡的低价品类，一律走机构鉴定或上游兜底</li>
+          <li><b>第 2 阶段</b>：可自收，但单笔上限 X 元，判不准的一律送检或找同行复核</li>
+          <li><b>第 3 阶段</b>：放开品类和金额，按自己的判断收</li>
+          <li>三个阶段分别对应第五站鉴定能力的哪一级</li>
+          <li>止损线：单笔最多亏多少、连续几单看走眼就必须停下来复盘</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>1.7 给自己定位（暂定版）</h3>
+        <ul>
+          <li>品类怎么选：包 / 表 / 黄金 / 珠宝 / 服饰 / 潮牌 / 数码 —— 难度、利润、周转、货源量四项对比</li>
+          <li>新手从哪个品类切入最不容易死</li>
+          <li>有店还是无店、全职还是兼职</li>
+          <li>人设方向：鉴定师、回收老板、本地上门服务，选一个别混着做</li>
+          <li>区域定位：只做本地，还是接全国邮寄</li>
+        </ul>
+        <div class="note mid">这一节做的是<b>暂定假设</b>。学员此刻还不知道各品类的鉴定难度（第五站）和出货难度（第九站），现在锁死必然选错。结营前会带着后九站的信息回来重填。</div>
+      </div>
+
+      <div class="block">
+        <h3>1.8 前 30 天你会遇到什么</h3>
+        <ul>
+          <li>真实节奏：前两周大概率没单、发的东西没反馈、加的人不回消息</li>
+          <li>会遇到的四件事：同行套价、客户放鸽子、报价被嫌低、第一次看走眼</li>
+          <li>什么时候该坚持、什么时候该换打法：三个可量化的判断口径</li>
+          <li>不同路径的第一单通常在第几天来——预期要分路径给</li>
+        </ul>
+      </div>
+
+      <div class="output"><span class="lb">出课标准</span><span>校验过的资源盘点表（圈出经得起数字检验的三张牌）· 填完的测算表 · 一条暂定的起步路径 · 写下止损线和第一阶段风险敞口的确认单</span></div>
+      <div class="deliver"><span class="lb">交付</span><span>行业链路图 · 认知升级对照表（八个误解） · 资源盘点表与校验清单 · 单店测算表（含行业基准区间）· 品类对比表 · 新手安全通道路线图 · 前 30 天分路径预期表</span></div>
+    </div>
+  </section>
+
+  <!-- 二 获客 -->
+  <section class="stage" id="s2">
+    <div class="stage-head">
+      <div class="stage-n core">二</div>
+      <h2 class="stage-title">获客<span>五条路并排讲，选一条 all in<span class="t t-core">重点交付</span></span></h2>
+    </div>
+    <p class="stage-goal">五条路径全部讲到能独立跑通，一条都不省。<b>但不是让每个人都全做</b>——第一站盘出来的那三张牌，决定你 all in 哪一条。短视频是内容路径里的一支，是主流，不是默认答案。</p>
+    <div class="stage-body">
+
+      <div class="block">
+        <h3>2.1 五条路径与 all in 逻辑 <span class="t t-new">新增</span></h3>
+        <h4>路径全景</h4>
+        <table class="tbl">
+          <thead><tr><th>路径</th><th>适合谁</th><th>启动成本</th><th>见效</th><th>天花板</th><th>稳定性</th></tr></thead>
+          <tbody>
+            <tr><td class="hi nw">关系路径</td><td>有人脉、有职业身份、有行业关系、有老客户</td><td class="nw">几乎为零</td><td class="nw">最快</td><td class="nw">中</td><td class="nw">最高</td></tr>
+            <tr><td class="hi nw">内容路径</td><td>愿意出镜，或身边有人能出镜，有时间产出</td><td class="nw">低</td><td class="nw">慢</td><td class="nw">最高</td><td class="nw">低（依赖平台）</td></tr>
+            <tr><td class="hi nw">付费路径</td><td>有预算、要速度、承接能力已经跑通</td><td class="nw">高</td><td class="nw">最快</td><td class="nw">高</td><td class="nw">中（花钱就有）</td></tr>
+            <tr><td class="hi nw">本地路径</td><td>有门店、有本地资源、跑得动腿</td><td class="nw">中</td><td class="nw">中</td><td class="nw">中（受区域限）</td><td class="nw">高</td></tr>
+            <tr><td class="hi nw">平台路径</td><td>会写文案、有耐心、想零成本起步</td><td class="nw">几乎为零</td><td class="nw">中</td><td class="nw">中</td><td class="nw">中</td></tr>
+          </tbody>
+        </table>
+        <h4>怎么选</h4>
+        <ul>
+          <li>把第一站校验过的三张牌摊开，对着上表选，<b>牌在哪条路上，就走哪条路</b></li>
+          <li>三个否决项：这条路你有没有时间、有没有钱、能不能坚持三个月</li>
+          <li>选不出来怎么办：默认走关系路径起步，因为它最快见到第一单，第一单能救活很多人的信心</li>
+        </ul>
+        <h4>all in 是什么意思，不是什么意思</h4>
+        <ul>
+          <li>是：第一个月 80% 的时间和预算压在这一条上，把它跑到有数据可分析</li>
+          <li>不是：其他四条永不碰。承接、转化、私域这些公共动作，无论走哪条路都要做</li>
+          <li>什么时候该加第二条路：第一条跑出稳定数据、且已经出现瓶颈信号</li>
+          <li>什么时候该换路：三个可量化的止损口径，别拿"再坚持一下"骗自己</li>
+          <li>为什么不要一上来五条全铺：每条路都有学习成本和冷启动期，五条同时冷启动等于五条都启动不了</li>
+        </ul>
+        <div class="note mid">这一节是第二站的分流器，也是整门课核心主张的落点。讲完它，学员应该能当场说出："我走 X 路径，因为我手上有 Y，我第一个月的动作是 Z。"说不出来的，退回第一站重盘。</div>
+      </div>
+
+      <div class="block path">
+        <h3>2.2 关系路径 <span class="t t-core">主讲</span></h3>
+        <p style="color:var(--ink2);margin:10px 0 0">最快出单、成本最低、唯一不依赖平台的一条路。手上有牌的人，第一个月的正确动作是把这些牌跑一遍，而不是从零开始攒粉丝。</p>
+
+        <h4>2.2.1 存量激活</h4>
+        <ul>
+          <li>通讯录与微信好友：第一条群发怎么写、发给谁、什么时间发、发几轮</li>
+          <li>朋友圈铺垫：正式开口前的两周该发什么</li>
+          <li>亲友第一单：怎么让第一单不欠人情、价怎么报</li>
+          <li>被拒绝、被冷处理、被误解成微商，分别怎么接</li>
+          <li>老客户名单激活：做过其他生意的客户怎么转过来</li>
+          <li>职业身份变现：把现在的工作圈变成货源，边界在哪</li>
+          <li>已有账号改造：有粉丝的账号怎么转型不掉粉，是改造还是另起</li>
+          <li>已有门店客流：现有生意的进店客户怎么顺带问一句</li>
+          <li>什么资源不能碰：会消耗核心信任的、会影响本职工作的</li>
+        </ul>
+
+        <h4>2.2.2 异业联盟</h4>
+        <ul>
+          <li>对接名单：典当行、金店、修表店、洗护店、名品折扣店、美容院、会所、房产中介、保险、二手车、婚庆、律师、财务、高端健身房、月子中心</li>
+          <li>异业分层：哪些出货量大、哪些客单高、先谈哪一批</li>
+          <li>第一次上门怎么开口 —— 逐字话术，当场演练</li>
+          <li>分成比例怎么谈、怎么结算、要不要签协议</li>
+          <li>给合作方什么物料：台卡、二维码、宣传单、样品册</li>
+          <li>长期怎么维护、怎么防止被跳单</li>
+          <li>从单点合作到联盟网络：怎么滚到二十家</li>
+        </ul>
+
+        <h4>2.2.3 圈层渗透</h4>
+        <ul>
+          <li>商会、老乡会、车友会、宝妈群、业主群、健身房、宠物群、兴趣圈</li>
+          <li>进圈的方式：先做人再做生意，多久才能开口</li>
+          <li>在群里怎么被记住又不惹人烦</li>
+          <li>线下活动与聚会的转化动作</li>
+        </ul>
+
+        <h4>2.2.4 同行与上下游转介</h4>
+        <ul>
+          <li>同行为什么会给你客户：吃不下的货、不做的品类、异地的单</li>
+          <li>怎么进同行圈、怎么建立互给客户的关系</li>
+          <li>上下游转介：维修保养、清洗改色、鉴定机构、拍卖行的溢出客户</li>
+          <li>上门回收平台的接单与加盟模式</li>
+        </ul>
+
+        <div class="output"><span class="lb">关系路径 · 30 天目标</span><span>跑完存量名单一轮 · 谈成 3–5 家异业并出物料 · 进入 2 个本地圈层 · 第一单来自现有关系</span></div>
+      </div>
+
+      <div class="block path">
+        <h3>2.3 内容路径 <span class="t t-core">主讲</span></h3>
+        <p style="color:var(--ink2);margin:10px 0 0">现在的主流，天花板最高，但见效最慢、最依赖平台。走这条路要有产出能力——自己出镜，或者身边有人能出镜。</p>
+
+        <h4>2.3.1 平台选择与账号搭建</h4>
+        <ul>
+          <li>抖音、快手、视频号、小红书各自的人群和回收属性，先做哪个</li>
+          <li>个人号还是企业号，认证要不要做，营业执照有什么用</li>
+          <li>头像、昵称、简介、背景图、置顶视频 —— 怎么带关键词、带地域、带信任状</li>
+          <li>本地定位与 POI 设置，同城流量怎么吃到</li>
+          <li>一个人做几个号：主号做人设，矩阵号铺量</li>
+          <li>新号怎么养、前七天发什么</li>
+        </ul>
+
+        <h4>2.3.2 选题与钩子承接</h4>
+        <ul>
+          <li>五类必出量选题：真假对比、现场估价、差价揭秘、避坑指南、客户故事</li>
+          <li>回收类高转化选题："你家有没有这个""这个现在能卖多少""我给她开了多少钱"</li>
+          <li><b>每一类选题绑定的钩子和评论区动作</b> —— 写选题时就把导流路径写完</li>
+          <li>对标账号怎么拆：找同行、扒爆款、看评论区、走一遍他的转化路径</li>
+          <li>攒自己的选题库：一百条选题怎么来，怎么循环用</li>
+          <li>爆款改编：同一个选题换品类、换价位、换人群，能出十条</li>
+        </ul>
+
+        <h4>2.3.3 脚本</h4>
+        <ul>
+          <li>三种结构：黄金三秒开头、痛点提问式、悬念反转式</li>
+          <li>口播脚本模板：钩子 → 信息 → 引导，每段多长</li>
+          <li>逐字稿怎么写，一条视频写多少字合适</li>
+          <li>引导话术怎么埋：哪句话能引来私信，哪句话会被限流</li>
+          <li>用 AI 批量写脚本：提示词怎么给，怎么改成自己的口气</li>
+        </ul>
+
+        <h4>2.3.4 出镜与出镜分工 <span class="t t-new">新增</span></h4>
+        <p style="color:var(--ink2);margin:8px 0 0"><b>不擅长出镜完全不影响做内容路径。</b>四种做法，按自己的条件选。</p>
+        <ul>
+          <li><b>做法一 · 不露脸</b>：货品特写 + 手部出镜 + 字幕配音，回收类内容天然适合</li>
+          <li><b>做法二 · 图文</b>：图文口播、笔记形式，小红书和视频号都吃得开</li>
+          <li><b>做法三 · AI 分身</b>：数字人的适用场景与明显短板，什么内容能用什么不能</li>
+          <li><b>做法四 · 找人出镜</b>：下面展开</li>
+        </ul>
+        <h4>找人出镜怎么做</h4>
+        <ul>
+          <li><b>找谁</b>：合伙人、配偶、亲戚、朋友、雇的兼职、专业口播，五种关系的稳定性和成本对比</li>
+          <li><b>对方需要具备什么</b>：不需要懂行，需要的是镜头感、配合度、稳定性——懂行的是你</li>
+          <li><b>怎么谈</b>：按条给钱、按月给钱、给业绩分成、给股份，各自适合什么关系，别一上来就谈股份</li>
+          <li><b>分工怎么定</b>：你出选题、脚本和专业判断，他出脸和表达；剪辑、发布、接私信各归谁</li>
+          <li><b>怎么让不懂行的人把专业内容讲对</b>：脚本颗粒度到什么程度、要不要提词器、拍前对稿、哪几句话一个字都不能改</li>
+          <li><b>拍摄配合流程</b>：一次拍几条、多久拍一次、怎么提高单次拍摄效率、卡壳了怎么办</li>
+          <li><b>常见问题</b>：对方拍着拍着不想拍了、要涨价、临时放鸽子、越拍越敷衍</li>
+        </ul>
+        <h4>出镜人风险与降依赖</h4>
+        <ul>
+          <li><b>人设绑定风险</b>：粉丝认人不认号，人走了账号就废</li>
+          <li>账号、素材、粉丝的归属怎么约定，肖像使用怎么授权</li>
+          <li>出镜协议要写什么（第八站给模板）</li>
+          <li><b>降依赖的四个做法</b>：多人出镜、部分内容不露脸、账号定位偏内容不偏个人、同步把粉丝沉到私域</li>
+          <li>真出问题了怎么换人：过渡期怎么发、怎么跟粉丝交代</li>
+        </ul>
+        <h4>自己出镜的基本功（给愿意出镜的人）</h4>
+        <ul>
+          <li>镜头感：语速、停顿、重音、眼神落点</li>
+          <li>口条不好、方言重、不上镜，分别怎么补救</li>
+          <li>现场收货怎么拍：怎么跟客户开口、拍哪几个镜头、隐私怎么处理</li>
+          <li>一条视频拍几遍算正常，怎么快速过稿不磨叽</li>
+        </ul>
+
+        <h4>2.3.5 拍摄</h4>
+        <ul>
+          <li>设备清单：手机、补光、支架、拍摄台、背景布，总共花多少钱</li>
+          <li>货品怎么拍好看：布光、角度、细节特写（logo、五金、皮质、机芯、钢印）</li>
+          <li>场景选择：店里、桌面、外景，各自适合什么内容</li>
+        </ul>
+
+        <h4>2.3.6 剪辑与发布</h4>
+        <ul>
+          <li>剪映基础：分割、变速、字幕、卡点、转场，够用就行</li>
+          <li>封面与标题怎么做，标题里哪些词不能出现</li>
+          <li>话题标签、定位、发布时间</li>
+          <li>一条内容怎么改成图文，同步发到几个平台</li>
+          <li>多平台分发的节奏与差异化改造</li>
+        </ul>
+
+        <h4>2.3.7 数据复盘</h4>
+        <ul>
+          <li>只看五个数：完播率、互动率、主页访问率、转粉率、私信量</li>
+          <li>数据不行是哪一步的问题：开头、中段还是结尾</li>
+          <li>每周复盘表怎么填，连续两周不动怎么调</li>
+        </ul>
+
+        <h4>2.3.8 账号安全（必讲）</h4>
+        <ul>
+          <li>违禁词清单：回收、收购、高价、暴利、假货、品牌词的替代表述</li>
+          <li>常见限流原因与自查方法</li>
+          <li>被限流、被封号了怎么处理</li>
+          <li>备用号与养号，不要把身家压在一个账号上</li>
+        </ul>
+
+        <h4>2.3.9 直播</h4>
+        <ul>
+          <li>直播间讲什么：现场估价、连麦鉴定、开箱验货、货品讲解</li>
+          <li>开播准备：设备、场景、话术脚本、开播时间</li>
+          <li>怎么把人留住、怎么引到微信</li>
+          <li>直播间收货与寄卖的玩法</li>
+          <li>直播违规红线与封禁处理</li>
+        </ul>
+
+        <h4>2.3.10 内容种草平台</h4>
+        <ul>
+          <li>小红书：笔记结构、封面、标题、正文、评论区维护、本地关键词</li>
+          <li>素人号铺量：几个号、发什么、怎么不被判营销号</li>
+          <li>知乎：长尾问答，回收类问题怎么答能带来搜索流量</li>
+          <li>公众号与视频号：内容沉淀与搜索卡位</li>
+          <li>各平台的导流政策差异，同一条内容分别怎么改</li>
+        </ul>
+
+        <div class="output"><span class="lb">内容路径 · 30 天目标</span><span>账号改完 · 稳定日更或隔日更满 30 天 · 选题库跑完一轮 · 有可分析的数据 · 出镜方案落定（自己 / 找人 / 不露脸）</span></div>
+      </div>
+
+      <div class="block path">
+        <h3>2.4 付费路径 <span class="t t-full">通讲</span></h3>
+        <p style="color:var(--ink2);margin:10px 0 0">有预算、要速度的人走这条。逻辑其实简单——花钱买曝光，关键在会算账和会承接。各平台的具体操作走分册手册，正课讲通用逻辑。</p>
+        <ul>
+          <li><b>什么阶段该投</b>：承接和转化没跑通之前投了也是白投</li>
+          <li><b>投什么目标</b>：涨粉、私信、到店、留资，目标不同打法完全不同</li>
+          <li><b>预算怎么定</b>：从多少钱开始试、单日上限、亏多少就停</li>
+          <li><b>各投放口径速览</b>：抖音 DOU+ 与千川 / 小红书薯条与聚光 / 大众点评推广通 / 美团推广 / 百度竞价 / 朋友圈广告与本地推 / 快手粉条磁力</li>
+          <li><b>人群定向的通用逻辑</b>：同城、年龄、兴趣、相似达人，回收行业的人群怎么框</li>
+          <li><b>素材与落地页</b>：投放素材和自然流素材的区别，落地页承接什么</li>
+          <li><b>ROI 核算</b>：花了多少钱、来了多少私信、成了几单、单个有效客户成本是多少</li>
+          <li><b>止损与加码</b>：什么时候该加预算、什么时候必须停投、投流账本怎么记</li>
+          <li><b>自然流与付费流的关系</b>：投流会不会毁账号</li>
+          <li>换个平台怎么快速上手：信息流广告的通用框架</li>
+        </ul>
+        <div class="output"><span class="lb">付费路径 · 30 天目标</span><span>跑完一轮试投并算出单个有效客户成本 · 确定继续加码还是换路 · 投流账本连续记满 30 天</span></div>
+      </div>
+
+      <div class="block path">
+        <h3>2.5 本地路径 <span class="t t-core">主讲</span></h3>
+        <p style="color:var(--ink2);margin:10px 0 0">有门店、有本地资源、跑得动腿的人走这条。区域内做透了，稳定性仅次于关系路径。</p>
+
+        <h4>2.5.1 地图与本地搜索</h4>
+        <ul>
+          <li>高德、百度地图商户认领与信息完善</li>
+          <li>店铺名怎么起 —— 带关键词、带地域，直接影响本地搜索排名</li>
+          <li>地图推广的投放方式与成本</li>
+          <li>没有实体店能不能上地图，怎么合规处理</li>
+        </ul>
+
+        <h4>2.5.2 点评与美团</h4>
+        <ul>
+          <li>商户入驻：资质、类目选择、门店信息怎么填</li>
+          <li>头图、相册、服务项目怎么配</li>
+          <li>图文笔记发什么、多久发一次</li>
+          <li>评价体系：前二十条评价怎么攒，后面怎么维护，差评怎么处理</li>
+          <li>抖音团购与 POI：到店券怎么设计，回收行业怎么用</li>
+          <li>线上咨询怎么接、到店怎么转化</li>
+        </ul>
+
+        <h4>2.5.3 门店</h4>
+        <ul>
+          <li>选址、门头、橱窗，门店本身就是获客工具</li>
+          <li>进店转化动作：怎么接、怎么问、怎么留联系方式</li>
+          <li>没有店怎么办：共享工位、写字楼小办公室、上门服务的信任建立</li>
+        </ul>
+
+        <h4>2.5.4 地推与活动</h4>
+        <ul>
+          <li>免费估价活动、社区活动、商场快闪怎么办：场地怎么谈、物料准备、现场话术</li>
+          <li>展会与场景获客：车展、婚博会、珠宝展、高端小区业主活动</li>
+          <li>物业、会所、银行贵宾室、保险客户活动的合作方式</li>
+          <li>传单、社区广告位、电梯广告：还有没有用、怎么用、成本多少</li>
+          <li>地推的人效与转化率：一天跑多少家、留多少联系方式算正常</li>
+        </ul>
+
+        <div class="output"><span class="lb">本地路径 · 30 天目标</span><span>地图与点评美团入驻完成并优化 · 攒够前 10 条评价 · 办完 1 场活动或跑完 20 家地推点位 · 本地搜索能搜到自己</span></div>
+      </div>
+
+      <div class="block path">
+        <h3>2.6 平台路径 <span class="t t-core">主讲</span></h3>
+        <p style="color:var(--ink2);margin:10px 0 0">零成本起步，不用出镜、不用人脉、不用预算。会写文案、有耐心的人可以从这条路切进来。</p>
+
+        <h4>2.6.1 闲鱼</h4>
+        <ul>
+          <li>闲鱼为什么适合回收：买卖两端的流量在同一个池子</li>
+          <li>养号与权重：实名、芝麻信用、日常活跃度、发布节奏</li>
+          <li><b>求购帖</b>：发"高价求购"收货的完整做法，这是收货主力动作</li>
+          <li><b>出售帖</b>：标题关键词、主图、描述结构、价格锚定、擦亮节奏</li>
+          <li>主动开发：关键词搜卖家、私信开场话术、三句话判断意向真假</li>
+          <li>鱼塘、闲鱼直播、同城闲鱼各自怎么用</li>
+          <li>信用体系与买家保障，怎么用它建立信任</li>
+          <li>违规避坑：防封、防骗、交易安全、线下见面注意什么</li>
+        </ul>
+
+        <h4>2.6.2 转转与其他交易平台</h4>
+        <ul>
+          <li>转转与闲鱼的差异、验货宝、官方回收入口</li>
+          <li>抖音小店、快手小店、淘宝闲置：零售出口的反向获客</li>
+        </ul>
+
+        <h4>2.6.3 二手与寄卖平台的获客面</h4>
+        <ul>
+          <li>得物、红布林、只二、心上、胖虎：既是出货渠道，也能带来卖家</li>
+          <li>平台回收入口怎么用，什么情况把客户导给平台反而更划算</li>
+          <li>阿里拍卖、京东拍卖：司法拍卖与低价捡漏的机会与风险</li>
+        </ul>
+
+        <h4>2.6.4 搜索与分类信息</h4>
+        <ul>
+          <li>微信搜一搜：公众号、视频号、小程序、朋友圈的搜索卡位</li>
+          <li>百度自然排名：官网、百家号、贴吧、知道的组合打法</li>
+          <li>58 同城、赶集：发帖规则、置顶、防骗</li>
+          <li>本地论坛与生活网站</li>
+          <li>各搜索入口的关键词库怎么建</li>
+        </ul>
+
+        <div class="output"><span class="lb">平台路径 · 30 天目标</span><span>闲鱼号养起来 · 求购帖与出售帖各铺满一批 · 主动开发满 30 天 · 搜索入口卡位完成</span></div>
+      </div>
+
+      <div class="block">
+        <h3>2.7 私域沉淀：五条路的共同收口</h3>
+        <ul>
+          <li>无论走哪条路，人最后都要落到自己的池子里</li>
+          <li>微信个人号矩阵：几个号、怎么分工、怎么防封</li>
+          <li>企业微信：适合什么阶段、和个人号怎么配合</li>
+          <li>自建社群：行情播报群、捡漏群、同城群，怎么活跃怎么变现</li>
+          <li><b>为什么这是唯一不会被平台收走的资产</b>——账号可能封、投放可能停、门店可能关，微信里的人跑不掉</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>2.8 路径横评与进阶</h3>
+        <ul>
+          <li>五条路径的成本、周期、天花板、稳定性总表</li>
+          <li>哪些路径依赖平台（随时可能归零），哪些是自己的资产</li>
+          <li>第一条路跑出数据之后，第二条该加哪一条：常见的四种组合</li>
+          <li>什么信号说明该换路，什么信号说明只是还没到时候</li>
+          <li>多路径并行的前提：有人手，或者第一条已经自动化</li>
+        </ul>
+        <div class="note mid">这一站信息量最大，学员最容易的反应是回去什么都想做、结果什么都没做。收尾必须回到第一站的资源盘点表，把它压成一条路 + 一份 30 天动作清单。</div>
+      </div>
+
+      <div class="output"><span class="lb">出课标准 · 按路径分列</span>
+        <ul>
+          <li><b>所有人</b>：一份写死的路径选择书——走哪条、因为手上有什么、第一个月的动作清单和数量</li>
+          <li><b>关系路径</b>：跑完的存量名单 + 已实际联系过的 5 家异业 + 物料一套</li>
+          <li><b>内容路径</b>：改完的账号 + 30 条带钩子选题 + 一条已发布内容 + 出镜方案落定</li>
+          <li><b>付费路径</b>：试投预算与止损线 + 投流账本模板 + 一次已完成的试投</li>
+          <li><b>本地路径</b>：地图与点评入驻完成 + 一份地推点位清单或活动方案</li>
+          <li><b>平台路径</b>：养起来的闲鱼号 + 已发布的求购帖与出售帖</li>
+        </ul>
+      </div>
+      <div class="deliver"><span class="lb">交付</span><span>五路径对照决策表 · 路径选择书模板 · 五份分路径 30 天落地表 · 存量激活话术包 · 50 家异业名单与上门逐字话术 · 异业合作协议 · 100 条选题库（含钩子承接列）· 脚本模板 · 出镜人合作与协议模板 · 30 天起号流程 · 违禁词表 · 投流实操手册（分平台）· 投流 ROI 核算表 · 地图与点评美团手册 · 地推执行手册与物料清单 · 闲鱼手册 · 搜索卡位手册 · 私域矩阵搭建手册</span></div>
+    </div>
+  </section>
+
+  <!-- 三 承接 -->
+  <section class="stage" id="s3">
+    <div class="stage-head">
+      <div class="stage-n">三</div>
+      <h2 class="stage-title">承接<span>不管人从哪条路来，都要搬进自己的微信</span></h2>
+    </div>
+    <p class="stage-goal">五条路径在这里合流。视频有播放、异业推了人、投流烧了钱、地推留了电话——人却没进微信，前面全白费。</p>
+    <div class="stage-body">
+
+      <div class="block">
+        <h3>3.1 钩子设计</h3>
+        <ul>
+          <li>四种有效钩子：免费估价、免费鉴定一次、避坑手册、本周行情报价单</li>
+          <li>哪种钩子吸来精准卖家，哪种只会吸来白嫖党</li>
+          <li>钩子在各路径里怎么出现：视频里、评论区、主页、直播间、异业台卡、地推物料、闲鱼帖子</li>
+          <li>回看 2.3.2：每类选题该配哪种钩子，逐条对上</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>3.2 各路径的导流路径</h3>
+        <ul>
+          <li>抖音：评论区、私信、主页、企业号组件，四条路分别怎么走</li>
+          <li>小红书、闲鱼、点评、快手、视频号各自的安全导流方式</li>
+          <li>不被判站外引流的表述方式与跳转设计</li>
+          <li>付费投放的留资承接：表单、私信、电话，各自怎么接</li>
+          <li>线下场景：门店、活动、地推、异业推荐的客户怎么接</li>
+          <li>哪些动作一做就限流</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>3.3 加微信这一步</h3>
+        <ul>
+          <li>申请话术怎么写，通过率能差一倍</li>
+          <li>通过后的第一句话 —— 直接决定后面能不能聊下去</li>
+          <li>前三十秒做什么：<b>问品类、要图、约定什么时候给价</b></li>
+          <li>为什么这一步不能报价：没看清货就给数字，后面每次调价都在削自己的信任</li>
+          <li>备注与标签体系：<b>来源（哪条路径）</b> / 品类 / 意向度 / 报价记录 / 成交状态</li>
+        </ul>
+        <div class="note mid">标签里的"来源"必须记到路径级别，否则第十站算不出哪条路径真正带来了成交，all in 的对错就无从验证。</div>
+      </div>
+
+      <div class="block">
+        <h3>课堂动作</h3>
+        <ul>
+          <li>两人一组，对练加微申请话术和通过后的第一句话</li>
+          <li>现场把标签体系建完，导入前 20 个已有好友</li>
+        </ul>
+      </div>
+
+      <div class="output"><span class="lb">出课标准</span><span>四种钩子话术各一版 · 已建好并导入真实好友的标签体系（含路径来源标签）· 现场对练通过的加微开场</span></div>
+      <div class="deliver"><span class="lb">交付</span><span>钩子话术表 · 各路径导流 SOP · 微信标签体系模板</span></div>
+    </div>
+  </section>
+
+  <!-- 四 转化 -->
+  <section class="stage" id="s4">
+    <div class="stage-head">
+      <div class="stage-n">四</div>
+      <h2 class="stage-title">转化<span>朋友圈养熟，私信把人聊开</span></h2>
+    </div>
+    <p class="stage-goal">这一站只负责一件事：让客户愿意把货拿出来、把图发过来、愿意谈。<b>鉴定在第五站、报价在第六站</b>——这里不下判断，也不给数字。</p>
+    <div class="stage-body">
+
+      <div class="block">
+        <h3>4.1 微信号包装</h3>
+        <ul>
+          <li>头像、昵称、个签、背景图、朋友圈封面</li>
+          <li>一个让人敢把几万块的货交出来的微信，长什么样</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>4.2 朋友圈体系</h3>
+        <ul>
+          <li>四类内容配比：成交实拍、专业干货、生活人设、客户反馈</li>
+          <li>每天发几条、什么时间发</li>
+          <li>成交实拍怎么拍怎么配文 —— 带来私信最多的一类</li>
+          <li>干货怎么写才不像广告</li>
+          <li>三十天朋友圈内容表：照着发就行</li>
+          <li>高互动文案模板与常见反面例子</li>
+          <li>分组可见与标签化推送</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>4.3 私信问诊</h3>
+        <ul>
+          <li>问诊式开场：先问什么、后问什么，顺序不能乱</li>
+          <li>判断意向真假：急不急用钱、以前卖过没有、比过几家价</li>
+          <li>卖家的四类动机分别怎么接</li>
+          <li>怎么把"我就问问价"接成一次完整的问诊</li>
+          <li>什么时候绝对不能给数字</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>4.4 隔屏看货：指挥客户拍图</h3>
+        <ul>
+          <li>各品类必须要到的部位清单：包 / 表 / 黄金珠宝 / 其他，分别拍哪几张</li>
+          <li>怎么指挥角度和光线，客户才拍得出能用的图</li>
+          <li>客户不愿拍、拍不好、只发一张，分别怎么接</li>
+          <li>要到票据、保卡、配件、购买时间信息的话术</li>
+          <li>视频通话验货：什么时候用、怎么引导</li>
+        </ul>
+        <div class="note mid">这一节是第四站和第五站的接口：产出物是"一包能拿去鉴定的客户图"，第五站开场就用学员自己收上来的图做判定练习。学员会当场发现自己的图要得不对——这比讲十遍要图清单都管用。</div>
+      </div>
+
+      <div class="block">
+        <h3>4.5 跟进节奏与死单激活</h3>
+        <ul>
+          <li>未成交客户的跟进周期：当天 / 三天 / 七天 / 三十天，各说什么</li>
+          <li>行情播报、节日问候、点赞评论的具体用法</li>
+          <li>死单激活：沉默一个月以上的客户怎么重新聊起来</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>课堂动作 —— 讲三成，练七成</h3>
+        <ul>
+          <li>两人一组对练问诊开场与要图，全程录像回放，老师逐个纠</li>
+          <li>不涉及任何报价环节，专练"把人聊开"</li>
+          <li>每人当场向三个真实好友发出要图请求，把回来的图存好，第五站要用</li>
+        </ul>
+      </div>
+
+      <div class="output"><span class="lb">出课标准</span><span>改完的微信 · 30 天朋友圈内容表 · 一套问诊话术 · 一份自己收上来的真实客户图包</span></div>
+      <div class="deliver"><span class="lb">交付</span><span>30 天朋友圈内容表 · 问诊话术模板 · 各品类要图清单 · 跟进节奏表 · 个人对练录像回放</span></div>
+    </div>
+  </section>
+
+  <!-- 五 鉴定 -->
+  <section class="stage" id="s5">
+    <div class="stage-head">
+      <div class="stage-n core">五</div>
+      <h2 class="stage-title">鉴定<span>目标不是成为鉴定师，是把损失降到最低<span class="t t-core">重点交付</span></span></h2>
+    </div>
+    <p class="stage-goal">这一站的命题是<b>怎么让自己不亏</b>，不是怎么显得专业。做到这件事有两条路：自己判，和借力判。<b>对多数人来说，借力才是主路，自己判是长期能力。</b>所以这一站先讲兜底，再讲判定。</p>
+    <div class="stage-body">
+
+      <div class="block">
+        <h3>5.1 三道防线</h3>
+        <ul>
+          <li><b>第一道 · 结构性规避</b>：根本不承担真假风险——撮合、寄卖、定金后验、验货后付</li>
+          <li><b>第二道 · 借力判定</b>：上游兜底、机构送检、同行复核、平台鉴定</li>
+          <li><b>第三道 · 自己判定</b>：L1 一眼假 → L2 常见款判定 → L3 边界识别</li>
+          <li>三道防线的成本、时效和适用场景对比</li>
+          <li>一单看走眼等于白干多少单 —— 用第一站的测算表算给学员看</li>
+          <li>三道防线分别对应第一站安全通道的哪个阶段</li>
+        </ul>
+        <div class="note mid"><b>这一站最重要的一句话：判不了的时候知道自己判不了，然后知道该找谁。</b>这既保护学员，也保护课程——招生时讲清楚能力边界，后面不会有人拿"我学完还是看走眼了"来找你。</div>
+      </div>
+
+      <div class="block">
+        <h3>5.2 外部兜底体系 <span class="t t-new">新增 · 前置</span></h3>
+
+        <h4>上游兜底</h4>
+        <ul>
+          <li>什么叫上游兜底：上游收你的货，同时替你承担判定责任</li>
+          <li>上游是谁：大回收商、渠道商、B 端平台、批发档口、同行大户</li>
+          <li>怎么找上游、第一次怎么开口、怎么从小单做到大单</li>
+          <li>上游凭什么给你兜底：他赚什么、你让什么</li>
+          <li>兜底的几种形式：先验后款、包退包换、代验代收、直接报价收</li>
+          <li>成本核算：让出多少利润换兜底是合理的</li>
+          <li><b>风险</b>：上游压价、上游跑路、被上游挖走客户、被上游反向套价</li>
+          <li>什么阶段该依赖上游、什么阶段该自己上</li>
+        </ul>
+
+        <h4>第三方鉴定机构</h4>
+        <ul>
+          <li>得物、优奢易拍、中检、包大师：价格、时效、准确度、支持品类对比</li>
+          <li>线上鉴定 vs 线下送检，各自适用什么场景</li>
+          <li>出具报告的意义：对客户、对下游、对纠纷</li>
+          <li>鉴定费谁出：怎么跟客户谈，怎么把它变成信任加分项</li>
+          <li>机构也会看错：报告的责任边界在哪</li>
+        </ul>
+
+        <h4>同行复核网络</h4>
+        <ul>
+          <li>怎么建：找谁、怎么开口、给不给钱、怎么互惠</li>
+          <li>什么货值得麻烦别人</li>
+          <li>复核的时效问题：客户等不了怎么办</li>
+        </ul>
+
+        <h4>结构性规避</h4>
+        <ul>
+          <li>居间撮合：让买家自己去验，你只赚服务费</li>
+          <li>寄卖代卖：不买断就不承担真假风险</li>
+          <li>走平台交易，让平台承担鉴定责任</li>
+          <li>先付定金后验货、验货后付款的具体操作</li>
+        </ul>
+
+        <h4>决策表：这货该怎么处理</h4>
+        <table class="tbl">
+          <thead><tr><th>情况</th><th>处理方式</th></tr></thead>
+          <tbody>
+            <tr><td>低价、常见款、自己主打品类、有小票保卡</td><td>自己判，直接收</td></tr>
+            <tr><td>高价、疑难款、客户有争议、下游要报告</td><td>送机构鉴定，费用计入成本</td></tr>
+            <tr><td>大货、不熟悉的品类、急着出手</td><td>找上游兜底，让出部分利润</td></tr>
+            <tr><td>常见款但把握不足、时间来得及</td><td>找同行复核</td></tr>
+            <tr><td>完全没把握、或金额超过自己当前敞口</td><td>转居间撮合，不碰货权</td></tr>
+          </tbody>
+        </table>
+        <div class="note mid">这张表是这一站的核心交付物之一，也是最能打消新手顾虑的一页。<b>把它放进招生页</b>——"不会鉴定也能开始，因为你有五种处理方式"，比"我教你鉴定"更能说服人。</div>
+      </div>
+
+      <div class="block">
+        <h3>5.3 通用判定动线</h3>
+        <ul>
+          <li>拿到一件货的固定检查顺序：第 1 步看什么、第 2 步看什么，不靠灵感靠流程</li>
+          <li>五个通用维度：工艺、材质、五金、字体与钢印、气味与手感</li>
+          <li><b>一眼假的 30 秒排除法</b>：最高频的十个破绽</li>
+          <li>高仿的档次分级：普通货、精仿、顶级复刻，各自能骗过谁</li>
+          <li>为什么"感觉不对"值得信任，以及什么时候不能只靠感觉</li>
+        </ul>
+        <div class="note mid">堆细节堆不完，学员也记不住。<b>不按品牌堆知识点，按判定动线讲</b>——每个品类一张动线卡，回去照着走。动线卡是这一站最有价值的交付物。</div>
+      </div>
+
+      <div class="block">
+        <h3>5.4 包类判定</h3>
+        <ul>
+          <li>品牌覆盖：爱马仕、香奈儿、LV、迪奥、Gucci、Prada、Celine、Loewe、Bottega、YSL、Fendi、巴黎世家、MiuMiu、Goyard</li>
+          <li>每个品牌一张<b>判定动线卡</b>：先看哪三处，再看哪三处</li>
+          <li>皮质：常见皮种、手感、纹路、边油、老化特征</li>
+          <li>五金：材质、重量、镀层、logo 刻印、螺丝</li>
+          <li>走线与工艺：针距、线材、缝合方式、对称性</li>
+          <li>logo 与字体：字形、间距、位置、烫印深浅</li>
+          <li>日期码、芯片、序列号：怎么看、能证明什么、不能证明什么</li>
+          <li>内衬、拉链头、五金件的品牌特征</li>
+          <li>包装、防尘袋、小票、保卡的辅助判定价值</li>
+          <li><b>非真假问题</b>：翻新、改色、换件、拼装、后加钻——比假货更常见</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>5.5 腕表判定</h3>
+        <ul>
+          <li>品牌覆盖：劳力士、欧米茄、卡地亚、浪琴、天梭、百达翡丽、江诗丹顿、爱彼、万国、积家、宝珀、沛纳海</li>
+          <li>外观：表壳、表盘、指针、刻度、夜光、字体、镭射防伪</li>
+          <li>表带与扣：材质、做工、刻印</li>
+          <li>机芯：什么情况可以开盖、什么情况绝对不要开、开了看什么</li>
+          <li>编号核验：壳号、机芯号、证书号的对应关系</li>
+          <li>保卡、说明书、原盒的作用与造假</li>
+          <li>走时与功能检查：什么问题必须送修</li>
+          <li><b>后改装识别</b>：后镶钻、换盘、换针、拼装表、抛光过度</li>
+          <li>什么表新手绝对不要碰</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>5.6 黄金、钻石与珠宝</h3>
+        <h4>黄金</h4>
+        <ul>
+          <li>成色识别与检测方法：看、掂、试、仪器</li>
+          <li>足金、K 金、包金、镀金、空心工艺的区分</li>
+          <li>称重规范与克重折算</li>
+          <li>常见掺假手法：包芯、灌铅、镀层</li>
+          <li>品牌金饰的溢价与回收折算差异</li>
+        </ul>
+        <h4>钻石与彩宝</h4>
+        <ul>
+          <li>4C 基础与回收视角下真正影响价格的项</li>
+          <li>证书核验：GIA、IGI、国检，怎么在官网查、怎么防假证</li>
+          <li>腰码核对</li>
+          <li><b>莫桑石、锆石、培育钻的识别</b>——目前最高频的坑</li>
+          <li>彩宝与玉石的边界：什么情况直接不碰</li>
+        </ul>
+        <h4>品牌珠宝</h4>
+        <ul>
+          <li>卡地亚、蒂芙尼、宝格丽、梵克雅宝、宝诗龙的判定要点</li>
+          <li>刻印、编号、材质、工艺细节</li>
+          <li>证书、原盒、保修卡的价值</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>5.7 其他品类 <span class="t t-full">通讲</span></h3>
+        <ul>
+          <li><b>名牌服饰与皮草</b>：吊牌、水洗标、里衬、走线、材质，回收价值判断</li>
+          <li><b>鞋履与潮牌球鞋</b>：常见品牌、鉴别要点、平台鉴别的依赖度</li>
+          <li><b>箱包配饰</b>：皮带、丝巾、墨镜、钱包、卡包、胸针、领带</li>
+          <li><b>数码 3C 与相机</b>：验机、序列号、维修记录、锁机风险</li>
+          <li><b>其他杂项</b>：钢笔、打火机、名酒、乐器、文玩字画的基本边界</li>
+          <li>各品类的判定难度与风险等级排序：新手先碰哪些、绝对别碰哪些</li>
+          <li>不熟悉的品类怎么处理：回到 5.2 的决策表</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>5.8 隔屏判定</h3>
+        <ul>
+          <li>只有图能判到什么程度，各品类的隔屏判定上限</li>
+          <li>必须要到的几张图，缺哪张就不能下判断</li>
+          <li>图片造假：盗图、修图、借真图卖假货的识别</li>
+          <li>视频通话验货的引导流程</li>
+          <li><b>什么情况必须见实物</b>——这条线不能松</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>5.9 工具</h3>
+        <ul>
+          <li>基础工具清单：放大镜、紫光灯、电子秤、卡尺、测金仪、显微镜，各多少钱、怎么用</li>
+          <li>查验小程序与数据库的能力边界</li>
+          <li>AI 鉴定工具：能用来做什么、绝对不能用来做什么</li>
+          <li>什么阶段该添什么工具，别一上来买齐</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>5.10 已经出事了怎么办</h3>
+        <ul>
+          <li>收到高仿：追责、退货、报警、认赔的判断标准与顺序</li>
+          <li>上游兜底失效、机构报告出错，分别怎么处理</li>
+          <li>怎么止损：什么时候该认、什么时候该争</li>
+          <li>一次看走眼之后的复盘动作：错在哪道防线</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>5.11 把鉴定讲给客户听</h3>
+        <ul>
+          <li>怎么把判定过程讲给客户听，让他觉得你专业（表达训练，不是技术训练）</li>
+          <li>指出问题的分寸：说到什么程度能压价，说过头客户当场翻脸</li>
+          <li>客户拿别家的鉴定结果来质疑，怎么接</li>
+          <li>要送检、要复核，怎么跟客户解释才不掉信任</li>
+          <li><b>怎么告诉客户他的货是假的</b> —— 最难的一场，单独练</li>
+          <li>同行来试探怎么识别、怎么应对</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>5.12 课堂实操</h3>
+        <ul>
+          <li><b>第一轮</b>：用第四站自己要来的客户图判一轮，图不全的当场暴露</li>
+          <li><b>第二轮</b>：实物盲测，真假混摆，每人独立走一遍动线卡</li>
+          <li><b>第三轮</b>：限时 30 秒一眼假排除，练反应速度</li>
+          <li><b>第四轮</b>：给二十个场景，判断该走 5.2 决策表里的哪一条——这一轮比前三轮更重要</li>
+          <li>对答案、讲差在哪、动线卡当场修订</li>
+          <li><b>咬合动作</b>：把今天的判定点当场改成 5 条内容选题——真假对比本来就是最出量的选题类型</li>
+        </ul>
+        <div class="note mid">第四轮是这一站真正的考核点。前三轮考"你会不会判"，第四轮考"你知不知道什么时候不该自己判"——后者才是避损能力。</div>
+      </div>
+
+      <div class="output"><span class="lb">出课标准</span><span>各品类判定动线卡（自己修订过的版本）· 盲测评分记录（四轮）· 兜底资源清单：至少 1 个上游、2 个复核关系、1 家常用鉴定机构 · 一份自己的工具采购计划 · 5 条从判定点转化来的内容选题</span></div>
+      <div class="deliver"><span class="lb">交付</span><span>三道防线决策表 · 分品类判定动线卡（包 / 表 / 金 / 钻 / 珠宝 / 服饰 / 潮牌 / 数码 / 杂项）· 一眼假 30 秒排除清单 · 各品牌基础资料与款式图册 · 上游兜底谈判话术与合作模板 · 第三方鉴定机构对照表 · 同行复核网络搭建指南 · 隔屏判定要图清单 · 鉴定工具采购清单 · 高仿案例图库 · 鉴定表达话术 · 出事处理流程图</span></div>
+    </div>
+  </section>
+
+  <!-- 六 估价与报价 -->
+  <section class="stage" id="s6">
+    <div class="stage-head">
+      <div class="stage-n">六</div>
+      <h2 class="stage-title">估价与报价<span>敢报、报得准、守得住</span></h2>
+    </div>
+    <p class="stage-goal">和鉴定一样，估价也有借力的路。<b>估不准不等于不能做</b>——上游报价、同行群、平台估价都能兜底。但长期一直用别人的价，自己永远建不起判断，所以这一站两条线并讲。</p>
+    <div class="stage-body">
+
+      <div class="block">
+        <h3>6.1 估价的外部依托 <span class="t t-new">新增</span></h3>
+        <ul>
+          <li><b>上游报价倒推</b>：直接问上游这货能收多少，减掉自己的利润就是报价上限</li>
+          <li><b>同行报价群</b>：怎么问、怎么甄别水分、怎么不暴露自己的客户</li>
+          <li><b>平台估价</b>：各回收平台的在线估价工具，准不准、怎么用</li>
+          <li><b>B 端平台批量报价</b>：适合什么货</li>
+          <li>什么时候该用别人的价、什么时候必须自己算</li>
+          <li><b>长期风险</b>：一直依赖外部报价，利润会被上游锁死，且永远建不起自己的判断</li>
+          <li>从依赖到独立的过渡路径：先对答案，再自己报，最后只在疑难件上问</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>6.2 估价的三个变量</h3>
+        <ul>
+          <li>公价与市场行情价的区别</li>
+          <li>成色分级：全新 / 99 新 / 95 新 / 九成 / 八成，各级的判定标准（接第五站）</li>
+          <li>配件齐全度：包装、票据、保卡、防尘袋、多余扣，分别值多少钱</li>
+          <li>瑕疵怎么折价：磨损、变形、掉色、异味、修复痕迹</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>6.3 行情从哪来</h3>
+        <ul>
+          <li>得物、红布林、只二、心上、胖虎的成交价怎么看，<b>看的是挂价还是成交价</b></li>
+          <li>二奢查价小程序与工具</li>
+          <li>拍卖行与批发档口的价格参考</li>
+          <li>建自己的行情表，每周更新一次</li>
+          <li>行情波动的信号：什么时候该压价、什么时候该抢货</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>6.4 折价逻辑</h3>
+        <ul>
+          <li>从零售价到回收价，中间扣掉的每一层分别是什么</li>
+          <li>品类系数、成色系数、配件系数、稀缺款溢价</li>
+          <li><b>流通速度直接影响报价</b>：好出的货可以让利抢单，难出的货必须压价</li>
+          <li>留多少利润给自己，留多少空间给下游渠道</li>
+          <li>走兜底渠道的货，成本里要多算哪几项</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>6.5 分品类估价实操</h3>
+        <ul>
+          <li>包：爱马仕、香奈儿、LV、迪奥、Gucci —— 热门款与冷门款差多少</li>
+          <li>表：劳力士、欧米茄、卡地亚 —— 公价、行情、有无保卡的差价</li>
+          <li>黄金珠宝：金价、工费、钻石证书、回收折算方式</li>
+          <li>其他品类：服饰、潮牌、数码、箱包配饰</li>
+        </ul>
+        <h4>课堂动作 · 盲报</h4>
+        <ul>
+          <li>先用第五站判定过的实物报一轮，鉴定结论直接接进估价</li>
+          <li>再摆二十件真货，每人独立盲报，对答案、讲差在哪</li>
+          <li>评分口径：考折价逻辑和敢不敢报</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>6.6 报价策略</h3>
+        <ul>
+          <li>先看货还是先报价</li>
+          <li>区间报价怎么留口子，留多少</li>
+          <li>二次压价怎么给客户一个能下台的理由</li>
+          <li>什么时候该果断放弃这一单</li>
+          <li>报价前先过一遍出货预判（第七站 7.1 的三问）</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>6.7 议价攻防 · 全场对练</h3>
+        <p style="color:var(--ink2);margin:10px 0 0">每个场景两人一组对练，全程录像回放。<b>每一场都必须先说出自己的鉴定结论和估价依据</b>——说不出依据的，退回 6.4 重来。</p>
+        <ul>
+          <li>我就问问价</li>
+          <li>你报得太低了</li>
+          <li>别家报得比你高</li>
+          <li>我再想想 / 我跟家里商量一下</li>
+          <li>你能不能上门</li>
+          <li>你靠谱吗，是不是骗子</li>
+          <li>要不要先寄给你看</li>
+          <li>我当时买了小十万，你怎么才给这么点</li>
+          <li>怎么告诉客户他的货是假的（与 5.11 联动）</li>
+          <li>同行来试探怎么识别、怎么应对</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>6.8 线下与异地交易</h3>
+        <ul>
+          <li>见面地点怎么选、带不带现金、一个人还是两个人去</li>
+          <li>当面验货的节奏：先看什么、什么时候说问题、什么时候给台阶</li>
+          <li>上门收货的安全流程</li>
+          <li>异地邮寄：验货流程、怎么发、保价、录像存证、纠纷处理</li>
+        </ul>
+      </div>
+
+      <div class="output"><span class="lb">出课标准</span><span>一张自己的行情表 · 一份外部报价来源清单（含至少 1 个上游）· 盲报评分记录 · 十大场景议价对练录像 · 一份报价决策卡</span></div>
+      <div class="deliver"><span class="lb">交付</span><span>估价折算表 · 外部报价来源清单 · 行情来源清单 · 分品类速查表 · 盲报评分记录 · 全场景成交话术库（十大场景）· 报价决策卡 · 线下与异地交易安全流程</span></div>
+    </div>
+  </section>
+
+  <!-- 七 成交 -->
+  <section class="stage" id="s7">
+    <div class="stage-head">
+      <div class="stage-n">七</div>
+      <h2 class="stage-title">成交<span>流程标准化，一步都不能省</span></h2>
+    </div>
+    <p class="stage-goal">谈好价不等于成交。这一站把从验货到交付的每一步固化成流程，让学员不靠记性靠清单。</p>
+    <div class="stage-body">
+
+      <div class="block">
+        <h3>7.1 收货流程 SOP</h3>
+        <ul>
+          <li>验货 → <b>出货预判</b> → 报价 → 议价 → 确认 → 收款 → 单据 → 交付，每一步的动作和话术</li>
+          <li>现金、转账、对公，分别用在什么场景</li>
+          <li>什么情况必须当场拒收，不管价格多诱人</li>
+          <li>收货现场的记录规范：录什么、拍什么、存哪</li>
+        </ul>
+        <h4>出货预判三问</h4>
+        <ul>
+          <li>这货走哪个渠道出</li>
+          <li>预计多少天能出掉</li>
+          <li>扣完手续费物流之后，到手价是多少</li>
+        </ul>
+        <div class="note mid">渠道对照表在第九站，收货时用不上，所以把三问前置到这里。收之前答不出这三个问题，就不该收。</div>
+      </div>
+
+      <div class="block">
+        <h3>7.2 各场景成交流程</h3>
+        <ul>
+          <li>门店成交、上门收货、约见面交易、异地邮寄，四种场景的流程差异</li>
+          <li>撮合交易的三方流程：怎么保证自己不被跳单</li>
+          <li>寄卖收货的流程与单据</li>
+          <li>走上游兜底的收货流程：什么时候先给上游看</li>
+          <li>大额交易的特殊流程</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>7.3 单据与交接</h3>
+        <ul>
+          <li>回收单、收据、交接单，各自什么时候用</li>
+          <li>客户签字确认的关键项</li>
+          <li>货品入库登记与编号</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>7.4 店面与陈列（有店的学员）</h3>
+        <ul>
+          <li>装修预算与风格，不要一上来就砸钱</li>
+          <li>柜台、灯光、陈列、监控</li>
+          <li>门头与橱窗的获客作用</li>
+          <li>店内动线与洽谈区设计</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>课堂动作</h3>
+        <ul>
+          <li>给十个真实场景，每人独立判断：收还是不收、走哪个渠道、到手价多少</li>
+          <li>其中至少三个是必须拒收的场景，看谁被价格诱惑住</li>
+        </ul>
+      </div>
+
+      <div class="output"><span class="lb">出课标准</span><span>一套自己的收货 SOP 流程卡 · 填好信息的回收单与交接单 · 十场景判断评分记录</span></div>
+      <div class="deliver"><span class="lb">交付</span><span>收货 SOP 流程卡（含出货预判三问）· 回收单 / 收据 / 交接单模板 · 入库登记表 · 分场景成交流程图</span></div>
+    </div>
+  </section>
+
+  <!-- 八 风控 -->
+  <section class="stage" id="s8">
+    <div class="stage-head">
+      <div class="stage-n core">八</div>
+      <h2 class="stage-title">风控<span>前面赚的钱，都可能在这里赔回去<span class="t t-core">重点交付</span></span></h2>
+    </div>
+    <p class="stage-goal">集中处理合同、税务、平台、用人、资金、人身安全六类风险。<b>不只讲怎么防，更讲防不住会怎样</b>——新手不重视登记和合同，多半是因为没人告诉过他最坏情况长什么样。</p>
+    <div class="stage-body">
+
+      <div class="note">风控放在成交之后、出货之前是刻意的。放第一站太早，学员没收过货，挂不住；放最后又太晚，制度得在规模起来之前建好。这个位置上，合同、登记、存证每一条都有具体的挂靠对象，而学员还没大规模出货和用人，来得及。</div>
+
+      <div class="block">
+        <h3>8.1 风险总表</h3>
+        <ul>
+          <li>把散在前七站的红线汇总成一张表：什么绝对不做、什么必须做</li>
+          <li>六类风险的严重度排序：哪些会亏钱、哪些会封号、哪些会摊上官司</li>
+          <li>每一条对应的自查动作与频率</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>8.2 货品来源风险</h3>
+        <ul>
+          <li>赃物：怎么识别、身份登记怎么做、来源怎么问</li>
+          <li><b>收到赃物的实际后果</b>：货怎么处理、钱能不能追回、自己要担什么责任</li>
+          <li>抵押货、法拍物、公司资产货、离婚财产纠纷货</li>
+          <li>代卖货：卖家不是所有人的情况怎么办</li>
+          <li>未成年人、限制民事行为能力人卖货</li>
+          <li>旧货经营的登记与备案要求（按当地规定核实）</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>8.3 合同与协议体系</h3>
+        <ul>
+          <li><b>回收协议</b>：关键条款、真假争议条款、反悔条款</li>
+          <li><b>寄卖协议</b>：责任划分、丢损赔偿、期限与降价授权</li>
+          <li><b>代收 / 撮合协议</b>：三方关系怎么写清</li>
+          <li><b>异业合作协议</b>：分成、结算、跳单条款、保密</li>
+          <li><b>上游合作协议</b>：兜底范围、退换条件、结算方式、争议处理</li>
+          <li><b>出镜人合作协议</b> <span class="t t-new">新增</span>：报酬、账号与素材归属、肖像授权、退出交接、竞业约定</li>
+          <li><b>员工协议</b>：劳动合同、保密协议、竞业限制、货品交接责任</li>
+          <li><b>合伙协议</b>：出资、分工、分成、退出机制</li>
+          <li>每份协议逐条讲关键点和常见坑，现场填自己的信息</li>
+          <li>什么情况必须签、什么情况口头也行、签了怎么保管</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>8.4 登记、存证与档案</h3>
+        <ul>
+          <li>身份证登记规范：登记什么、怎么存、隐私边界在哪</li>
+          <li>全程录像规范：什么时候开、录多久、存多久</li>
+          <li>货品拍照存档：拍哪几张、什么角度、怎么归档</li>
+          <li>聊天记录与转账凭证的保存</li>
+          <li>出了纠纷，哪些证据能用、哪些不能用</li>
+          <li>档案怎么建，一单一档还是按月归集</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>8.5 交易与资金风险</h3>
+        <ul>
+          <li>先款先货的原则：什么情况绝对不能先发货</li>
+          <li>账期风险：给同行、给平台、给上游，各自的账期怎么控</li>
+          <li>大额转账与到账确认，假转账截图的识别</li>
+          <li>假币与验钞</li>
+          <li>常见诈骗套路：调包、假货换真货、冒充买家、假鉴定报告、异地邮寄骗局</li>
+          <li>客户事后反悔、恶意退货、投诉纠纷怎么处理</li>
+          <li>第三方担保与平台交易的使用时机</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>8.6 税务与经营合规</h3>
+        <ul>
+          <li>个体户还是公司，什么阶段该注册，各自的税负差异</li>
+          <li>经营范围怎么写，旧货经营需要什么资质</li>
+          <li><b>三本账</b>：进货台账、销售台账、库存台账，怎么记、谁来记</li>
+          <li>进项凭证的难题：从个人手里收货没有发票怎么办</li>
+          <li>销项与开票：什么情况客户会要发票，怎么应对</li>
+          <li>私账公账分开，为什么必须分</li>
+          <li>个人账户大额流水的风险</li>
+          <li>什么阶段该找代账、找什么样的</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>8.7 平台与内容风险</h3>
+        <ul>
+          <li>违禁词深化：平台规则的更新节奏，怎么自己查最新规则</li>
+          <li><b>虚假宣传风险</b>："保真""正品保证""最高价""行业第一"这类表述的法律与平台风险</li>
+          <li>素材侵权：品牌图、他人视频、背景音乐的使用边界</li>
+          <li>客户隐私：拍客户、拍身份证、发成交实拍的边界与授权</li>
+          <li>价格承诺与实际报价不符引发的投诉</li>
+          <li>投放合规：付费投放的素材审核与行业资质要求</li>
+          <li>限流、降权、封号的处理流程与申诉</li>
+          <li>账号资产保全：多平台备份、私域沉淀、素材本地存档</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>8.8 用人与合作风险</h3>
+        <h4>员工</h4>
+        <ul>
+          <li>第一个员工什么时候招、招什么样的人</li>
+          <li><b>私收私卖</b>：员工绕过公司自己收货，怎么防、怎么查</li>
+          <li><b>带走客户</b>：客户资源归属、微信号归属、离职交接</li>
+          <li><b>监守自盗</b>：货品交接、库存盘点、双人复核、监控覆盖</li>
+          <li>鉴定失误的责任划分：员工看走眼谁承担</li>
+          <li>提成与考核纠纷：怎么写清楚才不吵架</li>
+          <li>竞业与保密：能约束到什么程度，实际有没有用</li>
+          <li>劳动合同、试用期、社保的基本合规</li>
+        </ul>
+        <h4>出镜人与合伙人 <span class="t t-new">新增</span></h4>
+        <ul>
+          <li><b>人设绑定风险</b>：粉丝认人不认号，出镜人一走账号就贬值</li>
+          <li>账号、素材、粉丝的归属怎么提前约定</li>
+          <li>肖像使用授权：拍了的素材他走之后还能不能用</li>
+          <li>中途涨价、要挟、消极配合怎么处理</li>
+          <li>出镜人自己想单干了怎么办</li>
+          <li>降依赖的四个做法（呼应 2.3.4）</li>
+          <li>合伙人风险：出资、决策权、退出机制、闹掰了货和客户怎么分</li>
+        </ul>
+        <div class="note mid">用人风险和团队复制是两件事。<b>用人风险是防守</b>——找第一个人帮你出镜就得懂，所以留在正课。<b>团队复制是进攻</b>——有五个人才用得上，放在结营后的选修加餐。</div>
+      </div>
+
+      <div class="block">
+        <h3>8.9 资产与人身安全</h3>
+        <ul>
+          <li>货品保管：保险柜、监控、门禁、分散存放</li>
+          <li>货品保险与快递保价，各自保什么、不保什么</li>
+          <li>上门收货的人身安全：去之前做什么、报备给谁、什么单不接</li>
+          <li>大额现金的携带与交接</li>
+          <li>门店的防盗与应急</li>
+          <li>邮寄丢件、损坏、被调包的处理与索赔</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>8.10 同行与渠道风险</h3>
+        <ul>
+          <li>同行套价：怎么识别、怎么应对、要不要拆穿</li>
+          <li>渠道跳单：异业跳单、客户跳单、员工跳单的防范</li>
+          <li>上游压价与跑路的预警信号</li>
+          <li>寄售平台压货与结算风险</li>
+          <li>同行合作的分成纠纷</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>8.11 危机处理动线</h3>
+        <ul>
+          <li>收到假货了：追责、退货、报警、认赔的判断标准与顺序</li>
+          <li>收到赃物了：第一时间做什么、找谁</li>
+          <li>被客户投诉、被平台处罚、被起诉：分别怎么应对</li>
+          <li>账号被封、出镜人跑了、上游跑路：各自的应急动作</li>
+          <li>客户上门闹事：现场处理与证据保全</li>
+          <li>什么时候必须找律师，找什么类型的</li>
+          <li>每类危机的第一小时该做什么 —— 一张应急卡</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>课堂动作</h3>
+        <ul>
+          <li>现场填完风险自查表，逐项标注自己现在做到了没有</li>
+          <li>十个风险场景判断：这单能不能做、该怎么做、出事了怎么办</li>
+          <li>把自己的信息填进全套协议模板</li>
+        </ul>
+      </div>
+
+      <div class="output"><span class="lb">出课标准</span><span>填完的风险自查表 · 一套填好自己信息的协议（回收 / 寄卖 / 异业 / 上游 / 出镜人 / 员工）· 一份建好的三本台账 · 一张危机应急卡 · 十场景判断评分记录</span></div>
+      <div class="deliver"><span class="lb">交付</span><span>风险总表与自查清单 · 回收协议 · 寄卖协议 · 代收撮合协议 · 异业合作协议 · 上游合作协议 · 出镜人合作协议 · 员工协议与保密竞业模板 · 合伙协议模板 · 身份登记表 · 存证规范手册 · 进销存台账模板 · 税务合规要点手册 · 平台合规与违禁词手册 · 用人风险防范清单 · 诈骗套路图鉴 · 危机应急卡</span></div>
+    </div>
+  </section>
+
+  <!-- 九 出货 -->
+  <section class="stage" id="s9">
+    <div class="stage-head">
+      <div class="stage-n">九</div>
+      <h2 class="stage-title">出货<span>收得进来，更要卖得出去</span></h2>
+    </div>
+    <p class="stage-goal">整条链路的收口。压货是这行最大的死因，不是不会收货，是收进来出不掉。</p>
+    <div class="stage-body">
+
+      <div class="block">
+        <h3>9.1 出货渠道全景</h3>
+        <ul>
+          <li><b>上游与同行直出</b>：同行群、批发市场、档口、上游大户，速度最快价格最低</li>
+          <li><b>得物</b>：寄卖与回收两条路、鉴别流程、手续费、账期、什么货适合走</li>
+          <li><b>平台寄卖</b>：红布林、只二、心上、胖虎 —— 门槛、佣金、回款周期对比</li>
+          <li><b>直播间寄卖</b>：怎么找主播、怎么分成、什么货在直播间走得动</li>
+          <li><b>B 端平台</b>：批量出货怎么走、报价怎么谈</li>
+          <li><b>自己零售</b>：闲鱼、转转、朋友圈、小红书、抖音小店、门店，利润最高但最慢</li>
+          <li><b>拍卖</b>：线上拍卖与拍卖行，什么货值得走</li>
+          <li><b>其他出口</b>：出口外贸、翻新改色后再售、拆件卖零配</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>9.2 什么货走什么渠道</h3>
+        <ul>
+          <li>热门款、冷门款、高价货、低价货的分流原则</li>
+          <li>有瑕疵的货怎么出</li>
+          <li>真假存疑的货怎么处理，绝对不能往哪里出</li>
+          <li>一张对照表：货品特征 → 首选渠道 → 备选渠道 → 预计天数 → 到手价</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>9.3 上游与同行渠道怎么搭</h3>
+        <ul>
+          <li>怎么进圈、找谁、第一次怎么开口</li>
+          <li>建立信任的过程：先小单后大单，先验后款</li>
+          <li>账期与风控：什么情况下绝对不能先发货</li>
+          <li>长期合作的分成与互相调货</li>
+          <li>同行群的规矩与黑话</li>
+          <li>把上游从"兜底方"发展成"稳定出口"</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>9.4 定价与利润分配</h3>
+        <ul>
+          <li>出货定价怎么定，留多少议价空间</li>
+          <li>各渠道的实际到手价怎么算：扣完手续费、物流、鉴定费之后还剩多少</li>
+          <li>同一件货在不同渠道的到手价对比实操</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>9.5 零售端的运营</h3>
+        <ul>
+          <li>货品拍摄与详情页：零售和回收的拍法完全不同</li>
+          <li>定价心理与议价空间</li>
+          <li>买家的疑虑怎么打消：验货、退换、保真承诺的边界（呼应 8.7）</li>
+          <li>售后与退货处理</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>9.6 库存与资金周转</h3>
+        <ul>
+          <li>周转天数怎么算，多少天算健康</li>
+          <li>滞销预警：超过多少天必须降价出手</li>
+          <li>已经压货了怎么办：降价、换渠道、拆件、同行调换、打包甩</li>
+          <li>库存结构管理：什么价位段该占多少比例</li>
+          <li>回到第一站的零库存路径：什么阶段该退回撮合</li>
+          <li>资金链预警：什么信号出现必须停止收货</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>课堂动作</h3>
+        <ul>
+          <li>给二十件货的信息，每人现场分渠道，填完首选、备选、预计天数、到手价</li>
+          <li>对答案，重点看谁把难出的货放进了慢渠道</li>
+        </ul>
+      </div>
+
+      <div class="output"><span class="lb">出课标准</span><span>一张填完的渠道对照表 · 至少 3 个已加上的真实出货渠道联系人 · 20 件货分渠道评分记录 · 库存周转预警线设置</span></div>
+      <div class="deliver"><span class="lb">交付</span><span>渠道对照表 · 出货渠道联系清单 · 各平台佣金账期对比表 · 库存周转表 · 滞销处理流程 · 零售详情页模板</span></div>
+    </div>
+  </section>
+
+  <!-- 十 复购 -->
+  <section class="stage" id="s10">
+    <div class="stage-head">
+      <div class="stage-n">十</div>
+      <h2 class="stage-title">复购<span>让一个客户变成一条渠道</span></h2>
+    </div>
+    <p class="stage-goal">前九站都是从零找人。这一站解决的是不用每天从零开始，同时验证你 all in 的那条路到底对不对。</p>
+    <div class="stage-body">
+
+      <div class="block">
+        <h3>10.1 老客户维护</h3>
+        <ul>
+          <li>成交之后四十八小时内做什么</li>
+          <li>客户台账怎么记、多久触达一次</li>
+          <li>卖过一次的人，为什么大概率还会卖第二次</li>
+          <li>分层维护：高价值客户、普通客户、白嫖客户</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>10.2 转介绍</h3>
+        <ul>
+          <li>老带新奖励怎么设计，给钱还是给服务</li>
+          <li>什么时机开口要转介绍成功率最高</li>
+          <li>转介绍话术</li>
+          <li>转介绍来的客户怎么接，和陌生客户有什么不同</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>10.3 客户变渠道</h3>
+        <ul>
+          <li>让客户帮你收身边的货，分成怎么给</li>
+          <li>从客户里挑线人和合伙人</li>
+          <li>线人的管理与结算，怎么防止被反向利用</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>10.4 数据与复盘</h3>
+        <ul>
+          <li>每周只看六个数：加微数、开口数、报价数、成交数、毛利、周转天数</li>
+          <li>哪个环节掉率最高就补哪个，不要平均用力</li>
+          <li><b>分路径拆数据</b>：你 all in 的那条路，成本、周期、成交率跑出来是多少</li>
+          <li><b>验证 all in 的对错</b>：三个判断口径——继续加码、加第二条路、还是换路</li>
+          <li>用这六个数回头校准第一站的测算表 —— 假设换成真实数据</li>
+        </ul>
+      </div>
+
+      <div class="output"><span class="lb">出课标准</span><span>建好的客户台账 · 转介绍话术与奖励方案 · 周复盘表（六个数口径已确认，含路径来源拆分）</span></div>
+      <div class="deliver"><span class="lb">交付</span><span>客户台账模板 · 客户分层维护表 · 转介绍话术与奖励方案模板 · 线人结算表 · 周复盘表（分路径版）</span></div>
+    </div>
+  </section>
+
+  <!-- 结营 -->
+  <section class="stage" id="s11">
+    <div class="stage-head">
+      <div class="stage-n pre">结营</div>
+      <h2 class="stage-title">结营与落地<span>把课上的热度接到回去之后</span></h2>
+    </div>
+    <p class="stage-goal">全链路课最大的死因不是讲得不好，是学员回去停在第二站。结营不是终点，是 30 天陪跑的起点。</p>
+    <div class="stage-body">
+
+      <div class="block">
+        <h3>11.1 AI 大脑实操</h3>
+        <ul>
+          <li>把这几天产出的东西喂进去：行情表、判定动线卡、话术库、渠道对照表、测算表</li>
+          <li>现场提五类问题：鉴定问它、估价问它、话术问它、渠道问它、选题问它</li>
+          <li>怎么持续喂新数据，每周更新哪几项</li>
+          <li>什么问题不能问它、答案怎么复核 —— 尤其鉴定结论绝对不能只信它</li>
+          <li>AI 写选题、写脚本、做客服的实操</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>11.2 定位与路径校准</h3>
+        <ul>
+          <li>把第一站的资源盘点表和定位表拿出来重填一遍</li>
+          <li>知道了鉴定难度（第五站）和出货难度（第九站）之后，品类还选它吗</li>
+          <li><b>路径确认</b>：听完全部内容之后，还是 all in 原来选的那条吗</li>
+          <li>测算表的假设参数，按第十站的六个数口径重新给一遍</li>
+          <li>确认起步模式、路径选择和第一阶段风险敞口</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>11.3 30 天执行表与陪跑节点</h3>
+        <ul>
+          <li><b>第 7 天</b>：交所选路径的第一批动作记录（内容路径交视频，关系路径交触达记录，本地路径交入驻或地推记录，付费路径交试投数据，平台路径交发帖记录）</li>
+          <li><b>第 14 天</b>：交加微记录与标签体系截图（含路径来源）</li>
+          <li><b>第 30 天</b>：交第一单完整复盘（来源路径、鉴定处理方式、收价、出价、渠道、天数、毛利）</li>
+          <li>三个节点各做什么形式的反馈</li>
+          <li>没交的怎么办，要不要催</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>11.4 出课标准逐项确认</h3>
+        <ul>
+          <li>十站的出课标准，逐项当面确认到手，缺哪项当场补</li>
+          <li>交付资料清单逐项签收</li>
+          <li>没达标的项，写进各自的 30 天执行表</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 附录 -->
+  <section class="appendix" id="ap">
+    <h2>附录</h2>
+    <p class="lead">两级水位交付总表、五路径落地表、资料清单、操作手册分册、人群路径、与技术课的衔接。</p>
+
+    <h3 class="sub">两级水位交付总表</h3>
+    <p style="color:var(--ink2);margin:14px 0 0;max-width:44em">学员离开时带走什么、当天能做到什么、30 天后应该做到什么。<b>分两级是刻意的</b>——很多能力出课那天只是"会了"，30 天后才是"做到了"。分开写，一防过度承诺，二让学员知道课后还得干活。招生页可以直接用这张表。</p>
+    <table class="tbl">
+      <thead><tr><th>模块</th><th>带走的资料</th><th>出课当天能做到</th><th>30 天后应该做到</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="hi nw">一 定位</td>
+          <td>认知升级对照表 · 资源盘点表与校验清单 · 测算表 · 品类对比表 · 安全通道路线图</td>
+          <td>说清这行有哪几种做法、自己经得起检验的三张牌是什么、每天该完成多少动作</td>
+          <td>起步路径跑通一轮，用真实数据替换掉测算表里的假设</td>
+        </tr>
+        <tr>
+          <td class="hi nw">二 获客</td>
+          <td>五路径决策表 · 路径选择书 · 五份分路径 30 天落地表 · 全套渠道操作手册 · 存量话术包 · 50 家异业名单 · 选题库 · 出镜人协议</td>
+          <td>选定一条路并说清为什么 · 完成该路径的启动动作</td>
+          <td>所选路径连续跑满 30 天，有可分析的数据，能判断继续加码还是换路</td>
+        </tr>
+        <tr>
+          <td class="hi nw">三 承接</td>
+          <td>钩子话术表 · 各路径导流 SOP · 标签体系模板</td>
+          <td>钩子话术写完 · 标签体系建完并导入真实好友</td>
+          <td>能算出自己这条路径的公域转私域转化率，并知道卡在哪一步</td>
+        </tr>
+        <tr>
+          <td class="hi nw">四 转化</td>
+          <td>30 天朋友圈内容表 · 问诊话术 · 各品类要图清单 · 跟进节奏表</td>
+          <td>微信改完 · 问诊对练通过 · 收到第一批可用的客户图</td>
+          <td>朋友圈稳定输出 · 能把陌生咨询聊到愿意发图报价</td>
+        </tr>
+        <tr>
+          <td class="hi nw">五 鉴定</td>
+          <td>三道防线决策表 · 分品类动线卡 · 一眼假清单 · 高仿图库 · 上游谈判话术 · 机构对照表 · 工具清单</td>
+          <td>常见款走完整动线并给出判断 · 30 秒排除明显假货 · <b>说得出每种情况该走决策表的哪一条</b></td>
+          <td>主打品类的常见款独立判定 · 兜底体系建起来（1 个上游、2 个复核、1 家机构）· 没有因为逞强而收错货</td>
+        </tr>
+        <tr>
+          <td class="hi nw">六 估价与报价</td>
+          <td>估价折算表 · 外部报价来源清单 · 行情来源清单 · 分品类速查表 · 十大场景话术库 · 报价决策卡</td>
+          <td>盲报误差进入可接受区间 · 十大场景对练通过 · 知道估不准时该问谁</td>
+          <td>有自己每周更新的行情表 · 报价不再被客户带着走 · 开始从依赖外部报价过渡到自己算</td>
+        </tr>
+        <tr>
+          <td class="hi nw">七 成交</td>
+          <td>收货 SOP 流程卡 · 单据模板 · 入库登记表</td>
+          <td>照着 SOP 走完一遍模拟成交 · 十场景判断通过</td>
+          <td>完成第一单真实成交，全流程有单据有记录</td>
+        </tr>
+        <tr>
+          <td class="hi nw">八 风控</td>
+          <td>风险总表 · 全套协议模板（含上游、出镜人）· 存证规范 · 台账模板 · 税务与平台合规手册 · 诈骗套路图鉴 · 危机应急卡</td>
+          <td>协议填完自己的信息 · 风险自查表填完 · 说得出每类风险的第一小时该做什么</td>
+          <td>每一单都有合同和存证 · 三本台账在记 · 没有踩过红线</td>
+        </tr>
+        <tr>
+          <td class="hi nw">九 出货</td>
+          <td>渠道对照表 · 渠道联系清单 · 佣金账期对比表 · 库存周转表 · 滞销处理流程</td>
+          <td>20 件货分渠道通过 · 加上至少 3 个真实渠道联系人</td>
+          <td>第一批货出掉并算清实际到手价 · 周转天数在自己设的健康线内</td>
+        </tr>
+        <tr>
+          <td class="hi nw">十 复购</td>
+          <td>客户台账模板 · 分层维护表 · 转介绍方案 · 周复盘表（分路径版）</td>
+          <td>台账建完并导入已有客户 · 转介绍话术写完</td>
+          <td>周复盘表连续填满四周 · 能用数据验证 all in 的路径对不对 · 出现第一个复购或转介绍客户</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub">五条路径的 30 天落地表</h3>
+    <p style="color:var(--ink2);margin:14px 0 0;max-width:44em">每条路径一份，学员按自己选的那条领。结营时只发一份——发五份等于没选。</p>
+    <table class="tbl">
+      <thead><tr><th>路径</th><th>第 1 周</th><th>第 2–3 周</th><th>第 4 周</th><th>验证指标</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="hi nw">关系路径</td>
+          <td>朋友圈铺垫 · 名单分层 · 跑完第一批触达</td>
+          <td>跑完全部名单 · 上门谈 5 家异业 · 进 2 个圈层</td>
+          <td>异业出物料并跟进 · 圈层内首次开口</td>
+          <td>触达人数 · 回应率 · 异业签约数 · 第一单</td>
+        </tr>
+        <tr>
+          <td class="hi nw">内容路径</td>
+          <td>账号改完 · 出镜方案定下 · 发满 7 条</td>
+          <td>日更或隔日更 · 跑完一轮选题类型 · 每周复盘</td>
+          <td>按数据调整选题与开头 · 追投测试</td>
+          <td>完播率 · 主页访问率 · 私信量 · 加微数</td>
+        </tr>
+        <tr>
+          <td class="hi nw">付费路径</td>
+          <td>承接链路先跑通 · 小额试投 · 建账本</td>
+          <td>测三组人群与素材 · 记录单客成本</td>
+          <td>加码或止损 · 定下稳定投放模型</td>
+          <td>单个有效客户成本 · 私信转化率 · ROI</td>
+        </tr>
+        <tr>
+          <td class="hi nw">本地路径</td>
+          <td>地图与点评美团入驻 · 信息优化</td>
+          <td>攒评价 · 跑 20 家地推点位或办一场活动</td>
+          <td>推广通试投 · 复盘点位质量</td>
+          <td>本地搜索排名 · 到店咨询数 · 留资数</td>
+        </tr>
+        <tr>
+          <td class="hi nw">平台路径</td>
+          <td>养号 · 发第一批求购与出售帖</td>
+          <td>每日擦亮与主动开发 · 铺搜索卡位</td>
+          <td>按数据调标题与主图 · 扩品类</td>
+          <td>曝光量 · 私信量 · 主动开发回应率</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub">渠道操作手册（分册交付）</h3>
+    <p style="color:var(--ink2);margin:14px 0 0;max-width:44em">平台规则一年一变，做成分册便于单独更新，学员也只看自己那条路径用得上的几本。随课交付，后续更新免费推送。</p>
+    <div class="kit">
+      <div class="kit-item">
+        <h3>关系路径</h3>
+        <ul>
+          <li>存量资源激活手册</li>
+          <li>异业联盟开拓手册（含 50 家名单）</li>
+          <li>异业上门逐字话术</li>
+          <li>圈层渗透手册</li>
+          <li>同行与上下游转介手册</li>
+        </ul>
+      </div>
+      <div class="kit-item">
+        <h3>内容路径</h3>
+        <ul>
+          <li>30 天起号流程</li>
+          <li>短视频拍剪发全流程手册</li>
+          <li>出镜分工与合作手册</li>
+          <li>直播开播手册</li>
+          <li>小红书与知乎运营手册</li>
+          <li>矩阵号搭建与分工</li>
+        </ul>
+      </div>
+      <div class="kit-item">
+        <h3>付费路径</h3>
+        <ul>
+          <li>DOU+ 与千川手册</li>
+          <li>小红书薯条与聚光手册</li>
+          <li>点评推广通与美团推广手册</li>
+          <li>百度竞价手册</li>
+          <li>朋友圈广告与本地推手册</li>
+          <li>投流 ROI 核算表与止损线</li>
+        </ul>
+      </div>
+      <div class="kit-item">
+        <h3>本地路径</h3>
+        <ul>
+          <li>地图商户与本地搜索手册</li>
+          <li>点评美团入驻运营手册</li>
+          <li>门店获客与陈列手册</li>
+          <li>地推执行手册与物料清单</li>
+          <li>活动与展会执行手册</li>
+        </ul>
+      </div>
+      <div class="kit-item">
+        <h3>平台路径</h3>
+        <ul>
+          <li>闲鱼求购与出售手册</li>
+          <li>转转操作手册</li>
+          <li>得物寄卖与回收手册</li>
+          <li>寄卖平台对照与入驻手册</li>
+          <li>搜索与分类信息卡位手册</li>
+        </ul>
+      </div>
+      <div class="kit-item">
+        <h3>公共与工具</h3>
+        <ul>
+          <li>私域矩阵搭建手册</li>
+          <li>社群运营手册</li>
+          <li>选题与脚本提示词库</li>
+          <li>AI 数字人与剪辑工具清单</li>
+          <li>行情查询与比价工具</li>
+          <li>本行业专属 AI 大脑使用与维护手册</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub">人群路径导航</h3>
+    <p style="color:var(--ink2);margin:14px 0 0;max-width:44em">凡是有获客需求、或有二手成交意向的人都能学。开课第一天发这张表，帮学员对上自己该 all in 哪条路。</p>
+    <dl class="route">
+      <dt>有人脉、有职业身份、有行业关系、有老客户</dt>
+      <dd>→ <b>关系路径</b>。第一站的资源盘点是你最重要的一节课。你的第一单大概率来自现有关系，不是平台。别把现成的牌扔了去从零起号。第五站重点听 5.2 兜底体系——你有客户但缺专业，正好用兜底补上。</dd>
+      <dt>没资源，但愿意出镜、有时间产出</dt>
+      <dd>→ <b>内容路径</b>。天花板最高但最慢，前两周没反馈是正常的。第五站和第六站必须扎实，因为你的信任全靠专业度建立，没有熟人背书兜底。</dd>
+      <dt>没资源、也不愿出镜，但身边有人能出镜</dt>
+      <dd>→ <b>内容路径</b>，重点听 2.3.4 出镜分工，以及第八站的出镜人风险。分工和协议先谈清楚，再开始拍。</dd>
+      <dt>有预算、想快</dt>
+      <dd>→ <b>付费路径</b>。但前提是承接和转化已经跑通，否则投进去的钱全漏掉。第三、四站要先啃，第二站的付费部分反而简单。</dd>
+      <dt>有门店、有本地资源、跑得动腿</dt>
+      <dd>→ <b>本地路径</b>。地图、点评、地推是你的主场，区域做透了比什么都稳。短视频做同城内容作为补充即可。</dd>
+      <dt>什么都没有，只有时间和耐心</dt>
+      <dd>→ <b>平台路径</b>。闲鱼零成本、不用露脸、不用人脉，是资源最少的人唯一能立刻开始的一条路。</dd>
+      <dt>已入行缺客源</dt>
+      <dd>用第十站的六个数找出自己掉率最高的环节，回去先补那一站。第二站按自己现有资源重新选一次路——很多人卡住是因为选错了路，不是不够努力。</dd>
+      <dt>已入行怕看走眼</dt>
+      <dd>第五站的 5.1 三道防线和 5.2 兜底体系是你来的理由，第八站风控必听。回去先把上游、复核关系和存证规范建起来，再谈扩量。</dd>
+      <dt>老学员回炉</dt>
+      <dd>开课前做三个自测：第五站的实物盲测与决策表判断、第六站的盲报、第九站的分渠道。哪一站掉分最多，时间就压在哪一站。</dd>
+      <dt>带团队的学员</dt>
+      <dd>正课按单兵内容学，第八站的用人与合作风险必听。团队复制走结营后的选修加餐。</dd>
+    </dl>
+
+    <h3 class="sub">与技术课的衔接</h3>
+    <ul style="margin:16px 0 0">
+      <li><b>能力切分</b>：本课交付三道防线的全部内容——结构性规避、外部兜底、以及自己判定的 L1 一眼假 / L2 常见款 / L3 边界识别。技术课接 L3 之后：疑难件、全品类深度、鉴定服务变现。</li>
+      <li><b>盲测考什么</b>：考动线走得对不对、判断敢不敢下、边界认得清不清、决策表用得准不准。不是考记住了多少细节点。</li>
+      <li><b>招生页必须写清</b>：这门课让你会什么（五条获客路径、承接转化、避损体系与常见款鉴定、估价报价、风险防控、出货复购），不会什么（疑难件与全品类深度鉴定）。含糊过去的话，退款和差评的风险都在这里。</li>
+      <li><b>样本库要求</b>：第五站的实物盲测需要真货与不同档次的高仿样本。品类覆盖和高仿档次直接决定这一站的交付质量，是筹备期的第一优先级。</li>
+      <li><b>兜底资源要求</b>：5.2 要交付的不只是方法，还有可对接的上游和机构清单。这部分是你的独家资源，也是这门课最难被抄走的地方。</li>
+    </ul>
+
+    <h3 class="sub">选修加餐：团队复制</h3>
+    <ul style="margin:16px 0 0">
+      <li>分工：获客、客服、鉴定、出货，几个人起步</li>
+      <li>话术标准化与 SOP 手册怎么写</li>
+      <li>新人怎么带，多久能独立上手</li>
+      <li>提成与考核怎么定</li>
+      <li>多店与异地复制</li>
+      <li>形式待定：结营后线上专场 / 高阶课 / 一对一咨询</li>
+    </ul>
+  </section>
+
+  <footer>
+    大纲 v4 · 五路径并行 · 避损优先 · 内容以教学顺序排列<br>
+    <b>待定项：</b>各站课时切分 · 盲测样本库的品类覆盖与高仿档次 · 可对接的上游与鉴定机构清单 · 技术课能力切分的最终口径 · 30 天陪跑的反馈形式 · 团队复制加餐的开设形式 · 渠道手册的更新周期与责任人
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.index a'));
+  var map = {};
+  links.forEach(function(a){
+    var el = document.querySelector(a.getAttribute('href'));
+    if(el) map[el.id] = a;
+  });
+  var targets = Object.keys(map).map(function(id){ return document.getElementById(id); });
+  if(!('IntersectionObserver' in window) || !targets.length) return;
+  var current = null;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        if(current) current.classList.remove('on');
+        current = map[e.target.id];
+        current.classList.add('on');
+        var bar = document.querySelector('.index-inner');
+        var r = current.getBoundingClientRect(), b = bar.getBoundingClientRect();
+        if(r.left < b.left || r.right > b.right){ bar.scrollLeft += r.left - b.left - 20; }
+      }
+    });
+  }, { rootMargin: '-15% 0px -75% 0px' });
+  targets.forEach(function(t){ io.observe(t); });
+})();
+</script>
+</body>
+</html>
