@@ -410,7 +410,7 @@ footer b{color:var(--ink2);font-weight:500}
   }
   document.getElementById('btn-export').addEventListener('click', function(){
     var html = buildExport();
-    var name = '二手奢侈品回收课程教案-已填写-' + stamp().slice(0, 8) + '.html';
+    var name = 'lesson-plan-v1-filled-' + stamp().slice(0, 8) + '.html';
     dlReady.then(function(dl){
       if (dl) {
         return dl.save({ filename: name, data: html }).then(function(){ say('已导出：' + name); }, function(err){
