@@ -13,9 +13,10 @@
 | `closing-review.html` | **结营复盘表**（8 张）。定位与路径校准、风险总表、协议全套核对、合订版危机应急卡、30 天执行表、出课标准逐项确认。 |
 | `word/` | **七份诊断表的 Word 版**，内容和网页版一一对应，用来改表、打印、手写。网页版里自动计算的格子，在 Word 里写着"网页版自动计算"，可以手算或删掉那一列。 |
 | `ppt/第一站-定位.pptx` | **第一站 · 定位的 PPT**（22 页），内容照大纲 v5 第一站原文，没有增删。 |
+| `ppt/第六站-交易闭环.pptx` | **第六站 · 交易闭环的 PPT**（49 页），估价、报价、成交、出货、复购五个环节加贯穿全程的账、人与纠纷，每个环节一张深色开篇页；文字全部照大纲 v5 第六站原文，没有增删。 |
 | `outline-v4.html` | 原 v4 大纲，未改动，留作对照。 |
 | `tools/worksheets/` | 生成诊断表网页版和 Word 版的脚本。只改 Word 版不用碰它。 |
-| `tools/slides/` | 生成 PPT 的脚本（`node s1_deck.js raw.pptx && python3 fix_ppr.py raw.pptx out.pptx`，需先 `npm install pptxgenjs`）。 |
+| `tools/slides/` | 生成 PPT 的脚本，需先 `npm install pptxgenjs`。第一站：`node s1_deck.js raw.pptx && python3 fix_ppr.py raw.pptx out.pptx`；第六站的文字直接从大纲里取：`python3 outline_extract.py ../../outline-v5.html s6 s6.json && node s6_deck.js raw.pptx s6.json && python3 fix_ppr.py raw.pptx out.pptx`。`check_text.py` 核对 PPT 和大纲原文有没有漏字、多字。 |
 
 ## 怎么用
 
