@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>结营复盘表</title>
+<style>:root{
+  --paper:#F1F2EC;--paper-glass:rgba(241,242,236,.94);--card:#FBFBF8;--hover:#EEF0E8;
+  --ink:#17231E;--ink2:#4A5951;--ink3:#626F66;--line:#CBD0C6;--line2:#E0E3DA;
+  --brass:#8F6E30;--brass-soft:#EFE7D4;--brass-wash:#F7F3E9;--note-ink:#5B4A22;--note-strong:#3E3216;
+  --seal:#A5382A;--seal-soft:#F0DAD4;--seal-wash:#FBF5F3;--on-accent:#FBFBF8;--shadow:rgba(23,35,30,.10);
+  --serif:"Songti SC","STSong","Source Han Serif SC","Noto Serif SC","SimSun",serif;
+  --sans:"PingFang SC","HarmonyOS Sans SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#121815;--paper-glass:rgba(18,24,21,.93);--card:#19211D;--hover:#222C27;
+    --ink:#E3E8E1;--ink2:#B4BEB6;--ink3:#8E9A92;--line:#35433C;--line2:#28332D;
+    --brass:#CFAA69;--brass-soft:#2C2718;--brass-wash:#1E1D16;--note-ink:#DCC99C;--note-strong:#F2E5C2;
+    --seal:#E5806E;--seal-soft:#452722;--seal-wash:#201816;--on-accent:#121815;--shadow:rgba(0,0,0,.45);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121815;--paper-glass:rgba(18,24,21,.93);--card:#19211D;--hover:#222C27;
+  --ink:#E3E8E1;--ink2:#B4BEB6;--ink3:#8E9A92;--line:#35433C;--line2:#28332D;
+  --brass:#CFAA69;--brass-soft:#2C2718;--brass-wash:#1E1D16;--note-ink:#DCC99C;--note-strong:#F2E5C2;
+  --seal:#E5806E;--seal-soft:#452722;--seal-wash:#201816;--on-accent:#121815;--shadow:rgba(0,0,0,.45);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.8;padding-bottom:110px}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 28px}
+
+header.top{padding:56px 0 24px}
+.eyebrow{font-family:var(--serif);font-size:13px;letter-spacing:.16em;color:var(--brass);margin:0 0 8px}
+.doc-title{font-family:var(--serif);font-size:36px;line-height:1.3;font-weight:600;margin:0 0 14px;letter-spacing:.03em}
+.doc-sub{max-width:42em;color:var(--ink2);font-size:15.5px;margin:0 0 12px}
+.doc-sub b{color:var(--ink);font-weight:600}
+.doc-meta{display:flex;flex-wrap:wrap;gap:8px 22px;padding-top:14px;border-top:1px solid var(--line);color:var(--ink3);font-size:13.5px}
+.doc-meta b{color:var(--ink2);font-weight:500}
+.doc-meta a,footer a,.sh-meta a{color:var(--brass);text-underline-offset:3px}
+.who{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 16px;margin:20px 0 0;padding:14px 16px;border:1px solid var(--ink);background:var(--card)}
+.who label{display:block;font-size:12px;color:var(--ink3);font-family:var(--serif);letter-spacing:.06em}
+.howto{display:grid;grid-template-columns:1.1fr 1fr;gap:18px 28px;margin:22px 0 0}
+.howto h3,.turnin h3{font-family:var(--serif);font-size:16px;margin:0 0 6px}
+.howto ol{margin:0;padding:0;list-style:none;counter-reset:h}
+.howto ol li{position:relative;padding-left:28px;margin-bottom:8px;color:var(--ink2);font-size:14.5px;counter-increment:h}
+.howto ol li::before{content:counter(h);position:absolute;left:0;top:.3em;width:18px;height:18px;display:flex;align-items:center;justify-content:center;background:var(--ink);color:var(--card);font-family:var(--serif);font-size:12px}
+.howto ol li b{color:var(--ink)}
+.howto .save{font-size:13px;color:var(--ink3);margin:6px 0 0}
+.turnin ul{margin:0;padding:0;list-style:none;border:1px solid var(--line2);background:var(--card)}
+.turnin li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;padding:7px 12px;border-bottom:1px solid var(--line2);font-size:14px}
+.turnin li:last-child{border-bottom:none}
+.turnin li a{color:var(--ink);text-decoration:none;font-weight:600}
+.turnin li a:hover{color:var(--brass)}
+.turnin li small{grid-column:1;color:var(--ink3);font-size:12px}
+.turnin .st{grid-row:1 / span 2;grid-column:2;align-self:center;font-size:12px;padding:0 8px;border:1px solid var(--line);color:var(--ink3);white-space:nowrap}
+.turnin .st.part{border-color:var(--brass);color:var(--brass)}
+.turnin .st.done{background:var(--ink);border-color:var(--ink);color:var(--card)}
+.idx{margin-top:22px}
+.idx summary{cursor:pointer;font-family:var(--serif);font-size:15px;color:var(--ink2)}
+.idx summary:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+
+.index{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper-glass);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:30px}
+.index-inner{max-width:1040px;margin:0 auto;padding:0 28px;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.index-inner::-webkit-scrollbar{display:none}
+.index a{flex:0 0 auto;padding:10px 10px;font-size:13px;color:var(--ink3);text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap;font-variant-numeric:tabular-nums}
+.index a:hover{color:var(--ink)}
+.index a.on{color:var(--ink);border-bottom-color:var(--brass)}
+.index a:focus-visible{outline:2px solid var(--brass);outline-offset:-4px}
+section[id]{scroll-margin-top:50px}
+
+.sheet{padding:44px 0 6px;border-top:1px solid var(--line);margin-top:36px}
+.sh-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
+.code{font-family:var(--serif);font-size:13px;color:var(--brass);border:1px solid var(--brass);padding:0 8px;letter-spacing:.06em;white-space:nowrap;align-self:center}
+.sheet.core .code{background:var(--ink);border-color:var(--ink);color:var(--card)}
+.sh-head h2{font-family:var(--serif);font-size:24px;font-weight:600;margin:0;letter-spacing:.02em;text-wrap:balance}
+.sh-meta{flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;font-size:12.5px;color:var(--ink3);margin-top:6px}
+.chip{font-family:var(--serif);font-size:12px;padding:0 6px;border:1px solid var(--line);color:var(--ink2);white-space:nowrap}
+.chip.dx{border-color:var(--brass);color:var(--brass)}
+.chip.calc{background:var(--hover);border-color:var(--hover);color:var(--ink2)}
+.chip.sign{border-color:var(--seal);color:var(--seal)}
+.chip.lec{border-style:dashed;border-color:var(--brass);color:var(--brass)}
+.prog{color:var(--brass);font-variant-numeric:tabular-nums}
+.prog.done{color:var(--ink);font-weight:600}
+.howfill{margin:12px 0 4px;padding:9px 14px;background:var(--card);border:1px solid var(--line2);font-size:14px;color:var(--ink2);max-width:56em}
+.howfill b{font-family:var(--serif);color:var(--brass);margin-right:8px;font-weight:600}
+.howfill b + b,.howfill b ~ b{margin-right:0;color:var(--ink)}
+.sub-h{font-family:var(--serif);font-size:16px;font-weight:600;margin:24px 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.note{background:var(--brass-soft);border-left:2px solid var(--brass);padding:10px 14px;margin:14px 0 0;font-size:13.5px;color:var(--note-ink);line-height:1.75;max-width:60em}
+
+.tscroll{overflow-x:auto;margin-top:10px}
+.wt{width:100%;border-collapse:collapse;font-size:13.5px}
+.wt th{background:var(--card);font-family:var(--serif);font-weight:600;color:var(--ink);font-size:13.5px;text-align:left;padding:8px 10px;border:1px solid var(--line2);white-space:nowrap}
+.wt td{border:1px solid var(--line2);padding:7px 10px;vertical-align:top;color:var(--ink2)}
+.wt td.rh{color:var(--ink);font-family:var(--serif);font-weight:600;white-space:nowrap}
+.wt td.n{font-variant-numeric:tabular-nums;color:var(--brass)}
+.wt td.em{color:var(--ink);font-weight:600}
+.wt td.q{color:var(--ink);min-width:15em}
+.wt td.sm{font-size:12.5px;color:var(--ink3)}
+.wt td.calc{background:var(--hover);color:var(--ink);font-variant-numeric:tabular-nums}
+.wt td.calc .warn{color:var(--seal);font-weight:600}
+.wt td.calc .ok{color:var(--ink);font-weight:600}
+.wt tfoot td{background:var(--card)}
+.wt.narrow{max-width:560px}
+.wt.wide td{min-width:6em}
+.wt.cmp td{padding:7px 7px}
+.wt td.cat{white-space:normal;min-width:10em}
+.wt td.cat small.why{display:block;font-family:var(--sans);font-weight:400;font-size:12px;color:var(--ink3);line-height:1.55;margin-top:2px}
+
+.in{width:100%;min-width:0;font:inherit;font-size:14px;color:var(--ink);background:var(--brass-wash);border:0;border-bottom:1px solid var(--line);padding:4px 6px;border-radius:0}
+.in:focus{outline:none;border-bottom:2px solid var(--brass);background:var(--card)}
+.in::placeholder{color:var(--ink3);opacity:.85}
+.in.num{text-align:right;font-variant-numeric:tabular-nums;min-width:4.5em}
+.in.ta{resize:vertical;line-height:1.7;overflow:hidden;display:block}
+.in.sel{padding:4px 4px;min-width:7em}
+.numw{display:flex;align-items:baseline;gap:4px;min-width:0}
+.numw .u{font-size:12px;color:var(--ink3);white-space:nowrap;flex:0 0 auto}
+.numw > .in{flex:1 1 5em;width:5em;min-width:3.5em}
+.rg{display:flex;flex-wrap:wrap;gap:2px 12px}
+.rg.col{flex-direction:column;gap:1px}
+.rg.tight{flex-wrap:nowrap;gap:0 10px}
+.rg.scale{display:grid;grid-template-columns:repeat(5,auto);justify-content:start;gap:0 5px}
+.rg.scale .ro{gap:2px;font-size:12.5px}
+.rg.scale .ro input{width:13px;height:13px}
+.ro,.ck{display:inline-flex;align-items:center;gap:5px;font-size:13.5px;color:var(--ink2);cursor:pointer;line-height:1.6}
+.ro input,.ck input{accent-color:var(--brass);margin:0;width:15px;height:15px;flex:0 0 auto}
+.ro input:checked + span,.ck input:checked + span{color:var(--ink);font-weight:600}
+.ro input:focus-visible,.ck input:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.dots{color:var(--brass);font-size:12px;letter-spacing:1px;white-space:nowrap}
+.dots .off{color:var(--line)}
+
+.fgrid{display:grid;gap:10px 18px;margin-top:10px}
+.fgrid.c1{grid-template-columns:minmax(0,1fr)}
+.fgrid.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.fgrid.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.fgrid.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.f{min-width:0}
+.fl{display:block;font-size:12.5px;color:var(--ink3);margin-bottom:2px}
+.fl2{display:block;font-size:12px;color:var(--ink3)}
+.fblock{margin-top:14px}
+.calcform{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 28px;margin-top:10px}
+.cf{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:4px 12px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line2)}
+.cf label{font-size:14px;color:var(--ink)}
+.cf label small{display:block;font-size:12px;color:var(--ink3)}
+
+.exnote{margin:8px 0 0;font-size:13px;color:var(--seal)}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line2);border:1px solid var(--line2);margin-top:12px}
+.tile{background:var(--card);padding:12px 14px}
+.tile .k{font-size:12.5px;color:var(--ink3)}
+.tile .v{font-family:var(--serif);font-size:28px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.3}
+.tile .v small{font-size:13px;color:var(--ink3);font-weight:400;margin-left:3px}
+.bars{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:6px 12px;align-items:center;margin-top:14px;font-size:13px;max-width:640px}
+.bars .bl{color:var(--ink2);white-space:nowrap}
+.bars .bar{height:10px;background:var(--line2);position:relative}
+.bars .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--brass);border-radius:0 4px 4px 0}
+.bars .bn{font-variant-numeric:tabular-nums;color:var(--ink);text-align:right;min-width:3em}
+.calc-list{margin:12px 0 0;padding:0;list-style:none;font-size:14px;color:var(--ink2)}
+.calc-list li{padding:3px 0 3px 14px;position:relative}
+.calc-list li::before{content:"";position:absolute;left:0;top:.9em;width:6px;height:1px;background:var(--line)}
+
+.chainflow{display:flex;align-items:stretch;flex-wrap:wrap;gap:6px 0;margin-top:14px}
+.node{flex:1 1 150px;border:1px solid var(--line);background:var(--card);padding:10px 12px;font-family:var(--serif);font-size:15px;font-weight:600;color:var(--ink)}
+.node small{display:block;font-family:var(--sans);font-weight:400;font-size:12px;color:var(--ink3);margin-top:2px}
+.node.me{border:2px solid var(--ink)}
+.arr{align-self:center;padding:0 8px;color:var(--ink3);font-size:16px}
+.svc{margin:8px 0 0;font-size:13px;color:var(--ink3)}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 24px;margin-top:14px}
+.two h4{margin:0;font-family:var(--serif);font-size:14.5px}
+ul.plain{margin:6px 0 0;padding:0;list-style:none}
+ul.plain li{position:relative;padding-left:14px;margin-bottom:3px;color:var(--ink2);font-size:14px}
+ul.plain li::before{content:"";position:absolute;left:1px;top:.85em;width:5px;height:1px;background:var(--line)}
+
+.signrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 18px;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+.signrow .pledge{grid-column:1 / -1;margin:0;font-family:var(--serif);font-size:15px;color:var(--ink)}
+.sg label{display:block;font-size:12px;color:var(--ink3)}
+
+.matrix{display:grid;grid-template-columns:auto repeat(3,minmax(0,1fr));gap:3px;margin-top:12px;max-width:720px}
+.mx-y{font-family:var(--serif);font-size:12px;color:var(--ink3);align-self:center;text-align:right;padding-right:6px;white-space:nowrap}
+.mx-x{font-family:var(--serif);font-size:12px;color:var(--ink3);text-align:center;padding-top:4px}
+.mx-cell{min-height:70px;padding:6px;display:flex;flex-wrap:wrap;align-content:flex-start;gap:4px;border:1px solid var(--line2)}
+.mx-cell.z1{background:var(--card)}
+.mx-cell.z2{background:var(--seal-wash)}
+.mx-cell.z3{background:var(--seal-soft)}
+.rchip{font-size:12px;line-height:1.5;padding:1px 6px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.rchip.top{border:2px solid var(--seal);font-weight:600}
+.mxnote{font-size:12.5px;color:var(--ink3);margin:6px 0 0}
+
+.result{margin-top:18px;border:1px solid var(--line);border-left:3px solid var(--ink);background:var(--card);padding:12px 16px 10px;max-width:60em}
+.result h4{margin:0 0 4px;font-family:var(--serif);font-size:13px;color:var(--ink3);letter-spacing:.12em;font-weight:600}
+.result p{margin:4px 0;color:var(--ink2);font-size:14px}
+.result p b{color:var(--ink)}
+.result .warn{color:var(--seal)}
+.result .ok{color:var(--ink)}
+.result .bars{margin-top:8px}
+ol.top3{margin:4px 0 0;padding-left:1.4em;color:var(--ink2);font-size:14px}
+ol.top3 li{margin-bottom:3px}
+
+.dock{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;background:var(--card);border:1px solid var(--line);box-shadow:0 8px 28px var(--shadow);padding:7px 10px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;max-width:min(520px,calc(100% - 32px));font-size:13px}
+.dk-prog{display:flex;align-items:center;gap:4px;color:var(--ink3);font-variant-numeric:tabular-nums}
+.dk-prog b{color:var(--ink)}
+.dk-bar{display:inline-block;width:64px;height:4px;background:var(--line2);margin-left:6px;position:relative}
+.dk-bar i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--brass)}
+.dock button{font:inherit;font-size:13px;padding:4px 10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer}
+.dock button:hover{border-color:var(--brass)}
+.dock button:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.dock button.warn{color:var(--seal)}
+.dock button.warn.armed{background:var(--seal);border-color:var(--seal);color:var(--on-accent)}
+.dk-msg{flex-basis:100%;font-size:12px;color:var(--ink3);line-height:1.5}
+.dk-msg:empty{display:none}
+.copybox{position:fixed;inset:auto 16px calc(96px + env(safe-area-inset-bottom,0px)) auto;z-index:31;width:min(520px,calc(100% - 32px));background:var(--card);border:1px solid var(--line);box-shadow:0 8px 28px var(--shadow);padding:14px}
+.copybox p{margin:0 0 8px;font-size:13px;color:var(--ink2)}
+.copybox textarea{width:100%;font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);padding:8px}
+.copybox button{margin-top:8px;font:inherit;font-size:13px;padding:4px 12px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer}
+.vh{position:absolute !important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+footer{margin-top:52px;padding:22px 0 40px;border-top:1px solid var(--line);color:var(--ink3);font-size:13px}
+footer b{color:var(--ink2);font-weight:500}
+
+@media (max-width:900px){
+  .howto{grid-template-columns:1fr}
+  .fgrid.c3,.fgrid.c4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .calcform{grid-template-columns:1fr}
+  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  body{font-size:14.5px;padding-bottom:150px}
+  .wrap,.index-inner{padding:0 18px}
+  header.top{padding:40px 0 20px}
+  .doc-title{font-size:28px}
+  .who{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sh-head h2{font-size:21px}
+  .fgrid.c2,.fgrid.c3,.fgrid.c4,.two,.signrow{grid-template-columns:1fr}
+  .cf{grid-template-columns:minmax(0,1fr) 128px}
+  .wt.stack,.wt.stack tbody,.wt.stack tfoot,.wt.stack tr,.wt.stack td{display:block;width:100%}
+  .wt.stack thead{display:none}
+  .wt.stack tr{border:1px solid var(--line2);margin-bottom:10px;background:var(--card)}
+  .wt.stack td{border:none;border-bottom:1px solid var(--line2);min-width:0}
+  .wt.stack td:last-child{border-bottom:none}
+  .wt.stack td.rh{background:var(--hover);white-space:normal}
+  .wt.stack td[data-lb]::before{content:attr(data-lb);display:block;font-family:var(--serif);font-size:12px;color:var(--ink3)}
+  .wt.stack td[data-lb=""]::before{display:none}
+  .wt.stack td.q{min-width:0}
+  .matrix{grid-template-columns:auto repeat(3,minmax(0,1fr))}
+  .mx-cell{min-height:56px}
+  .dock{left:0;right:0;bottom:0;max-width:none;border-left:0;border-right:0;padding:8px 18px calc(8px + env(safe-area-inset-bottom,0px))}
+  .copybox{inset:auto 16px calc(128px + env(safe-area-inset-bottom,0px)) 16px;width:auto}
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+@media print{
+  body{background:#fff;font-size:10pt;padding-bottom:0}
+  .index,.dock,.copybox,.idx{display:none !important}
+  .sheet{break-before:page;border-top:none;padding-top:0}
+  .wt tr,.cf,.f,.result{break-inside:avoid}
+  .in{background:transparent}
+  .in.ta{min-height:3.4em}
+}
+
+.in.date{min-width:9.5em}
+.series{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;margin:12px 0 0;font-size:13px;color:var(--ink3)}
+.series a{color:var(--ink2);text-decoration:none;border-bottom:1px solid var(--line)}
+.series a:hover{color:var(--brass);border-bottom-color:var(--brass)}
+.series a.cur{color:var(--ink);font-weight:600;border-bottom:2px solid var(--brass)}
+.para{margin:10px 0 0;color:var(--ink2);font-size:14.5px;max-width:60em}
+.para b{color:var(--ink)}
+.wt td.calc .ref{color:var(--ink2);font-weight:400}
+.wt td .hint{display:block;font-size:12px;color:var(--ink3)}
+.wt tr.hl td{background:var(--seal-wash)}
+.score{font-family:var(--serif);font-weight:600;color:var(--ink)}
+.tscroll[hidden]{display:none}
+.pathtag{font-family:var(--serif);font-size:12px;padding:0 6px;background:var(--brass);color:var(--card);white-space:nowrap}
+.sheet.skip .prog{color:var(--ink3,var(--ink2));font-style:italic}
+.turnin .st.skip{opacity:.55;text-decoration:line-through}
+.rg:not(.col) .ro span{white-space:nowrap}
+.wt td .ck{margin-right:12px}
+.wt td .ck:last-child{margin-right:0}
+@media (min-width:641px){.wt td .in.ta{min-width:13em}}
+[hidden]{display:none !important}
+.rg.nw .ro span{white-space:nowrap}
+.tiles.n1{grid-template-columns:minmax(0,1fr);max-width:320px}.tiles.n2{grid-template-columns:repeat(2,minmax(0,1fr));max-width:640px}.tiles.n3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:640px){.tiles.n3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<div class="wrap"><header class="top"><p class="eyebrow">结营 · 落地</p><h1 class="doc-title">结营复盘表</h1><p class="doc-sub">配套<a href="outline-v5.html#s7">《课程大纲 v5》</a>结营，共 8 张表。<b>结营不讲新内容，只做汇总和检验：</b>六站讲过的每一条风控，到这里要变成你手上的东西：一张自查表、一套协议、一张应急卡。结营不是终点，是 30 天陪跑的起点。</p><div class="doc-meta"><div><b>对应</b> 大纲 7.1–7.5</div><div><b>适用</b> 学员填写 · 讲师批改</div><div><b>配套</b> <a href="outline-v5.html">课程大纲 v5</a> · <a href="lesson-plan-v1.html">讲师教案 v1</a></div></div><nav class="series" aria-label="诊断表系列"><span>诊断表系列：</span><a href="positioning-diagnosis.html">定位</a> <a href="acquisition-diagnosis.html">获客</a> <a href="intake-diagnosis.html">承接</a> <a href="conversion-diagnosis.html">转化</a> <a href="authentication-diagnosis.html">鉴定</a> <a href="transaction-diagnosis.html">交易闭环</a> <a href="closing-review.html" class="cur" aria-current="page">结营</a></nav><div class="who" id="who"><div><label for="w-name">姓名</label><input type="text" class="in" id="w-name" data-fill data-label="姓名" aria-label="姓名" data-req></div><div><label for="w-class">期数</label><input type="text" class="in" id="w-class" data-fill data-label="期数" aria-label="期数" placeholder="例：第 3 期"></div><div><label for="w-date">填表日期</label><input type="text" class="in" id="w-date" data-fill data-label="填表日期" aria-label="填表日期" placeholder="例：2026-10-08"></div><div><label for="w-teacher">主讲讲师</label><input type="text" class="in" id="w-teacher" data-fill data-label="主讲讲师" aria-label="主讲讲师"></div></div><div class="howto"><div><h3>怎么用这套表</h3><ol><li><b>结营当天</b>：按 7.1 到 7.5 的顺序填。表 7.2 要对着第一站的表重填，表里有链接可以直接跳过去。</li><li><b>之后 30 天</b>：按表 7.4 的三个节点交作业；表 7.3A 每周过一遍。灰底格子自动算。</li><li><b>交表</b>：右边列的六张当面确认，表 7.5 学员和讲师都签字。</li></ol><p class="save">填的内容自动保存在本机浏览器里，换浏览器或清理缓存会丢；要留存就导出。打印用浏览器的打印（Ctrl + P，Mac 用 ⌘ + P），每张表单独一页。改表格的样式和内容，用配套的 Word 版。</p></div><div class="turnin"><h3>结营要交的表</h3><ul><li><a href="#t7-2">表 7.2 定位与路径校准</a><small>品类、路径、测算表重新确认</small><span class="st" data-st="t7-2">未开始</span></li><li><a href="#t7-3a">表 7.3A 风险自查表</a><small>风险自查表填完</small><span class="st" data-st="t7-3a">未开始</span></li><li><a href="#t7-3b">表 7.3B 协议全套核对</a><small>该签的协议齐全</small><span class="st" data-st="t7-3b">未开始</span></li><li><a href="#t7-3c">表 7.3C 危机应急卡</a><small>应急卡随身</small><span class="st" data-st="t7-3c">未开始</span></li><li><a href="#t7-4">表 7.4 30 天执行表</a><small>三个节点和没达标的项</small><span class="st" data-st="t7-4">未开始</span></li><li><a href="#t7-5">表 7.5 出课标准确认</a><small>当面确认并签字</small><span class="st" data-st="t7-5">未开始</span></li></ul></div></div><details class="idx"><summary>8 张表一览</summary><div class="tscroll"><table class="wt stack"><thead><tr><th>表号</th><th>名称</th><th>类型</th><th>什么时候填</th><th>大纲</th></tr></thead><tbody><tr><td class="rh"><a href="#t7-1">表 7.1</a></td><td data-lb="名称">AI 大脑：喂什么、问什么</td><td data-lb="类型">记录、诊断</td><td data-lb="什么时候填">结营 · 7.1 实操时填</td><td class="sm" data-lb="大纲"><a href="outline-v5.html#x7-1">7.1</a></td></tr><tr><td class="rh"><a href="#t7-2">表 7.2</a></td><td data-lb="名称">定位与路径校准</td><td data-lb="类型">诊断、自动计算</td><td data-lb="什么时候填">结营 · 7.2 时填</td><td class="sm" data-lb="大纲"><a href="outline-v5.html#x7-2">7.2</a></td></tr><tr><td class="rh"><a href="#t7-3a">表 7.3A</a></td><td data-lb="名称">风险总表与自查</td><td data-lb="类型">诊断、自动计算</td><td data-lb="什么时候填">结营 · 7.3 现场填 · 之后每周过一遍</td><td class="sm" data-lb="大纲"><a href="outline-v5.html#x7-3">7.3</a></td></tr><tr><td class="rh"><a href="#t7-3b">表 7.3B</a></td><td data-lb="名称">协议全套核对</td><td data-lb="类型">诊断、自动计算</td><td data-lb="什么时候填">结营 · 7.3 当场补</td><td class="sm" data-lb="大纲"><a href="outline-v5.html#x7-3">7.3</a></td></tr><tr><td class="rh"><a href="#t7-3c">表 7.3C</a></td><td data-lb="名称">危机应急卡（合订版）</td><td data-lb="类型">确认单</td><td data-lb="什么时候填">结营 · 7.3 当场合订</td><td class="sm" data-lb="大纲"><a href="outline-v5.html#x7-3">7.3</a></td></tr><tr><td class="rh"><a href="#t7-3d">表 7.3D</a></td><td data-lb="名称">十个跨站风险场景</td><td data-lb="类型">记录、自动计算</td><td data-lb="什么时候填">结营 · 7.3 现场判断</td><td class="sm" data-lb="大纲"><a href="outline-v5.html#x7-3">7.3</a></td></tr><tr><td class="rh"><a href="#t7-4">表 7.4</a></td><td data-lb="名称">30 天执行表与陪跑节点</td><td data-lb="类型">计划、记录、自动计算</td><td data-lb="什么时候填">结营当天排好 · 第 7、14、30 天交</td><td class="sm" data-lb="大纲"><a href="outline-v5.html#x7-4">7.4</a></td></tr><tr><td class="rh"><a href="#t7-5">表 7.5</a></td><td data-lb="名称">出课标准逐项确认</td><td data-lb="类型">确认单、自动计算</td><td data-lb="什么时候填">结营 · 7.5 当面确认</td><td class="sm" data-lb="大纲"><a href="outline-v5.html#x7-5">7.5</a></td></tr></tbody></table></div></details></header></div>
+<nav class="index" aria-label="表格导航"><div class="index-inner"><a href="#t7-1">7.1</a><a href="#t7-2">7.2</a><a href="#t7-3a">7.3A</a><a href="#t7-3b">7.3B</a><a href="#t7-3c">7.3C</a><a href="#t7-3d">7.3D</a><a href="#t7-4">7.4</a><a href="#t7-5">7.5</a></div></nav>
+<div class="wrap"><section class="sheet" id="t7-1" data-sid="t7-1" data-title="表 7.1 AI 大脑：喂什么、问什么"><div class="sh-head"><span class="code">表 7.1</span><h2>AI 大脑：喂什么、问什么</h2><div class="sh-meta"><span class="chip ref">记录</span><span class="chip dx">诊断</span><span>结营 · 7.1 实操时填</span><a href="outline-v5.html#x7-1">大纲 7.1</a><span class="prog" data-prog="t7-1">选填</span></div></div><p class="howfill"><b>怎么填</b>把这几天产出的表喂进去，现场提五类问题，记下它答了什么、你怎么复核。鉴定结论绝对不能只信它。</p><h3 class="sub-h">A · 喂进去的资料</h3><div class="tscroll"><table class="wt stack"><thead><tr><th>资料</th><th>在哪张表</th><th>已喂进去</th><th>多久更新</th></tr></thead><tbody><tr><td class="rh">行情表</td><td class="sm" data-lb="在哪张表"><a href="transaction-diagnosis.html#t6-2b">表 6.2B</a></td><td data-lb="已喂进去"><label class="ck" for="t71-f1"><input type="checkbox" id="t71-f1" data-fill data-label="表 7.1 已喂进去：行情表" aria-label="表 7.1 已喂进去：行情表"><span></span></label></td><td data-lb="多久更新"><select class="in sel" id="t71-u1" data-fill data-label="表 7.1 行情表 多久更新" aria-label="表 7.1 行情表 多久更新"><option value="">请选择</option><option value="每周">每周</option><option value="每月">每月</option><option value="有变化再更">有变化再更</option></select></td></tr><tr><td class="rh">判定动线卡</td><td class="sm" data-lb="在哪张表"><a href="authentication-diagnosis.html#t5-3a">表 5.3A</a></td><td data-lb="已喂进去"><label class="ck" for="t71-f2"><input type="checkbox" id="t71-f2" data-fill data-label="表 7.1 已喂进去：判定动线卡" aria-label="表 7.1 已喂进去：判定动线卡"><span></span></label></td><td data-lb="多久更新"><select class="in sel" id="t71-u2" data-fill data-label="表 7.1 判定动线卡 多久更新" aria-label="表 7.1 判定动线卡 多久更新"><option value="">请选择</option><option value="每周">每周</option><option value="每月">每月</option><option value="有变化再更">有变化再更</option></select></td></tr><tr><td class="rh">话术库</td><td class="sm" data-lb="在哪张表"><a href="conversion-diagnosis.html#t4-3a">表 4.3A</a> · <a href="transaction-diagnosis.html#t6-3b">表 6.3B</a> · <a href="authentication-diagnosis.html#t5-11">表 5.11</a></td><td data-lb="已喂进去"><label class="ck" for="t71-f3"><input type="checkbox" id="t71-f3" data-fill data-label="表 7.1 已喂进去：话术库" aria-label="表 7.1 已喂进去：话术库"><span></span></label></td><td data-lb="多久更新"><select class="in sel" id="t71-u3" data-fill data-label="表 7.1 话术库 多久更新" aria-label="表 7.1 话术库 多久更新"><option value="">请选择</option><option value="每周">每周</option><option value="每月">每月</option><option value="有变化再更">有变化再更</option></select></td></tr><tr><td class="rh">渠道对照表</td><td class="sm" data-lb="在哪张表"><a href="transaction-diagnosis.html#t6-2a">表 6.2A</a></td><td data-lb="已喂进去"><label class="ck" for="t71-f4"><input type="checkbox" id="t71-f4" data-fill data-label="表 7.1 已喂进去：渠道对照表" aria-label="表 7.1 已喂进去：渠道对照表"><span></span></label></td><td data-lb="多久更新"><select class="in sel" id="t71-u4" data-fill data-label="表 7.1 渠道对照表 多久更新" aria-label="表 7.1 渠道对照表 多久更新"><option value="">请选择</option><option value="每周">每周</option><option value="每月">每月</option><option value="有变化再更">有变化再更</option></select></td></tr><tr><td class="rh">测算表</td><td class="sm" data-lb="在哪张表"><a href="positioning-diagnosis.html#t1-4">表 1.4</a></td><td data-lb="已喂进去"><label class="ck" for="t71-f5"><input type="checkbox" id="t71-f5" data-fill data-label="表 7.1 已喂进去：测算表" aria-label="表 7.1 已喂进去：测算表"><span></span></label></td><td data-lb="多久更新"><select class="in sel" id="t71-u5" data-fill data-label="表 7.1 测算表 多久更新" aria-label="表 7.1 测算表 多久更新"><option value="">请选择</option><option value="每周">每周</option><option value="每月">每月</option><option value="有变化再更">有变化再更</option></select></td></tr><tr><td class="rh">各站错误清单</td><td class="sm" data-lb="在哪张表">表 1.11 · 2.8 · 3.5 · 4.6 · 5.13 · 6.2F–6.6D</td><td data-lb="已喂进去"><label class="ck" for="t71-f6"><input type="checkbox" id="t71-f6" data-fill data-label="表 7.1 已喂进去：各站错误清单" aria-label="表 7.1 已喂进去：各站错误清单"><span></span></label></td><td data-lb="多久更新"><select class="in sel" id="t71-u6" data-fill data-label="表 7.1 各站错误清单 多久更新" aria-label="表 7.1 各站错误清单 多久更新"><option value="">请选择</option><option value="每周">每周</option><option value="每月">每月</option><option value="有变化再更">有变化再更</option></select></td></tr></tbody></table></div><h3 class="sub-h">B · 五类问题各问一个</h3><div class="tscroll"><table class="wt stack"><thead><tr><th>类型</th><th>我问的</th><th>它答的要点</th><th>怎么复核</th><th>能直接用吗</th></tr></thead><tbody><tr><td class="rh">鉴定</td><td data-lb="我问的"><input type="text" class="in" id="t71-q1" data-fill data-label="表 7.1 鉴定 我问的" aria-label="表 7.1 鉴定 我问的" placeholder="例：这只包的编码位置对吗"></td><td data-lb="它答的要点"><input type="text" class="in" id="t71-a1" data-fill data-label="表 7.1 鉴定 它答的要点" aria-label="表 7.1 鉴定 它答的要点"></td><td data-lb="怎么复核"><input type="text" class="in" id="t71-c1" data-fill data-label="表 7.1 鉴定 怎么复核" aria-label="表 7.1 鉴定 怎么复核" placeholder="例：对照动线卡，再找同行复核"></td><td data-lb="能直接用吗"><span class="rg col nw" role="radiogroup" aria-label="表 7.1 鉴定 能直接用吗"><label class="ro" for="t71-ok1-1"><input type="radio" name="t71-ok1" id="t71-ok1-1" value="能" data-fill data-label="表 7.1 鉴定 能直接用吗" data-text="能"><span>能</span></label><label class="ro" for="t71-ok1-2"><input type="radio" name="t71-ok1" id="t71-ok1-2" value="改了再用" data-fill data-label="表 7.1 鉴定 能直接用吗" data-text="改了再用"><span>改了再用</span></label><label class="ro" for="t71-ok1-3"><input type="radio" name="t71-ok1" id="t71-ok1-3" value="不能" data-fill data-label="表 7.1 鉴定 能直接用吗" data-text="不能"><span>不能</span></label></span></td></tr><tr><td class="rh">估价</td><td data-lb="我问的"><input type="text" class="in" id="t71-q2" data-fill data-label="表 7.1 估价 我问的" aria-label="表 7.1 估价 我问的"></td><td data-lb="它答的要点"><input type="text" class="in" id="t71-a2" data-fill data-label="表 7.1 估价 它答的要点" aria-label="表 7.1 估价 它答的要点"></td><td data-lb="怎么复核"><input type="text" class="in" id="t71-c2" data-fill data-label="表 7.1 估价 怎么复核" aria-label="表 7.1 估价 怎么复核"></td><td data-lb="能直接用吗"><span class="rg col nw" role="radiogroup" aria-label="表 7.1 估价 能直接用吗"><label class="ro" for="t71-ok2-1"><input type="radio" name="t71-ok2" id="t71-ok2-1" value="能" data-fill data-label="表 7.1 估价 能直接用吗" data-text="能"><span>能</span></label><label class="ro" for="t71-ok2-2"><input type="radio" name="t71-ok2" id="t71-ok2-2" value="改了再用" data-fill data-label="表 7.1 估价 能直接用吗" data-text="改了再用"><span>改了再用</span></label><label class="ro" for="t71-ok2-3"><input type="radio" name="t71-ok2" id="t71-ok2-3" value="不能" data-fill data-label="表 7.1 估价 能直接用吗" data-text="不能"><span>不能</span></label></span></td></tr><tr><td class="rh">话术</td><td data-lb="我问的"><input type="text" class="in" id="t71-q3" data-fill data-label="表 7.1 话术 我问的" aria-label="表 7.1 话术 我问的"></td><td data-lb="它答的要点"><input type="text" class="in" id="t71-a3" data-fill data-label="表 7.1 话术 它答的要点" aria-label="表 7.1 话术 它答的要点"></td><td data-lb="怎么复核"><input type="text" class="in" id="t71-c3" data-fill data-label="表 7.1 话术 怎么复核" aria-label="表 7.1 话术 怎么复核"></td><td data-lb="能直接用吗"><span class="rg col nw" role="radiogroup" aria-label="表 7.1 话术 能直接用吗"><label class="ro" for="t71-ok3-1"><input type="radio" name="t71-ok3" id="t71-ok3-1" value="能" data-fill data-label="表 7.1 话术 能直接用吗" data-text="能"><span>能</span></label><label class="ro" for="t71-ok3-2"><input type="radio" name="t71-ok3" id="t71-ok3-2" value="改了再用" data-fill data-label="表 7.1 话术 能直接用吗" data-text="改了再用"><span>改了再用</span></label><label class="ro" for="t71-ok3-3"><input type="radio" name="t71-ok3" id="t71-ok3-3" value="不能" data-fill data-label="表 7.1 话术 能直接用吗" data-text="不能"><span>不能</span></label></span></td></tr><tr><td class="rh">渠道</td><td data-lb="我问的"><input type="text" class="in" id="t71-q4" data-fill data-label="表 7.1 渠道 我问的" aria-label="表 7.1 渠道 我问的"></td><td data-lb="它答的要点"><input type="text" class="in" id="t71-a4" data-fill data-label="表 7.1 渠道 它答的要点" aria-label="表 7.1 渠道 它答的要点"></td><td data-lb="怎么复核"><input type="text" class="in" id="t71-c4" data-fill data-label="表 7.1 渠道 怎么复核" aria-label="表 7.1 渠道 怎么复核"></td><td data-lb="能直接用吗"><span class="rg col nw" role="radiogroup" aria-label="表 7.1 渠道 能直接用吗"><label class="ro" for="t71-ok4-1"><input type="radio" name="t71-ok4" id="t71-ok4-1" value="能" data-fill data-label="表 7.1 渠道 能直接用吗" data-text="能"><span>能</span></label><label class="ro" for="t71-ok4-2"><input type="radio" name="t71-ok4" id="t71-ok4-2" value="改了再用" data-fill data-label="表 7.1 渠道 能直接用吗" data-text="改了再用"><span>改了再用</span></label><label class="ro" for="t71-ok4-3"><input type="radio" name="t71-ok4" id="t71-ok4-3" value="不能" data-fill data-label="表 7.1 渠道 能直接用吗" data-text="不能"><span>不能</span></label></span></td></tr><tr><td class="rh">选题</td><td data-lb="我问的"><input type="text" class="in" id="t71-q5" data-fill data-label="表 7.1 选题 我问的" aria-label="表 7.1 选题 我问的"></td><td data-lb="它答的要点"><input type="text" class="in" id="t71-a5" data-fill data-label="表 7.1 选题 它答的要点" aria-label="表 7.1 选题 它答的要点"></td><td data-lb="怎么复核"><input type="text" class="in" id="t71-c5" data-fill data-label="表 7.1 选题 怎么复核" aria-label="表 7.1 选题 怎么复核"></td><td data-lb="能直接用吗"><span class="rg col nw" role="radiogroup" aria-label="表 7.1 选题 能直接用吗"><label class="ro" for="t71-ok5-1"><input type="radio" name="t71-ok5" id="t71-ok5-1" value="能" data-fill data-label="表 7.1 选题 能直接用吗" data-text="能"><span>能</span></label><label class="ro" for="t71-ok5-2"><input type="radio" name="t71-ok5" id="t71-ok5-2" value="改了再用" data-fill data-label="表 7.1 选题 能直接用吗" data-text="改了再用"><span>改了再用</span></label><label class="ro" for="t71-ok5-3"><input type="radio" name="t71-ok5" id="t71-ok5-3" value="不能" data-fill data-label="表 7.1 选题 能直接用吗" data-text="不能"><span>不能</span></label></span></td></tr></tbody></table></div><div class="fblock"><label class="fl" for="t71-never">什么问题不能问它（你来记）</label><input type="text" class="in" id="t71-never" data-fill data-label="表 7.1 不能问它的问题" aria-label="表 7.1 不能问它的问题" placeholder="例：这件货是真是假、这单能不能收"></div><div class="result" id="t71-res" data-copy aria-live="polite"><h4>AI 使用检查</h4><div class="rbody">—</div></div></section><section class="sheet core" id="t7-2" data-sid="t7-2" data-title="表 7.2 定位与路径校准"><div class="sh-head"><span class="code">表 7.2</span><h2>定位与路径校准</h2><div class="sh-meta"><span class="chip dx">诊断</span><span class="chip calc">自动计算</span><span>结营 · 7.2 时填</span><a href="outline-v5.html#x7-2">大纲 7.2</a><span class="prog" data-prog="t7-2">选填</span></div></div><p class="howfill"><b>怎么填</b>把第一站的表拿出来重看一遍：知道了鉴定难度（第五站）和出货难度（第六站）之后，品类还选它吗？听完全部内容之后，还是 all in 原来那条路吗？测算表的假设，按 6.6.4 的六个数口径换成真实数。第一站表 1.7B 右边一列同时填上。</p><h3 class="sub-h">A · 品类和路径</h3><div class="fgrid c2"><div class="f"><span class="fl">品类还选它吗</span><span class="rg tight" role="radiogroup" aria-label="表 7.2 品类还选它吗"><label class="ro" for="t72-cat-1"><input type="radio" name="t72-cat" id="t72-cat-1" value="还选" data-fill data-label="表 7.2 品类还选它吗" data-text="还选" data-req><span>还选</span></label><label class="ro" for="t72-cat-2"><input type="radio" name="t72-cat" id="t72-cat-2" value="换" data-fill data-label="表 7.2 品类还选它吗" data-text="换" data-req><span>换</span></label></span></div><div class="f"><span class="fl">换成什么、为什么</span><input type="text" class="in" id="t72-cat-why" data-fill data-label="表 7.2 品类换成什么" aria-label="表 7.2 品类换成什么" placeholder="例：从表换成包：表的鉴定难度高，出货周期也长"></div><div class="f"><span class="fl">还是 all in 原来那条路吗</span><span class="rg tight" role="radiogroup" aria-label="表 7.2 路径还是原来那条吗"><label class="ro" for="t72-path-1"><input type="radio" name="t72-path" id="t72-path-1" value="是" data-fill data-label="表 7.2 路径还是原来那条吗" data-text="是" data-req><span>是</span></label><label class="ro" for="t72-path-2"><input type="radio" name="t72-path" id="t72-path-2" value="换" data-fill data-label="表 7.2 路径还是原来那条吗" data-text="换" data-req><span>换</span></label></span></div><div class="f"><span class="fl">换成哪条、依据是什么</span><input type="text" class="in" id="t72-path-why" data-fill data-label="表 7.2 路径换成什么" aria-label="表 7.2 路径换成什么" placeholder="例：关系路径跑完名单，转化率 3%，加内容路径"></div></div><h3 class="sub-h">B · 测算表的假设换成真实数（6.6.4 六个数口径）</h3><div class="tscroll"><table class="wt stack"><thead><tr><th>项目</th><th>第一站用的</th><th>第一站假设</th><th>真实数</th><th>差多少</th></tr></thead><tbody><tr><td class="rh">开口率</td><td class="sm" data-lb="第一站用的">表 1.4 的开口率</td><td data-lb="第一站假设"><span class="numw"><input type="number" class="in num" id="t72-ky-a" inputmode="decimal" step="any" min="0" data-fill data-label="表 7.2 开口率 第一站假设" aria-label="表 7.2 开口率 第一站假设" data-req><span class="u">%</span></span></td><td data-lb="真实数"><span class="numw"><input type="number" class="in num" id="t72-ky-b" inputmode="decimal" step="any" min="0" data-fill data-label="表 7.2 开口率 真实数" aria-label="表 7.2 开口率 真实数" data-req><span class="u">%</span></span></td><td class="calc" data-lb="差多少"><span id="t72-ky-d">—</span></td></tr><tr><td class="rh">报价率</td><td class="sm" data-lb="第一站用的">表 1.4 的报价率</td><td data-lb="第一站假设"><span class="numw"><input type="number" class="in num" id="t72-bj-a" inputmode="decimal" step="any" min="0" data-fill data-label="表 7.2 报价率 第一站假设" aria-label="表 7.2 报价率 第一站假设" data-req><span class="u">%</span></span></td><td data-lb="真实数"><span class="numw"><input type="number" class="in num" id="t72-bj-b" inputmode="decimal" step="any" min="0" data-fill data-label="表 7.2 报价率 真实数" aria-label="表 7.2 报价率 真实数" data-req><span class="u">%</span></span></td><td class="calc" data-lb="差多少"><span id="t72-bj-d">—</span></td></tr><tr><td class="rh">成交率</td><td class="sm" data-lb="第一站用的">表 1.4 的成交率</td><td data-lb="第一站假设"><span class="numw"><input type="number" class="in num" id="t72-cj-a" inputmode="decimal" step="any" min="0" data-fill data-label="表 7.2 成交率 第一站假设" aria-label="表 7.2 成交率 第一站假设" data-req><span class="u">%</span></span></td><td data-lb="真实数"><span class="numw"><input type="number" class="in num" id="t72-cj-b" inputmode="decimal" step="any" min="0" data-fill data-label="表 7.2 成交率 真实数" aria-label="表 7.2 成交率 真实数" data-req><span class="u">%</span></span></td><td class="calc" data-lb="差多少"><span id="t72-cj-d">—</span></td></tr><tr><td class="rh">客单毛利</td><td class="sm" data-lb="第一站用的">表 1.4 的客单毛利</td><td data-lb="第一站假设"><span class="numw"><input type="number" class="in num" id="t72-gp-a" inputmode="decimal" step="any" min="0" data-fill data-label="表 7.2 客单毛利 第一站假设" aria-label="表 7.2 客单毛利 第一站假设" data-req><span class="u">元</span></span></td><td data-lb="真实数"><span class="numw"><input type="number" class="in num" id="t72-gp-b" inputmode="decimal" step="any" min="0" data-fill data-label="表 7.2 客单毛利 真实数" aria-label="表 7.2 客单毛利 真实数" data-req><span class="u">元</span></span></td><td class="calc" data-lb="差多少"><span id="t72-gp-d">—</span></td></tr><tr><td class="rh">周转天数</td><td class="sm" data-lb="第一站用的">表 1.4 的平均周转天数</td><td data-lb="第一站假设"><span class="numw"><input type="number" class="in num" id="t72-zz-a" inputmode="decimal" step="any" min="0" data-fill data-label="表 7.2 周转天数 第一站假设" aria-label="表 7.2 周转天数 第一站假设" data-req><span class="u">天</span></span></td><td data-lb="真实数"><span class="numw"><input type="number" class="in num" id="t72-zz-b" inputmode="decimal" step="any" min="0" data-fill data-label="表 7.2 周转天数 真实数" aria-label="表 7.2 周转天数 真实数" data-req><span class="u">天</span></span></td><td class="calc" data-lb="差多少"><span id="t72-zz-d">—</span></td></tr><tr><td class="rh">每天加微</td><td class="sm" data-lb="第一站用的">表 1.4 算出来的每天要加微</td><td data-lb="第一站假设"><span class="numw"><input type="number" class="in num" id="t72-jw-a" inputmode="decimal" step="any" min="0" data-fill data-label="表 7.2 每天加微 第一站假设" aria-label="表 7.2 每天加微 第一站假设" data-req><span class="u">个</span></span></td><td data-lb="真实数"><span class="numw"><input type="number" class="in num" id="t72-jw-b" inputmode="decimal" step="any" min="0" data-fill data-label="表 7.2 每天加微 真实数" aria-label="表 7.2 每天加微 真实数" data-req><span class="u">个</span></span></td><td class="calc" data-lb="差多少"><span id="t72-jw-d">—</span></td></tr></tbody></table></div><h3 class="sub-h">C · 确认</h3><div class="fgrid c2"><div class="f"><span class="fl">起步模式</span><select class="in sel" id="t72-mode" data-fill data-label="表 7.2 起步模式" aria-label="表 7.2 起步模式" data-req><option value="">请选择</option><option value="纯回收赚差价">纯回收赚差价</option><option value="居间撮合">居间撮合</option><option value="寄卖代卖">寄卖代卖</option><option value="鉴定服务收费">鉴定服务收费</option><option value="门店零售">门店零售</option></select></div><div class="f"><span class="fl">走的路</span><select class="in sel" id="t72-final" data-fill data-label="表 7.2 走的路" aria-label="表 7.2 走的路" data-req><option value="">请选择</option><option value="关系路径">关系路径</option><option value="内容路径">内容路径</option><option value="付费路径">付费路径</option><option value="本地路径">本地路径</option><option value="平台路径">平台路径</option></select></div><div class="f"><span class="fl">第一阶段单笔上限</span><span class="numw"><input type="number" class="in num" id="t72-cap" inputmode="decimal" step="any" min="0" data-fill data-label="表 7.2 第一阶段单笔上限" aria-label="表 7.2 第一阶段单笔上限" data-req><span class="u">元</span></span></div><div class="f"><span class="fl">一个月最多能亏</span><span class="numw"><input type="number" class="in num" id="t72-loss" inputmode="decimal" step="any" min="0" data-fill data-label="表 7.2 一个月最多能亏" aria-label="表 7.2 一个月最多能亏" data-req><span class="u">元</span></span></div></div><p class="mxnote">第一站的表：<a href="positioning-diagnosis.html#t1-4">表 1.4 测算表</a> · <a href="positioning-diagnosis.html#t1-6b">表 1.6B 止损线</a> · <a href="positioning-diagnosis.html#t1-7b">表 1.7B 暂定定位卡</a> · <a href="acquisition-diagnosis.html#t2-1b">表 2.1B 路径选择书</a></p><div class="result" id="t72-res" data-copy aria-live="polite"><h4>校准结论</h4><div class="rbody">—</div></div></section><section class="sheet core" id="t7-3a" data-sid="t7-3a" data-title="表 7.3A 风险总表与自查"><div class="sh-head"><span class="code">表 7.3A</span><h2>风险总表与自查</h2><div class="sh-meta"><span class="chip dx">诊断</span><span class="chip calc">自动计算</span><span>结营 · 7.3 现场填 · 之后每周过一遍</span><a href="outline-v5.html#x7-3">大纲 7.3</a><span class="prog" data-prog="t7-3a">选填</span></div></div><p class="howfill"><b>怎么填</b>散在前六站的红线汇成这一张：什么绝对不做、什么必须做，各会让你亏钱、封号还是摊上官司，多久查一次。逐条标注你现在做到了没有。之后每周按这张表过一遍。</p><div class="tscroll"><table class="wt stack"><thead><tr><th>#</th><th>红线</th><th>不做 / 必须</th><th>会怎样</th><th>多久查一次</th><th>我现在</th><th>出处</th></tr></thead><tbody><tr><td class="rh n">01</td><td class="em" data-lb="红线">不问来源、不登记身份证就收货</td><td class="sm" data-lb="不做 / 必须">不做</td><td class="sm" data-lb="会怎样">官司</td><td class="sm" data-lb="多久查一次">每单</td><td data-lb="我现在"><span class="rg" role="radiogroup" aria-label="表 7.3A 第 1 条 不问来源、不登记身份证就收货"><label class="ro" for="t73a-r1-1"><input type="radio" name="t73a-r1" id="t73a-r1-1" value="做到了" data-fill data-label="表 7.3A 第 1 条 不问来源、不登记身份证就收货" data-text="做到了" data-req><span>做到了</span></label><label class="ro" for="t73a-r1-2"><input type="radio" name="t73a-r1" id="t73a-r1-2" value="有时" data-fill data-label="表 7.3A 第 1 条 不问来源、不登记身份证就收货" data-text="有时" data-req><span>有时</span></label><label class="ro" for="t73a-r1-3"><input type="radio" name="t73a-r1" id="t73a-r1-3" value="没做到" data-fill data-label="表 7.3A 第 1 条 不问来源、不登记身份证就收货" data-text="没做到" data-req><span>没做到</span></label></span></td><td class="sm" data-lb="出处">6.4.4</td></tr><tr><td class="rh n">02</td><td class="em" data-lb="红线">真假存疑的货包装成正品出</td><td class="sm" data-lb="不做 / 必须">不做</td><td class="sm" data-lb="会怎样">官司</td><td class="sm" data-lb="多久查一次">每单</td><td data-lb="我现在"><span class="rg" role="radiogroup" aria-label="表 7.3A 第 2 条 真假存疑的货包装成正品出"><label class="ro" for="t73a-r2-1"><input type="radio" name="t73a-r2" id="t73a-r2-1" value="做到了" data-fill data-label="表 7.3A 第 2 条 真假存疑的货包装成正品出" data-text="做到了" data-req><span>做到了</span></label><label class="ro" for="t73a-r2-2"><input type="radio" name="t73a-r2" id="t73a-r2-2" value="有时" data-fill data-label="表 7.3A 第 2 条 真假存疑的货包装成正品出" data-text="有时" data-req><span>有时</span></label><label class="ro" for="t73a-r2-3"><input type="radio" name="t73a-r2" id="t73a-r2-3" value="没做到" data-fill data-label="表 7.3A 第 2 条 真假存疑的货包装成正品出" data-text="没做到" data-req><span>没做到</span></label></span></td><td class="sm" data-lb="出处">6.5.1</td></tr><tr><td class="rh n">03</td><td class="em" data-lb="红线">和未成年人、非所有人交易</td><td class="sm" data-lb="不做 / 必须">不做</td><td class="sm" data-lb="会怎样">官司</td><td class="sm" data-lb="多久查一次">每单</td><td data-lb="我现在"><span class="rg" role="radiogroup" aria-label="表 7.3A 第 3 条 和未成年人、非所有人交易"><label class="ro" for="t73a-r3-1"><input type="radio" name="t73a-r3" id="t73a-r3-1" value="做到了" data-fill data-label="表 7.3A 第 3 条 和未成年人、非所有人交易" data-text="做到了" data-req><span>做到了</span></label><label class="ro" for="t73a-r3-2"><input type="radio" name="t73a-r3" id="t73a-r3-2" value="有时" data-fill data-label="表 7.3A 第 3 条 和未成年人、非所有人交易" data-text="有时" data-req><span>有时</span></label><label class="ro" for="t73a-r3-3"><input type="radio" name="t73a-r3" id="t73a-r3-3" value="没做到" data-fill data-label="表 7.3A 第 3 条 和未成年人、非所有人交易" data-text="没做到" data-req><span>没做到</span></label></span></td><td class="sm" data-lb="出处">4.3 · 6.4.4</td></tr><tr><td class="rh n">04</td><td class="em" data-lb="红线">书面或当面替客户下"假货"定论</td><td class="sm" data-lb="不做 / 必须">不做</td><td class="sm" data-lb="会怎样">官司</td><td class="sm" data-lb="多久查一次">每单</td><td data-lb="我现在"><span class="rg" role="radiogroup" aria-label="表 7.3A 第 4 条 书面或当面替客户下&quot;假货&quot;定论"><label class="ro" for="t73a-r4-1"><input type="radio" name="t73a-r4" id="t73a-r4-1" value="做到了" data-fill data-label="表 7.3A 第 4 条 书面或当面替客户下&quot;假货&quot;定论" data-text="做到了" data-req><span>做到了</span></label><label class="ro" for="t73a-r4-2"><input type="radio" name="t73a-r4" id="t73a-r4-2" value="有时" data-fill data-label="表 7.3A 第 4 条 书面或当面替客户下&quot;假货&quot;定论" data-text="有时" data-req><span>有时</span></label><label class="ro" for="t73a-r4-3"><input type="radio" name="t73a-r4" id="t73a-r4-3" value="没做到" data-fill data-label="表 7.3A 第 4 条 书面或当面替客户下&quot;假货&quot;定论" data-text="没做到" data-req><span>没做到</span></label></span></td><td class="sm" data-lb="出处">5.11</td></tr><tr><td class="rh n">05</td><td class="em" data-lb="红线">拿本职工作接触到的客户资料去开发</td><td class="sm" data-lb="不做 / 必须">不做</td><td class="sm" data-lb="会怎样">官司</td><td class="sm" data-lb="多久查一次">一直</td><td data-lb="我现在"><span class="rg" role="radiogroup" aria-label="表 7.3A 第 5 条 拿本职工作接触到的客户资料去开发"><label class="ro" for="t73a-r5-1"><input type="radio" name="t73a-r5" id="t73a-r5-1" value="做到了" data-fill data-label="表 7.3A 第 5 条 拿本职工作接触到的客户资料去开发" data-text="做到了" data-req><span>做到了</span></label><label class="ro" for="t73a-r5-2"><input type="radio" name="t73a-r5" id="t73a-r5-2" value="有时" data-fill data-label="表 7.3A 第 5 条 拿本职工作接触到的客户资料去开发" data-text="有时" data-req><span>有时</span></label><label class="ro" for="t73a-r5-3"><input type="radio" name="t73a-r5" id="t73a-r5-3" value="没做到" data-fill data-label="表 7.3A 第 5 条 拿本职工作接触到的客户资料去开发" data-text="没做到" data-req><span>没做到</span></label></span></td><td class="sm" data-lb="出处">2.2</td></tr><tr><td class="rh n">06</td><td class="em" data-lb="红线">没见到钱先发货，只看转账截图就发货</td><td class="sm" data-lb="不做 / 必须">不做</td><td class="sm" data-lb="会怎样">亏钱</td><td class="sm" data-lb="多久查一次">每单</td><td data-lb="我现在"><span class="rg" role="radiogroup" aria-label="表 7.3A 第 6 条 没见到钱先发货，只看转账截图就发货"><label class="ro" for="t73a-r6-1"><input type="radio" name="t73a-r6" id="t73a-r6-1" value="做到了" data-fill data-label="表 7.3A 第 6 条 没见到钱先发货，只看转账截图就发货" data-text="做到了" data-req><span>做到了</span></label><label class="ro" for="t73a-r6-2"><input type="radio" name="t73a-r6" id="t73a-r6-2" value="有时" data-fill data-label="表 7.3A 第 6 条 没见到钱先发货，只看转账截图就发货" data-text="有时" data-req><span>有时</span></label><label class="ro" for="t73a-r6-3"><input type="radio" name="t73a-r6" id="t73a-r6-3" value="没做到" data-fill data-label="表 7.3A 第 6 条 没见到钱先发货，只看转账截图就发货" data-text="没做到" data-req><span>没做到</span></label></span></td><td class="sm" data-lb="出处">6.5.4</td></tr><tr><td class="rh n">07</td><td class="em" data-lb="红线">先付款后验货，尤其是异地</td><td class="sm" data-lb="不做 / 必须">不做</td><td class="sm" data-lb="会怎样">亏钱</td><td class="sm" data-lb="多久查一次">每单</td><td data-lb="我现在"><span class="rg" role="radiogroup" aria-label="表 7.3A 第 7 条 先付款后验货，尤其是异地"><label class="ro" for="t73a-r7-1"><input type="radio" name="t73a-r7" id="t73a-r7-1" value="做到了" data-fill data-label="表 7.3A 第 7 条 先付款后验货，尤其是异地" data-text="做到了" data-req><span>做到了</span></label><label class="ro" for="t73a-r7-2"><input type="radio" name="t73a-r7" id="t73a-r7-2" value="有时" data-fill data-label="表 7.3A 第 7 条 先付款后验货，尤其是异地" data-text="有时" data-req><span>有时</span></label><label class="ro" for="t73a-r7-3"><input type="radio" name="t73a-r7" id="t73a-r7-3" value="没做到" data-fill data-label="表 7.3A 第 7 条 先付款后验货，尤其是异地" data-text="没做到" data-req><span>没做到</span></label></span></td><td class="sm" data-lb="出处">6.4.7</td></tr><tr><td class="rh n">08</td><td class="em" data-lb="红线">判不了硬判，怕丢单</td><td class="sm" data-lb="不做 / 必须">不做</td><td class="sm" data-lb="会怎样">亏钱</td><td class="sm" data-lb="多久查一次">每单</td><td data-lb="我现在"><span class="rg" role="radiogroup" aria-label="表 7.3A 第 8 条 判不了硬判，怕丢单"><label class="ro" for="t73a-r8-1"><input type="radio" name="t73a-r8" id="t73a-r8-1" value="做到了" data-fill data-label="表 7.3A 第 8 条 判不了硬判，怕丢单" data-text="做到了" data-req><span>做到了</span></label><label class="ro" for="t73a-r8-2"><input type="radio" name="t73a-r8" id="t73a-r8-2" value="有时" data-fill data-label="表 7.3A 第 8 条 判不了硬判，怕丢单" data-text="有时" data-req><span>有时</span></label><label class="ro" for="t73a-r8-3"><input type="radio" name="t73a-r8" id="t73a-r8-3" value="没做到" data-fill data-label="表 7.3A 第 8 条 判不了硬判，怕丢单" data-text="没做到" data-req><span>没做到</span></label></span></td><td class="sm" data-lb="出处">5.1</td></tr><tr><td class="rh n">09</td><td class="em" data-lb="红线">被价格诱惑，收下必拒清单上的货</td><td class="sm" data-lb="不做 / 必须">不做</td><td class="sm" data-lb="会怎样">亏钱</td><td class="sm" data-lb="多久查一次">每单</td><td data-lb="我现在"><span class="rg" role="radiogroup" aria-label="表 7.3A 第 9 条 被价格诱惑，收下必拒清单上的货"><label class="ro" for="t73a-r9-1"><input type="radio" name="t73a-r9" id="t73a-r9-1" value="做到了" data-fill data-label="表 7.3A 第 9 条 被价格诱惑，收下必拒清单上的货" data-text="做到了" data-req><span>做到了</span></label><label class="ro" for="t73a-r9-2"><input type="radio" name="t73a-r9" id="t73a-r9-2" value="有时" data-fill data-label="表 7.3A 第 9 条 被价格诱惑，收下必拒清单上的货" data-text="有时" data-req><span>有时</span></label><label class="ro" for="t73a-r9-3"><input type="radio" name="t73a-r9" id="t73a-r9-3" value="没做到" data-fill data-label="表 7.3A 第 9 条 被价格诱惑，收下必拒清单上的货" data-text="没做到" data-req><span>没做到</span></label></span></td><td class="sm" data-lb="出处">6.4.1</td></tr><tr><td class="rh n">10</td><td class="em" data-lb="红线">一个人带大额现金上门</td><td class="sm" data-lb="不做 / 必须">不做</td><td class="sm" data-lb="会怎样">人身</td><td class="sm" data-lb="多久查一次">每次</td><td data-lb="我现在"><span class="rg" role="radiogroup" aria-label="表 7.3A 第 10 条 一个人带大额现金上门"><label class="ro" for="t73a-r10-1"><input type="radio" name="t73a-r10" id="t73a-r10-1" value="做到了" data-fill data-label="表 7.3A 第 10 条 一个人带大额现金上门" data-text="做到了" data-req><span>做到了</span></label><label class="ro" for="t73a-r10-2"><input type="radio" name="t73a-r10" id="t73a-r10-2" value="有时" data-fill data-label="表 7.3A 第 10 条 一个人带大额现金上门" data-text="有时" data-req><span>有时</span></label><label class="ro" for="t73a-r10-3"><input type="radio" name="t73a-r10" id="t73a-r10-3" value="没做到" data-fill data-label="表 7.3A 第 10 条 一个人带大额现金上门" data-text="没做到" data-req><span>没做到</span></label></span></td><td class="sm" data-lb="出处">6.4.3</td></tr><tr><td class="rh n">11</td><td class="em" data-lb="红线">文案写"最高价""保真""行业第一"</td><td class="sm" data-lb="不做 / 必须">不做</td><td class="sm" data-lb="会怎样">封号</td><td class="sm" data-lb="多久查一次">每条</td><td data-lb="我现在"><span class="rg" role="radiogroup" aria-label="表 7.3A 第 11 条 文案写&quot;最高价&quot;&quot;保真&quot;&quot;行业第一&quot;"><label class="ro" for="t73a-r11-1"><input type="radio" name="t73a-r11" id="t73a-r11-1" value="做到了" data-fill data-label="表 7.3A 第 11 条 文案写&quot;最高价&quot;&quot;保真&quot;&quot;行业第一&quot;" data-text="做到了" data-req><span>做到了</span></label><label class="ro" for="t73a-r11-2"><input type="radio" name="t73a-r11" id="t73a-r11-2" value="有时" data-fill data-label="表 7.3A 第 11 条 文案写&quot;最高价&quot;&quot;保真&quot;&quot;行业第一&quot;" data-text="有时" data-req><span>有时</span></label><label class="ro" for="t73a-r11-3"><input type="radio" name="t73a-r11" id="t73a-r11-3" value="没做到" data-fill data-label="表 7.3A 第 11 条 文案写&quot;最高价&quot;&quot;保真&quot;&quot;行业第一&quot;" data-text="没做到" data-req><span>没做到</span></label></span></td><td class="sm" data-lb="出处">2.3.8 · 4.2</td></tr><tr><td class="rh n">12</td><td class="em" data-lb="红线">用外挂、群发软件、多开</td><td class="sm" data-lb="不做 / 必须">不做</td><td class="sm" data-lb="会怎样">封号</td><td class="sm" data-lb="多久查一次">每周</td><td data-lb="我现在"><span class="rg" role="radiogroup" aria-label="表 7.3A 第 12 条 用外挂、群发软件、多开"><label class="ro" for="t73a-r12-1"><input type="radio" name="t73a-r12" id="t73a-r12-1" value="做到了" data-fill data-label="表 7.3A 第 12 条 用外挂、群发软件、多开" data-text="做到了" data-req><span>做到了</span></label><label class="ro" for="t73a-r12-2"><input type="radio" name="t73a-r12" id="t73a-r12-2" value="有时" data-fill data-label="表 7.3A 第 12 条 用外挂、群发软件、多开" data-text="有时" data-req><span>有时</span></label><label class="ro" for="t73a-r12-3"><input type="radio" name="t73a-r12" id="t73a-r12-3" value="没做到" data-fill data-label="表 7.3A 第 12 条 用外挂、群发软件、多开" data-text="没做到" data-req><span>没做到</span></label></span></td><td class="sm" data-lb="出处">3.1</td></tr><tr><td class="rh n">13</td><td class="em" data-lb="红线">跟着"买家"去站外交易、点陌生链接</td><td class="sm" data-lb="不做 / 必须">不做</td><td class="sm" data-lb="会怎样">封号</td><td class="sm" data-lb="多久查一次">每单</td><td data-lb="我现在"><span class="rg" role="radiogroup" aria-label="表 7.3A 第 13 条 跟着&quot;买家&quot;去站外交易、点陌生链接"><label class="ro" for="t73a-r13-1"><input type="radio" name="t73a-r13" id="t73a-r13-1" value="做到了" data-fill data-label="表 7.3A 第 13 条 跟着&quot;买家&quot;去站外交易、点陌生链接" data-text="做到了" data-req><span>做到了</span></label><label class="ro" for="t73a-r13-2"><input type="radio" name="t73a-r13" id="t73a-r13-2" value="有时" data-fill data-label="表 7.3A 第 13 条 跟着&quot;买家&quot;去站外交易、点陌生链接" data-text="有时" data-req><span>有时</span></label><label class="ro" for="t73a-r13-3"><input type="radio" name="t73a-r13" id="t73a-r13-3" value="没做到" data-fill data-label="表 7.3A 第 13 条 跟着&quot;买家&quot;去站外交易、点陌生链接" data-text="没做到" data-req><span>没做到</span></label></span></td><td class="sm" data-lb="出处">2.6</td></tr><tr><td class="rh n">14</td><td data-lb="红线">每单签协议、关键项客户签字</td><td class="sm" data-lb="不做 / 必须">必须</td><td class="sm" data-lb="会怎样">官司</td><td class="sm" data-lb="多久查一次">每单</td><td data-lb="我现在"><span class="rg" role="radiogroup" aria-label="表 7.3A 第 14 条 每单签协议、关键项客户签字"><label class="ro" for="t73a-r14-1"><input type="radio" name="t73a-r14" id="t73a-r14-1" value="做到了" data-fill data-label="表 7.3A 第 14 条 每单签协议、关键项客户签字" data-text="做到了" data-req><span>做到了</span></label><label class="ro" for="t73a-r14-2"><input type="radio" name="t73a-r14" id="t73a-r14-2" value="有时" data-fill data-label="表 7.3A 第 14 条 每单签协议、关键项客户签字" data-text="有时" data-req><span>有时</span></label><label class="ro" for="t73a-r14-3"><input type="radio" name="t73a-r14" id="t73a-r14-3" value="没做到" data-fill data-label="表 7.3A 第 14 条 每单签协议、关键项客户签字" data-text="没做到" data-req><span>没做到</span></label></span></td><td class="sm" data-lb="出处">6.4.5</td></tr><tr><td class="rh n">15</td><td data-lb="红线">全程录像、关键部位拍照、一单一档</td><td class="sm" data-lb="不做 / 必须">必须</td><td class="sm" data-lb="会怎样">官司</td><td class="sm" data-lb="多久查一次">每单</td><td data-lb="我现在"><span class="rg" role="radiogroup" aria-label="表 7.3A 第 15 条 全程录像、关键部位拍照、一单一档"><label class="ro" for="t73a-r15-1"><input type="radio" name="t73a-r15" id="t73a-r15-1" value="做到了" data-fill data-label="表 7.3A 第 15 条 全程录像、关键部位拍照、一单一档" data-text="做到了" data-req><span>做到了</span></label><label class="ro" for="t73a-r15-2"><input type="radio" name="t73a-r15" id="t73a-r15-2" value="有时" data-fill data-label="表 7.3A 第 15 条 全程录像、关键部位拍照、一单一档" data-text="有时" data-req><span>有时</span></label><label class="ro" for="t73a-r15-3"><input type="radio" name="t73a-r15" id="t73a-r15-3" value="没做到" data-fill data-label="表 7.3A 第 15 条 全程录像、关键部位拍照、一单一档" data-text="没做到" data-req><span>没做到</span></label></span></td><td class="sm" data-lb="出处">6.4.6</td></tr><tr><td class="rh n">16</td><td data-lb="红线">成交实拍先授权再打码</td><td class="sm" data-lb="不做 / 必须">必须</td><td class="sm" data-lb="会怎样">官司</td><td class="sm" data-lb="多久查一次">每条</td><td data-lb="我现在"><span class="rg" role="radiogroup" aria-label="表 7.3A 第 16 条 成交实拍先授权再打码"><label class="ro" for="t73a-r16-1"><input type="radio" name="t73a-r16" id="t73a-r16-1" value="做到了" data-fill data-label="表 7.3A 第 16 条 成交实拍先授权再打码" data-text="做到了" data-req><span>做到了</span></label><label class="ro" for="t73a-r16-2"><input type="radio" name="t73a-r16" id="t73a-r16-2" value="有时" data-fill data-label="表 7.3A 第 16 条 成交实拍先授权再打码" data-text="有时" data-req><span>有时</span></label><label class="ro" for="t73a-r16-3"><input type="radio" name="t73a-r16" id="t73a-r16-3" value="没做到" data-fill data-label="表 7.3A 第 16 条 成交实拍先授权再打码" data-text="没做到" data-req><span>没做到</span></label></span></td><td class="sm" data-lb="出处">4.2</td></tr><tr><td class="rh n">17</td><td data-lb="红线">三个账户分开，大额转账备注货品和单号</td><td class="sm" data-lb="不做 / 必须">必须</td><td class="sm" data-lb="会怎样">官司</td><td class="sm" data-lb="多久查一次">每月</td><td data-lb="我现在"><span class="rg" role="radiogroup" aria-label="表 7.3A 第 17 条 三个账户分开，大额转账备注货品和单号"><label class="ro" for="t73a-r17-1"><input type="radio" name="t73a-r17" id="t73a-r17-1" value="做到了" data-fill data-label="表 7.3A 第 17 条 三个账户分开，大额转账备注货品和单号" data-text="做到了" data-req><span>做到了</span></label><label class="ro" for="t73a-r17-2"><input type="radio" name="t73a-r17" id="t73a-r17-2" value="有时" data-fill data-label="表 7.3A 第 17 条 三个账户分开，大额转账备注货品和单号" data-text="有时" data-req><span>有时</span></label><label class="ro" for="t73a-r17-3"><input type="radio" name="t73a-r17" id="t73a-r17-3" value="没做到" data-fill data-label="表 7.3A 第 17 条 三个账户分开，大额转账备注货品和单号" data-text="没做到" data-req><span>没做到</span></label></span></td><td class="sm" data-lb="出处">1.9 · 6.4.7</td></tr><tr><td class="rh n">18</td><td data-lb="红线">验完封签、拍特征点、当场交割</td><td class="sm" data-lb="不做 / 必须">必须</td><td class="sm" data-lb="会怎样">亏钱</td><td class="sm" data-lb="多久查一次">每单</td><td data-lb="我现在"><span class="rg" role="radiogroup" aria-label="表 7.3A 第 18 条 验完封签、拍特征点、当场交割"><label class="ro" for="t73a-r18-1"><input type="radio" name="t73a-r18" id="t73a-r18-1" value="做到了" data-fill data-label="表 7.3A 第 18 条 验完封签、拍特征点、当场交割" data-text="做到了" data-req><span>做到了</span></label><label class="ro" for="t73a-r18-2"><input type="radio" name="t73a-r18" id="t73a-r18-2" value="有时" data-fill data-label="表 7.3A 第 18 条 验完封签、拍特征点、当场交割" data-text="有时" data-req><span>有时</span></label><label class="ro" for="t73a-r18-3"><input type="radio" name="t73a-r18" id="t73a-r18-3" value="没做到" data-fill data-label="表 7.3A 第 18 条 验完封签、拍特征点、当场交割" data-text="没做到" data-req><span>没做到</span></label></span></td><td class="sm" data-lb="出处">5.12</td></tr><tr><td class="rh n">19</td><td data-lb="红线">收之前过出货预判三问</td><td class="sm" data-lb="不做 / 必须">必须</td><td class="sm" data-lb="会怎样">亏钱</td><td class="sm" data-lb="多久查一次">每单</td><td data-lb="我现在"><span class="rg" role="radiogroup" aria-label="表 7.3A 第 19 条 收之前过出货预判三问"><label class="ro" for="t73a-r19-1"><input type="radio" name="t73a-r19" id="t73a-r19-1" value="做到了" data-fill data-label="表 7.3A 第 19 条 收之前过出货预判三问" data-text="做到了" data-req><span>做到了</span></label><label class="ro" for="t73a-r19-2"><input type="radio" name="t73a-r19" id="t73a-r19-2" value="有时" data-fill data-label="表 7.3A 第 19 条 收之前过出货预判三问" data-text="有时" data-req><span>有时</span></label><label class="ro" for="t73a-r19-3"><input type="radio" name="t73a-r19" id="t73a-r19-3" value="没做到" data-fill data-label="表 7.3A 第 19 条 收之前过出货预判三问" data-text="没做到" data-req><span>没做到</span></label></span></td><td class="sm" data-lb="出处">6.1</td></tr><tr><td class="rh n">20</td><td data-lb="红线">止损线写死，到线就停下复盘</td><td class="sm" data-lb="不做 / 必须">必须</td><td class="sm" data-lb="会怎样">亏钱</td><td class="sm" data-lb="多久查一次">每月</td><td data-lb="我现在"><span class="rg" role="radiogroup" aria-label="表 7.3A 第 20 条 止损线写死，到线就停下复盘"><label class="ro" for="t73a-r20-1"><input type="radio" name="t73a-r20" id="t73a-r20-1" value="做到了" data-fill data-label="表 7.3A 第 20 条 止损线写死，到线就停下复盘" data-text="做到了" data-req><span>做到了</span></label><label class="ro" for="t73a-r20-2"><input type="radio" name="t73a-r20" id="t73a-r20-2" value="有时" data-fill data-label="表 7.3A 第 20 条 止损线写死，到线就停下复盘" data-text="有时" data-req><span>有时</span></label><label class="ro" for="t73a-r20-3"><input type="radio" name="t73a-r20" id="t73a-r20-3" value="没做到" data-fill data-label="表 7.3A 第 20 条 止损线写死，到线就停下复盘" data-text="没做到" data-req><span>没做到</span></label></span></td><td class="sm" data-lb="出处">1.6</td></tr><tr><td class="rh n">21</td><td data-lb="红线">单家账期设上限，滞销到预警线就降价</td><td class="sm" data-lb="不做 / 必须">必须</td><td class="sm" data-lb="会怎样">亏钱</td><td class="sm" data-lb="多久查一次">每周</td><td data-lb="我现在"><span class="rg" role="radiogroup" aria-label="表 7.3A 第 21 条 单家账期设上限，滞销到预警线就降价"><label class="ro" for="t73a-r21-1"><input type="radio" name="t73a-r21" id="t73a-r21-1" value="做到了" data-fill data-label="表 7.3A 第 21 条 单家账期设上限，滞销到预警线就降价" data-text="做到了" data-req><span>做到了</span></label><label class="ro" for="t73a-r21-2"><input type="radio" name="t73a-r21" id="t73a-r21-2" value="有时" data-fill data-label="表 7.3A 第 21 条 单家账期设上限，滞销到预警线就降价" data-text="有时" data-req><span>有时</span></label><label class="ro" for="t73a-r21-3"><input type="radio" name="t73a-r21" id="t73a-r21-3" value="没做到" data-fill data-label="表 7.3A 第 21 条 单家账期设上限，滞销到预警线就降价" data-text="没做到" data-req><span>没做到</span></label></span></td><td class="sm" data-lb="出处">6.5.4 · 6.5.5</td></tr><tr><td class="rh n">22</td><td data-lb="红线">异业、上游、出镜人、员工、合伙先签协议</td><td class="sm" data-lb="不做 / 必须">必须</td><td class="sm" data-lb="会怎样">亏钱</td><td class="sm" data-lb="多久查一次">每次</td><td data-lb="我现在"><span class="rg" role="radiogroup" aria-label="表 7.3A 第 22 条 异业、上游、出镜人、员工、合伙先签协议"><label class="ro" for="t73a-r22-1"><input type="radio" name="t73a-r22" id="t73a-r22-1" value="做到了" data-fill data-label="表 7.3A 第 22 条 异业、上游、出镜人、员工、合伙先签协议" data-text="做到了" data-req><span>做到了</span></label><label class="ro" for="t73a-r22-2"><input type="radio" name="t73a-r22" id="t73a-r22-2" value="有时" data-fill data-label="表 7.3A 第 22 条 异业、上游、出镜人、员工、合伙先签协议" data-text="有时" data-req><span>有时</span></label><label class="ro" for="t73a-r22-3"><input type="radio" name="t73a-r22" id="t73a-r22-3" value="没做到" data-fill data-label="表 7.3A 第 22 条 异业、上游、出镜人、员工、合伙先签协议" data-text="没做到" data-req><span>没做到</span></label></span></td><td class="sm" data-lb="出处">2.2 · 5.2 · 2.3.4 · 6.7.2 · 1.9</td></tr><tr><td class="rh n">23</td><td data-lb="红线">私域号归老板或公司、登记在册、定期备份</td><td class="sm" data-lb="不做 / 必须">必须</td><td class="sm" data-lb="会怎样">封号</td><td class="sm" data-lb="多久查一次">每月</td><td data-lb="我现在"><span class="rg" role="radiogroup" aria-label="表 7.3A 第 23 条 私域号归老板或公司、登记在册、定期备份"><label class="ro" for="t73a-r23-1"><input type="radio" name="t73a-r23" id="t73a-r23-1" value="做到了" data-fill data-label="表 7.3A 第 23 条 私域号归老板或公司、登记在册、定期备份" data-text="做到了" data-req><span>做到了</span></label><label class="ro" for="t73a-r23-2"><input type="radio" name="t73a-r23" id="t73a-r23-2" value="有时" data-fill data-label="表 7.3A 第 23 条 私域号归老板或公司、登记在册、定期备份" data-text="有时" data-req><span>有时</span></label><label class="ro" for="t73a-r23-3"><input type="radio" name="t73a-r23" id="t73a-r23-3" value="没做到" data-fill data-label="表 7.3A 第 23 条 私域号归老板或公司、登记在册、定期备份" data-text="没做到" data-req><span>没做到</span></label></span></td><td class="sm" data-lb="出处">3.1</td></tr><tr><td class="rh n">24</td><td data-lb="红线">风控三问进周复盘</td><td class="sm" data-lb="不做 / 必须">必须</td><td class="sm" data-lb="会怎样">全部</td><td class="sm" data-lb="多久查一次">每周</td><td data-lb="我现在"><span class="rg" role="radiogroup" aria-label="表 7.3A 第 24 条 风控三问进周复盘"><label class="ro" for="t73a-r24-1"><input type="radio" name="t73a-r24" id="t73a-r24-1" value="做到了" data-fill data-label="表 7.3A 第 24 条 风控三问进周复盘" data-text="做到了" data-req><span>做到了</span></label><label class="ro" for="t73a-r24-2"><input type="radio" name="t73a-r24" id="t73a-r24-2" value="有时" data-fill data-label="表 7.3A 第 24 条 风控三问进周复盘" data-text="有时" data-req><span>有时</span></label><label class="ro" for="t73a-r24-3"><input type="radio" name="t73a-r24" id="t73a-r24-3" value="没做到" data-fill data-label="表 7.3A 第 24 条 风控三问进周复盘" data-text="没做到" data-req><span>没做到</span></label></span></td><td class="sm" data-lb="出处">6.6.4</td></tr></tbody></table></div><h3 class="sub-h">课前风险自测再做一遍（<a href="positioning-diagnosis.html#t0">表 0</a>）</h3><div class="fgrid c3"><div class="f"><span class="fl">课前选了第三项的题数</span><span class="numw"><input type="number" class="in num" id="t73a-pre" inputmode="decimal" step="any" min="0" data-fill data-label="表 7.3A 课前第三项题数" aria-label="表 7.3A 课前第三项题数"><span class="u">题</span></span></div><div class="f"><span class="fl">结营选了第三项的题数</span><span class="numw"><input type="number" class="in num" id="t73a-post" inputmode="decimal" step="any" min="0" data-fill data-label="表 7.3A 结营第三项题数" aria-label="表 7.3A 结营第三项题数"><span class="u">题</span></span></div><div class="f"><span class="fl">变化</span><span id="t73a-diff">—</span></div></div><div class="result" id="t73a-res" data-copy aria-live="polite"><h4>按严重度排的缺口</h4><div class="rbody">—</div></div></section><section class="sheet core" id="t7-3b" data-sid="t7-3b" data-title="表 7.3B 协议全套核对"><div class="sh-head"><span class="code">表 7.3B</span><h2>协议全套核对</h2><div class="sh-meta"><span class="chip dx">诊断</span><span class="chip calc">自动计算</span><span>结营 · 7.3 当场补</span><a href="outline-v5.html#x7-3">大纲 7.3</a><span class="prog" data-prog="t7-3b">选填</span></div></div><p class="howfill"><b>怎么填</b>八份协议逐份核对：你这个阶段需不需要、准备了没有、自己的信息填进去没有。该签的缺哪份，当场补。模板用之前要经过律师审核。</p><div class="tscroll"><table class="wt stack"><thead><tr><th>协议</th><th>在哪张表写的要点</th><th>我需要吗</th><th>已准备</th><th>我的信息已填</th><th>律师看过</th></tr></thead><tbody><tr><td class="rh">回收协议</td><td class="sm" data-lb="在哪张表写的要点"><a href="transaction-diagnosis.html#t6-4c">表 6.4C</a></td><td data-lb="我需要吗"><span class="rg" role="radiogroup" aria-label="表 7.3B 回收协议 我需要吗"><label class="ro" for="t73b-n1-1"><input type="radio" name="t73b-n1" id="t73b-n1-1" value="需要" data-fill data-label="表 7.3B 回收协议 我需要吗" data-text="需要" data-req><span>需要</span></label><label class="ro" for="t73b-n1-2"><input type="radio" name="t73b-n1" id="t73b-n1-2" value="不需要" data-fill data-label="表 7.3B 回收协议 我需要吗" data-text="不需要" data-req><span>不需要</span></label></span></td><td data-lb="已准备"><label class="ck" for="t73b-r1"><input type="checkbox" id="t73b-r1" data-fill data-label="表 7.3B 回收协议 已准备" aria-label="表 7.3B 回收协议 已准备"><span></span></label></td><td data-lb="我的信息已填"><label class="ck" for="t73b-m1"><input type="checkbox" id="t73b-m1" data-fill data-label="表 7.3B 回收协议 我的信息已填" aria-label="表 7.3B 回收协议 我的信息已填"><span></span></label></td><td data-lb="律师看过"><label class="ck" for="t73b-l1"><input type="checkbox" id="t73b-l1" data-fill data-label="表 7.3B 回收协议 律师看过" aria-label="表 7.3B 回收协议 律师看过"><span></span></label></td></tr><tr><td class="rh">寄卖协议</td><td class="sm" data-lb="在哪张表写的要点"><a href="transaction-diagnosis.html#t6-4c">表 6.4C</a></td><td data-lb="我需要吗"><span class="rg" role="radiogroup" aria-label="表 7.3B 寄卖协议 我需要吗"><label class="ro" for="t73b-n2-1"><input type="radio" name="t73b-n2" id="t73b-n2-1" value="需要" data-fill data-label="表 7.3B 寄卖协议 我需要吗" data-text="需要" data-req><span>需要</span></label><label class="ro" for="t73b-n2-2"><input type="radio" name="t73b-n2" id="t73b-n2-2" value="不需要" data-fill data-label="表 7.3B 寄卖协议 我需要吗" data-text="不需要" data-req><span>不需要</span></label></span></td><td data-lb="已准备"><label class="ck" for="t73b-r2"><input type="checkbox" id="t73b-r2" data-fill data-label="表 7.3B 寄卖协议 已准备" aria-label="表 7.3B 寄卖协议 已准备"><span></span></label></td><td data-lb="我的信息已填"><label class="ck" for="t73b-m2"><input type="checkbox" id="t73b-m2" data-fill data-label="表 7.3B 寄卖协议 我的信息已填" aria-label="表 7.3B 寄卖协议 我的信息已填"><span></span></label></td><td data-lb="律师看过"><label class="ck" for="t73b-l2"><input type="checkbox" id="t73b-l2" data-fill data-label="表 7.3B 寄卖协议 律师看过" aria-label="表 7.3B 寄卖协议 律师看过"><span></span></label></td></tr><tr><td class="rh">代收 / 撮合协议</td><td class="sm" data-lb="在哪张表写的要点"><a href="transaction-diagnosis.html#t6-4c">表 6.4C</a></td><td data-lb="我需要吗"><span class="rg" role="radiogroup" aria-label="表 7.3B 代收 / 撮合协议 我需要吗"><label class="ro" for="t73b-n3-1"><input type="radio" name="t73b-n3" id="t73b-n3-1" value="需要" data-fill data-label="表 7.3B 代收 / 撮合协议 我需要吗" data-text="需要" data-req><span>需要</span></label><label class="ro" for="t73b-n3-2"><input type="radio" name="t73b-n3" id="t73b-n3-2" value="不需要" data-fill data-label="表 7.3B 代收 / 撮合协议 我需要吗" data-text="不需要" data-req><span>不需要</span></label></span></td><td data-lb="已准备"><label class="ck" for="t73b-r3"><input type="checkbox" id="t73b-r3" data-fill data-label="表 7.3B 代收 / 撮合协议 已准备" aria-label="表 7.3B 代收 / 撮合协议 已准备"><span></span></label></td><td data-lb="我的信息已填"><label class="ck" for="t73b-m3"><input type="checkbox" id="t73b-m3" data-fill data-label="表 7.3B 代收 / 撮合协议 我的信息已填" aria-label="表 7.3B 代收 / 撮合协议 我的信息已填"><span></span></label></td><td data-lb="律师看过"><label class="ck" for="t73b-l3"><input type="checkbox" id="t73b-l3" data-fill data-label="表 7.3B 代收 / 撮合协议 律师看过" aria-label="表 7.3B 代收 / 撮合协议 律师看过"><span></span></label></td></tr><tr><td class="rh">异业合作协议</td><td class="sm" data-lb="在哪张表写的要点"><a href="acquisition-diagnosis.html#t2-2d">表 2.2D</a></td><td data-lb="我需要吗"><span class="rg" role="radiogroup" aria-label="表 7.3B 异业合作协议 我需要吗"><label class="ro" for="t73b-n4-1"><input type="radio" name="t73b-n4" id="t73b-n4-1" value="需要" data-fill data-label="表 7.3B 异业合作协议 我需要吗" data-text="需要" data-req><span>需要</span></label><label class="ro" for="t73b-n4-2"><input type="radio" name="t73b-n4" id="t73b-n4-2" value="不需要" data-fill data-label="表 7.3B 异业合作协议 我需要吗" data-text="不需要" data-req><span>不需要</span></label></span></td><td data-lb="已准备"><label class="ck" for="t73b-r4"><input type="checkbox" id="t73b-r4" data-fill data-label="表 7.3B 异业合作协议 已准备" aria-label="表 7.3B 异业合作协议 已准备"><span></span></label></td><td data-lb="我的信息已填"><label class="ck" for="t73b-m4"><input type="checkbox" id="t73b-m4" data-fill data-label="表 7.3B 异业合作协议 我的信息已填" aria-label="表 7.3B 异业合作协议 我的信息已填"><span></span></label></td><td data-lb="律师看过"><label class="ck" for="t73b-l4"><input type="checkbox" id="t73b-l4" data-fill data-label="表 7.3B 异业合作协议 律师看过" aria-label="表 7.3B 异业合作协议 律师看过"><span></span></label></td></tr><tr><td class="rh">上游合作协议</td><td class="sm" data-lb="在哪张表写的要点"><a href="authentication-diagnosis.html#t5-2c">表 5.2C</a></td><td data-lb="我需要吗"><span class="rg" role="radiogroup" aria-label="表 7.3B 上游合作协议 我需要吗"><label class="ro" for="t73b-n5-1"><input type="radio" name="t73b-n5" id="t73b-n5-1" value="需要" data-fill data-label="表 7.3B 上游合作协议 我需要吗" data-text="需要" data-req><span>需要</span></label><label class="ro" for="t73b-n5-2"><input type="radio" name="t73b-n5" id="t73b-n5-2" value="不需要" data-fill data-label="表 7.3B 上游合作协议 我需要吗" data-text="不需要" data-req><span>不需要</span></label></span></td><td data-lb="已准备"><label class="ck" for="t73b-r5"><input type="checkbox" id="t73b-r5" data-fill data-label="表 7.3B 上游合作协议 已准备" aria-label="表 7.3B 上游合作协议 已准备"><span></span></label></td><td data-lb="我的信息已填"><label class="ck" for="t73b-m5"><input type="checkbox" id="t73b-m5" data-fill data-label="表 7.3B 上游合作协议 我的信息已填" aria-label="表 7.3B 上游合作协议 我的信息已填"><span></span></label></td><td data-lb="律师看过"><label class="ck" for="t73b-l5"><input type="checkbox" id="t73b-l5" data-fill data-label="表 7.3B 上游合作协议 律师看过" aria-label="表 7.3B 上游合作协议 律师看过"><span></span></label></td></tr><tr><td class="rh">出镜人合作协议</td><td class="sm" data-lb="在哪张表写的要点"><a href="acquisition-diagnosis.html#t2-3d">表 2.3D</a></td><td data-lb="我需要吗"><span class="rg" role="radiogroup" aria-label="表 7.3B 出镜人合作协议 我需要吗"><label class="ro" for="t73b-n6-1"><input type="radio" name="t73b-n6" id="t73b-n6-1" value="需要" data-fill data-label="表 7.3B 出镜人合作协议 我需要吗" data-text="需要" data-req><span>需要</span></label><label class="ro" for="t73b-n6-2"><input type="radio" name="t73b-n6" id="t73b-n6-2" value="不需要" data-fill data-label="表 7.3B 出镜人合作协议 我需要吗" data-text="不需要" data-req><span>不需要</span></label></span></td><td data-lb="已准备"><label class="ck" for="t73b-r6"><input type="checkbox" id="t73b-r6" data-fill data-label="表 7.3B 出镜人合作协议 已准备" aria-label="表 7.3B 出镜人合作协议 已准备"><span></span></label></td><td data-lb="我的信息已填"><label class="ck" for="t73b-m6"><input type="checkbox" id="t73b-m6" data-fill data-label="表 7.3B 出镜人合作协议 我的信息已填" aria-label="表 7.3B 出镜人合作协议 我的信息已填"><span></span></label></td><td data-lb="律师看过"><label class="ck" for="t73b-l6"><input type="checkbox" id="t73b-l6" data-fill data-label="表 7.3B 出镜人合作协议 律师看过" aria-label="表 7.3B 出镜人合作协议 律师看过"><span></span></label></td></tr><tr><td class="rh">员工协议</td><td class="sm" data-lb="在哪张表写的要点"><a href="transaction-diagnosis.html#t6-7b">表 6.7B</a></td><td data-lb="我需要吗"><span class="rg" role="radiogroup" aria-label="表 7.3B 员工协议 我需要吗"><label class="ro" for="t73b-n7-1"><input type="radio" name="t73b-n7" id="t73b-n7-1" value="需要" data-fill data-label="表 7.3B 员工协议 我需要吗" data-text="需要" data-req><span>需要</span></label><label class="ro" for="t73b-n7-2"><input type="radio" name="t73b-n7" id="t73b-n7-2" value="不需要" data-fill data-label="表 7.3B 员工协议 我需要吗" data-text="不需要" data-req><span>不需要</span></label></span></td><td data-lb="已准备"><label class="ck" for="t73b-r7"><input type="checkbox" id="t73b-r7" data-fill data-label="表 7.3B 员工协议 已准备" aria-label="表 7.3B 员工协议 已准备"><span></span></label></td><td data-lb="我的信息已填"><label class="ck" for="t73b-m7"><input type="checkbox" id="t73b-m7" data-fill data-label="表 7.3B 员工协议 我的信息已填" aria-label="表 7.3B 员工协议 我的信息已填"><span></span></label></td><td data-lb="律师看过"><label class="ck" for="t73b-l7"><input type="checkbox" id="t73b-l7" data-fill data-label="表 7.3B 员工协议 律师看过" aria-label="表 7.3B 员工协议 律师看过"><span></span></label></td></tr><tr><td class="rh">合伙协议</td><td class="sm" data-lb="在哪张表写的要点"><a href="positioning-diagnosis.html#t1-9c">表 1.9C</a></td><td data-lb="我需要吗"><span class="rg" role="radiogroup" aria-label="表 7.3B 合伙协议 我需要吗"><label class="ro" for="t73b-n8-1"><input type="radio" name="t73b-n8" id="t73b-n8-1" value="需要" data-fill data-label="表 7.3B 合伙协议 我需要吗" data-text="需要" data-req><span>需要</span></label><label class="ro" for="t73b-n8-2"><input type="radio" name="t73b-n8" id="t73b-n8-2" value="不需要" data-fill data-label="表 7.3B 合伙协议 我需要吗" data-text="不需要" data-req><span>不需要</span></label></span></td><td data-lb="已准备"><label class="ck" for="t73b-r8"><input type="checkbox" id="t73b-r8" data-fill data-label="表 7.3B 合伙协议 已准备" aria-label="表 7.3B 合伙协议 已准备"><span></span></label></td><td data-lb="我的信息已填"><label class="ck" for="t73b-m8"><input type="checkbox" id="t73b-m8" data-fill data-label="表 7.3B 合伙协议 我的信息已填" aria-label="表 7.3B 合伙协议 我的信息已填"><span></span></label></td><td data-lb="律师看过"><label class="ck" for="t73b-l8"><input type="checkbox" id="t73b-l8" data-fill data-label="表 7.3B 合伙协议 律师看过" aria-label="表 7.3B 合伙协议 律师看过"><span></span></label></td></tr></tbody></table></div><div class="result" id="t73b-res" data-copy aria-live="polite"><h4>还缺哪份</h4><div class="rbody">—</div></div></section><section class="sheet core" id="t7-3c" data-sid="t7-3c" data-title="表 7.3C 危机应急卡（合订版）"><div class="sh-head"><span class="code">表 7.3C</span><h2>危机应急卡（合订版）</h2><div class="sh-meta"><span class="chip sign">确认单</span><span>结营 · 7.3 当场合订</span><a href="outline-v5.html#x7-3">大纲 7.3</a><span class="prog" data-prog="t7-3c">选填</span></div></div><p class="howfill"><b>怎么填</b>各站的第一小时动作合成一张卡。每一类用一句话写成你自己的版本，写上找谁。填完打印，贴在收货台，存进手机。</p><div class="tscroll"><table class="wt stack"><thead><tr><th>危机</th><th>各站写的第一小时动作</th><th>我的版本（一句话）</th><th>找谁</th></tr></thead><tbody><tr><td class="rh">账号被封、被限流（2.3.8）</td><td class="sm" data-lb="各站写的第一小时动作">固定违规通知和申诉材料 · 备用号接力 · 给私域老客户一个统一口径</td><td data-lb="我的版本（一句话）"><input type="text" class="in" id="t73c-a1" data-fill data-label="表 7.3C 账号被封、被限流（2.3.8） 我的版本" aria-label="表 7.3C 账号被封、被限流（2.3.8） 我的版本" data-req></td><td data-lb="找谁"><input type="text" class="in" id="t73c-w1" data-fill data-label="表 7.3C 账号被封、被限流（2.3.8） 找谁" aria-label="表 7.3C 账号被封、被限流（2.3.8） 找谁"></td></tr><tr><td class="rh">出镜人突然走人（2.3.4）</td><td class="sm" data-lb="各站写的第一小时动作">改密码 · 收回后台和收款权限 · 备份素材 · 定好对外口径</td><td data-lb="我的版本（一句话）"><input type="text" class="in" id="t73c-a2" data-fill data-label="表 7.3C 出镜人突然走人（2.3.4） 我的版本" aria-label="表 7.3C 出镜人突然走人（2.3.4） 我的版本" data-req></td><td data-lb="找谁"><input type="text" class="in" id="t73c-w2" data-fill data-label="表 7.3C 出镜人突然走人（2.3.4） 找谁" aria-label="表 7.3C 出镜人突然走人（2.3.4） 找谁"></td></tr><tr><td class="rh">上游跑路（5.2）</td><td class="sm" data-lb="各站写的第一小时动作">停止发货 · 清点在途货和未结款 · 固定聊天和转账证据</td><td data-lb="我的版本（一句话）"><input type="text" class="in" id="t73c-a3" data-fill data-label="表 7.3C 上游跑路（5.2） 我的版本" aria-label="表 7.3C 上游跑路（5.2） 我的版本" data-req></td><td data-lb="找谁"><input type="text" class="in" id="t73c-w3" data-fill data-label="表 7.3C 上游跑路（5.2） 找谁" aria-label="表 7.3C 上游跑路（5.2） 找谁"></td></tr><tr><td class="rh">收到假货（5.10）</td><td class="sm" data-lb="各站写的第一小时动作">封存货品和包装 · 固定聊天和付款记录 · 暂停同一来源的所有交易 · 再决定追责、退货、报警还是认赔</td><td data-lb="我的版本（一句话）"><input type="text" class="in" id="t73c-a4" data-fill data-label="表 7.3C 收到假货（5.10） 我的版本" aria-label="表 7.3C 收到假货（5.10） 我的版本" data-req></td><td data-lb="找谁"><input type="text" class="in" id="t73c-w4" data-fill data-label="表 7.3C 收到假货（5.10） 找谁" aria-label="表 7.3C 收到假货（5.10） 找谁"></td></tr><tr><td class="rh">收到赃物（6.7.3）</td><td class="sm" data-lb="各站写的第一小时动作">见表 6.7C</td><td data-lb="我的版本（一句话）"><input type="text" class="in" id="t73c-a5" data-fill data-label="表 7.3C 收到赃物（6.7.3） 我的版本" aria-label="表 7.3C 收到赃物（6.7.3） 我的版本" data-req></td><td data-lb="找谁"><input type="text" class="in" id="t73c-w5" data-fill data-label="表 7.3C 收到赃物（6.7.3） 找谁" aria-label="表 7.3C 收到赃物（6.7.3） 找谁"></td></tr><tr><td class="rh">客户反悔闹事（6.7.3）</td><td class="sm" data-lb="各站写的第一小时动作">见表 6.7C</td><td data-lb="我的版本（一句话）"><input type="text" class="in" id="t73c-a6" data-fill data-label="表 7.3C 客户反悔闹事（6.7.3） 我的版本" aria-label="表 7.3C 客户反悔闹事（6.7.3） 我的版本" data-req></td><td data-lb="找谁"><input type="text" class="in" id="t73c-w6" data-fill data-label="表 7.3C 客户反悔闹事（6.7.3） 找谁" aria-label="表 7.3C 客户反悔闹事（6.7.3） 找谁"></td></tr><tr><td class="rh">被调包（6.7.3）</td><td class="sm" data-lb="各站写的第一小时动作">见表 6.7C</td><td data-lb="我的版本（一句话）"><input type="text" class="in" id="t73c-a7" data-fill data-label="表 7.3C 被调包（6.7.3） 我的版本" aria-label="表 7.3C 被调包（6.7.3） 我的版本" data-req></td><td data-lb="找谁"><input type="text" class="in" id="t73c-w7" data-fill data-label="表 7.3C 被调包（6.7.3） 找谁" aria-label="表 7.3C 被调包（6.7.3） 找谁"></td></tr><tr><td class="rh">假转账截图（6.7.3）</td><td class="sm" data-lb="各站写的第一小时动作">见表 6.7C</td><td data-lb="我的版本（一句话）"><input type="text" class="in" id="t73c-a8" data-fill data-label="表 7.3C 假转账截图（6.7.3） 我的版本" aria-label="表 7.3C 假转账截图（6.7.3） 我的版本" data-req></td><td data-lb="找谁"><input type="text" class="in" id="t73c-w8" data-fill data-label="表 7.3C 假转账截图（6.7.3） 找谁" aria-label="表 7.3C 假转账截图（6.7.3） 找谁"></td></tr></tbody></table></div><div class="fgrid c2"><div class="f"><span class="fl">律师 / 法律顾问</span><input type="text" class="in" id="t73c-law" data-fill data-label="表 7.3C 律师" aria-label="表 7.3C 律师" data-req></div><div class="f"><span class="fl">常用鉴定机构</span><input type="text" class="in" id="t73c-org" data-fill data-label="表 7.3C 鉴定机构" aria-label="表 7.3C 鉴定机构"></div><div class="f"><span class="fl">上游</span><input type="text" class="in" id="t73c-up" data-fill data-label="表 7.3C 上游" aria-label="表 7.3C 上游"></div><div class="f"><span class="fl">紧急联系人</span><input type="text" class="in" id="t73c-sos" data-fill data-label="表 7.3C 紧急联系人" aria-label="表 7.3C 紧急联系人" data-req></div></div><div class="fblock" data-reqgroup data-reqmin="2"><div class="rg"><label class="ck" for="t73c-print"><input type="checkbox" id="t73c-print" data-fill data-label="表 7.3C 已打印贴好" aria-label="表 7.3C 已打印贴好"><span>已打印，贴在收货台</span></label><label class="ck" for="t73c-phone"><input type="checkbox" id="t73c-phone" data-fill data-label="表 7.3C 已存进手机" aria-label="表 7.3C 已存进手机"><span>已存进手机</span></label></div></div><div class="result" id="t73c-res" data-copy aria-live="polite"><h4>应急卡检查</h4><div class="rbody">—</div></div></section><section class="sheet" id="t7-3d" data-sid="t7-3d" data-title="表 7.3D 十个跨站风险场景"><div class="sh-head"><span class="code">表 7.3D</span><h2>十个跨站风险场景</h2><div class="sh-meta"><span class="chip ref">记录</span><span class="chip calc">自动计算</span><span>结营 · 7.3 现场判断</span><a href="outline-v5.html#x7-3">大纲 7.3</a><span class="prog" data-prog="t7-3d">选填</span></div></div><p class="howfill"><b>怎么填</b>讲师给十个跨站的场景，每个判断三件事：这单能不能做、该怎么做、出事了怎么办。讲师评分后选上，得分自动算。</p><div class="tscroll"><table class="wt stack"><thead><tr><th>#</th><th>场景</th><th>能不能做</th><th>该怎么做</th><th>出事了怎么办</th><th>讲师评分</th></tr></thead><tbody><tr><td class="rh n">01</td><td data-lb="场景"><input type="text" class="in" id="t73d-s1" data-fill data-label="表 7.3D 场景 1" aria-label="表 7.3D 场景 1" placeholder="讲师给的场景"></td><td data-lb="能不能做"><span class="rg" role="radiogroup" aria-label="表 7.3D 场景 1 能不能做"><label class="ro" for="t73d-c1-1"><input type="radio" name="t73d-c1" id="t73d-c1-1" value="能" data-fill data-label="表 7.3D 场景 1 能不能做" data-text="能" data-req><span>能</span></label><label class="ro" for="t73d-c1-2"><input type="radio" name="t73d-c1" id="t73d-c1-2" value="有条件" data-fill data-label="表 7.3D 场景 1 能不能做" data-text="有条件" data-req><span>有条件</span></label><label class="ro" for="t73d-c1-3"><input type="radio" name="t73d-c1" id="t73d-c1-3" value="不能" data-fill data-label="表 7.3D 场景 1 能不能做" data-text="不能" data-req><span>不能</span></label></span></td><td data-lb="该怎么做"><input type="text" class="in" id="t73d-h1" data-fill data-label="表 7.3D 场景 1 该怎么做" aria-label="表 7.3D 场景 1 该怎么做"></td><td data-lb="出事了怎么办"><input type="text" class="in" id="t73d-x1" data-fill data-label="表 7.3D 场景 1 出事了怎么办" aria-label="表 7.3D 场景 1 出事了怎么办"></td><td data-lb="讲师评分"><span class="rg" role="radiogroup" aria-label="表 7.3D 场景 1 讲师评分"><label class="ro" for="t73d-g1-1"><input type="radio" name="t73d-g1" id="t73d-g1-1" value="对" data-fill data-label="表 7.3D 场景 1 讲师评分" data-text="对"><span>对</span></label><label class="ro" for="t73d-g1-2"><input type="radio" name="t73d-g1" id="t73d-g1-2" value="部分对" data-fill data-label="表 7.3D 场景 1 讲师评分" data-text="部分对"><span>部分对</span></label><label class="ro" for="t73d-g1-3"><input type="radio" name="t73d-g1" id="t73d-g1-3" value="错" data-fill data-label="表 7.3D 场景 1 讲师评分" data-text="错"><span>错</span></label></span></td></tr><tr><td class="rh n">02</td><td data-lb="场景"><input type="text" class="in" id="t73d-s2" data-fill data-label="表 7.3D 场景 2" aria-label="表 7.3D 场景 2"></td><td data-lb="能不能做"><span class="rg" role="radiogroup" aria-label="表 7.3D 场景 2 能不能做"><label class="ro" for="t73d-c2-1"><input type="radio" name="t73d-c2" id="t73d-c2-1" value="能" data-fill data-label="表 7.3D 场景 2 能不能做" data-text="能" data-req><span>能</span></label><label class="ro" for="t73d-c2-2"><input type="radio" name="t73d-c2" id="t73d-c2-2" value="有条件" data-fill data-label="表 7.3D 场景 2 能不能做" data-text="有条件" data-req><span>有条件</span></label><label class="ro" for="t73d-c2-3"><input type="radio" name="t73d-c2" id="t73d-c2-3" value="不能" data-fill data-label="表 7.3D 场景 2 能不能做" data-text="不能" data-req><span>不能</span></label></span></td><td data-lb="该怎么做"><input type="text" class="in" id="t73d-h2" data-fill data-label="表 7.3D 场景 2 该怎么做" aria-label="表 7.3D 场景 2 该怎么做"></td><td data-lb="出事了怎么办"><input type="text" class="in" id="t73d-x2" data-fill data-label="表 7.3D 场景 2 出事了怎么办" aria-label="表 7.3D 场景 2 出事了怎么办"></td><td data-lb="讲师评分"><span class="rg" role="radiogroup" aria-label="表 7.3D 场景 2 讲师评分"><label class="ro" for="t73d-g2-1"><input type="radio" name="t73d-g2" id="t73d-g2-1" value="对" data-fill data-label="表 7.3D 场景 2 讲师评分" data-text="对"><span>对</span></label><label class="ro" for="t73d-g2-2"><input type="radio" name="t73d-g2" id="t73d-g2-2" value="部分对" data-fill data-label="表 7.3D 场景 2 讲师评分" data-text="部分对"><span>部分对</span></label><label class="ro" for="t73d-g2-3"><input type="radio" name="t73d-g2" id="t73d-g2-3" value="错" data-fill data-label="表 7.3D 场景 2 讲师评分" data-text="错"><span>错</span></label></span></td></tr><tr><td class="rh n">03</td><td data-lb="场景"><input type="text" class="in" id="t73d-s3" data-fill data-label="表 7.3D 场景 3" aria-label="表 7.3D 场景 3"></td><td data-lb="能不能做"><span class="rg" role="radiogroup" aria-label="表 7.3D 场景 3 能不能做"><label class="ro" for="t73d-c3-1"><input type="radio" name="t73d-c3" id="t73d-c3-1" value="能" data-fill data-label="表 7.3D 场景 3 能不能做" data-text="能" data-req><span>能</span></label><label class="ro" for="t73d-c3-2"><input type="radio" name="t73d-c3" id="t73d-c3-2" value="有条件" data-fill data-label="表 7.3D 场景 3 能不能做" data-text="有条件" data-req><span>有条件</span></label><label class="ro" for="t73d-c3-3"><input type="radio" name="t73d-c3" id="t73d-c3-3" value="不能" data-fill data-label="表 7.3D 场景 3 能不能做" data-text="不能" data-req><span>不能</span></label></span></td><td data-lb="该怎么做"><input type="text" class="in" id="t73d-h3" data-fill data-label="表 7.3D 场景 3 该怎么做" aria-label="表 7.3D 场景 3 该怎么做"></td><td data-lb="出事了怎么办"><input type="text" class="in" id="t73d-x3" data-fill data-label="表 7.3D 场景 3 出事了怎么办" aria-label="表 7.3D 场景 3 出事了怎么办"></td><td data-lb="讲师评分"><span class="rg" role="radiogroup" aria-label="表 7.3D 场景 3 讲师评分"><label class="ro" for="t73d-g3-1"><input type="radio" name="t73d-g3" id="t73d-g3-1" value="对" data-fill data-label="表 7.3D 场景 3 讲师评分" data-text="对"><span>对</span></label><label class="ro" for="t73d-g3-2"><input type="radio" name="t73d-g3" id="t73d-g3-2" value="部分对" data-fill data-label="表 7.3D 场景 3 讲师评分" data-text="部分对"><span>部分对</span></label><label class="ro" for="t73d-g3-3"><input type="radio" name="t73d-g3" id="t73d-g3-3" value="错" data-fill data-label="表 7.3D 场景 3 讲师评分" data-text="错"><span>错</span></label></span></td></tr><tr><td class="rh n">04</td><td data-lb="场景"><input type="text" class="in" id="t73d-s4" data-fill data-label="表 7.3D 场景 4" aria-label="表 7.3D 场景 4"></td><td data-lb="能不能做"><span class="rg" role="radiogroup" aria-label="表 7.3D 场景 4 能不能做"><label class="ro" for="t73d-c4-1"><input type="radio" name="t73d-c4" id="t73d-c4-1" value="能" data-fill data-label="表 7.3D 场景 4 能不能做" data-text="能" data-req><span>能</span></label><label class="ro" for="t73d-c4-2"><input type="radio" name="t73d-c4" id="t73d-c4-2" value="有条件" data-fill data-label="表 7.3D 场景 4 能不能做" data-text="有条件" data-req><span>有条件</span></label><label class="ro" for="t73d-c4-3"><input type="radio" name="t73d-c4" id="t73d-c4-3" value="不能" data-fill data-label="表 7.3D 场景 4 能不能做" data-text="不能" data-req><span>不能</span></label></span></td><td data-lb="该怎么做"><input type="text" class="in" id="t73d-h4" data-fill data-label="表 7.3D 场景 4 该怎么做" aria-label="表 7.3D 场景 4 该怎么做"></td><td data-lb="出事了怎么办"><input type="text" class="in" id="t73d-x4" data-fill data-label="表 7.3D 场景 4 出事了怎么办" aria-label="表 7.3D 场景 4 出事了怎么办"></td><td data-lb="讲师评分"><span class="rg" role="radiogroup" aria-label="表 7.3D 场景 4 讲师评分"><label class="ro" for="t73d-g4-1"><input type="radio" name="t73d-g4" id="t73d-g4-1" value="对" data-fill data-label="表 7.3D 场景 4 讲师评分" data-text="对"><span>对</span></label><label class="ro" for="t73d-g4-2"><input type="radio" name="t73d-g4" id="t73d-g4-2" value="部分对" data-fill data-label="表 7.3D 场景 4 讲师评分" data-text="部分对"><span>部分对</span></label><label class="ro" for="t73d-g4-3"><input type="radio" name="t73d-g4" id="t73d-g4-3" value="错" data-fill data-label="表 7.3D 场景 4 讲师评分" data-text="错"><span>错</span></label></span></td></tr><tr><td class="rh n">05</td><td data-lb="场景"><input type="text" class="in" id="t73d-s5" data-fill data-label="表 7.3D 场景 5" aria-label="表 7.3D 场景 5"></td><td data-lb="能不能做"><span class="rg" role="radiogroup" aria-label="表 7.3D 场景 5 能不能做"><label class="ro" for="t73d-c5-1"><input type="radio" name="t73d-c5" id="t73d-c5-1" value="能" data-fill data-label="表 7.3D 场景 5 能不能做" data-text="能" data-req><span>能</span></label><label class="ro" for="t73d-c5-2"><input type="radio" name="t73d-c5" id="t73d-c5-2" value="有条件" data-fill data-label="表 7.3D 场景 5 能不能做" data-text="有条件" data-req><span>有条件</span></label><label class="ro" for="t73d-c5-3"><input type="radio" name="t73d-c5" id="t73d-c5-3" value="不能" data-fill data-label="表 7.3D 场景 5 能不能做" data-text="不能" data-req><span>不能</span></label></span></td><td data-lb="该怎么做"><input type="text" class="in" id="t73d-h5" data-fill data-label="表 7.3D 场景 5 该怎么做" aria-label="表 7.3D 场景 5 该怎么做"></td><td data-lb="出事了怎么办"><input type="text" class="in" id="t73d-x5" data-fill data-label="表 7.3D 场景 5 出事了怎么办" aria-label="表 7.3D 场景 5 出事了怎么办"></td><td data-lb="讲师评分"><span class="rg" role="radiogroup" aria-label="表 7.3D 场景 5 讲师评分"><label class="ro" for="t73d-g5-1"><input type="radio" name="t73d-g5" id="t73d-g5-1" value="对" data-fill data-label="表 7.3D 场景 5 讲师评分" data-text="对"><span>对</span></label><label class="ro" for="t73d-g5-2"><input type="radio" name="t73d-g5" id="t73d-g5-2" value="部分对" data-fill data-label="表 7.3D 场景 5 讲师评分" data-text="部分对"><span>部分对</span></label><label class="ro" for="t73d-g5-3"><input type="radio" name="t73d-g5" id="t73d-g5-3" value="错" data-fill data-label="表 7.3D 场景 5 讲师评分" data-text="错"><span>错</span></label></span></td></tr><tr><td class="rh n">06</td><td data-lb="场景"><input type="text" class="in" id="t73d-s6" data-fill data-label="表 7.3D 场景 6" aria-label="表 7.3D 场景 6"></td><td data-lb="能不能做"><span class="rg" role="radiogroup" aria-label="表 7.3D 场景 6 能不能做"><label class="ro" for="t73d-c6-1"><input type="radio" name="t73d-c6" id="t73d-c6-1" value="能" data-fill data-label="表 7.3D 场景 6 能不能做" data-text="能" data-req><span>能</span></label><label class="ro" for="t73d-c6-2"><input type="radio" name="t73d-c6" id="t73d-c6-2" value="有条件" data-fill data-label="表 7.3D 场景 6 能不能做" data-text="有条件" data-req><span>有条件</span></label><label class="ro" for="t73d-c6-3"><input type="radio" name="t73d-c6" id="t73d-c6-3" value="不能" data-fill data-label="表 7.3D 场景 6 能不能做" data-text="不能" data-req><span>不能</span></label></span></td><td data-lb="该怎么做"><input type="text" class="in" id="t73d-h6" data-fill data-label="表 7.3D 场景 6 该怎么做" aria-label="表 7.3D 场景 6 该怎么做"></td><td data-lb="出事了怎么办"><input type="text" class="in" id="t73d-x6" data-fill data-label="表 7.3D 场景 6 出事了怎么办" aria-label="表 7.3D 场景 6 出事了怎么办"></td><td data-lb="讲师评分"><span class="rg" role="radiogroup" aria-label="表 7.3D 场景 6 讲师评分"><label class="ro" for="t73d-g6-1"><input type="radio" name="t73d-g6" id="t73d-g6-1" value="对" data-fill data-label="表 7.3D 场景 6 讲师评分" data-text="对"><span>对</span></label><label class="ro" for="t73d-g6-2"><input type="radio" name="t73d-g6" id="t73d-g6-2" value="部分对" data-fill data-label="表 7.3D 场景 6 讲师评分" data-text="部分对"><span>部分对</span></label><label class="ro" for="t73d-g6-3"><input type="radio" name="t73d-g6" id="t73d-g6-3" value="错" data-fill data-label="表 7.3D 场景 6 讲师评分" data-text="错"><span>错</span></label></span></td></tr><tr><td class="rh n">07</td><td data-lb="场景"><input type="text" class="in" id="t73d-s7" data-fill data-label="表 7.3D 场景 7" aria-label="表 7.3D 场景 7"></td><td data-lb="能不能做"><span class="rg" role="radiogroup" aria-label="表 7.3D 场景 7 能不能做"><label class="ro" for="t73d-c7-1"><input type="radio" name="t73d-c7" id="t73d-c7-1" value="能" data-fill data-label="表 7.3D 场景 7 能不能做" data-text="能" data-req><span>能</span></label><label class="ro" for="t73d-c7-2"><input type="radio" name="t73d-c7" id="t73d-c7-2" value="有条件" data-fill data-label="表 7.3D 场景 7 能不能做" data-text="有条件" data-req><span>有条件</span></label><label class="ro" for="t73d-c7-3"><input type="radio" name="t73d-c7" id="t73d-c7-3" value="不能" data-fill data-label="表 7.3D 场景 7 能不能做" data-text="不能" data-req><span>不能</span></label></span></td><td data-lb="该怎么做"><input type="text" class="in" id="t73d-h7" data-fill data-label="表 7.3D 场景 7 该怎么做" aria-label="表 7.3D 场景 7 该怎么做"></td><td data-lb="出事了怎么办"><input type="text" class="in" id="t73d-x7" data-fill data-label="表 7.3D 场景 7 出事了怎么办" aria-label="表 7.3D 场景 7 出事了怎么办"></td><td data-lb="讲师评分"><span class="rg" role="radiogroup" aria-label="表 7.3D 场景 7 讲师评分"><label class="ro" for="t73d-g7-1"><input type="radio" name="t73d-g7" id="t73d-g7-1" value="对" data-fill data-label="表 7.3D 场景 7 讲师评分" data-text="对"><span>对</span></label><label class="ro" for="t73d-g7-2"><input type="radio" name="t73d-g7" id="t73d-g7-2" value="部分对" data-fill data-label="表 7.3D 场景 7 讲师评分" data-text="部分对"><span>部分对</span></label><label class="ro" for="t73d-g7-3"><input type="radio" name="t73d-g7" id="t73d-g7-3" value="错" data-fill data-label="表 7.3D 场景 7 讲师评分" data-text="错"><span>错</span></label></span></td></tr><tr><td class="rh n">08</td><td data-lb="场景"><input type="text" class="in" id="t73d-s8" data-fill data-label="表 7.3D 场景 8" aria-label="表 7.3D 场景 8"></td><td data-lb="能不能做"><span class="rg" role="radiogroup" aria-label="表 7.3D 场景 8 能不能做"><label class="ro" for="t73d-c8-1"><input type="radio" name="t73d-c8" id="t73d-c8-1" value="能" data-fill data-label="表 7.3D 场景 8 能不能做" data-text="能" data-req><span>能</span></label><label class="ro" for="t73d-c8-2"><input type="radio" name="t73d-c8" id="t73d-c8-2" value="有条件" data-fill data-label="表 7.3D 场景 8 能不能做" data-text="有条件" data-req><span>有条件</span></label><label class="ro" for="t73d-c8-3"><input type="radio" name="t73d-c8" id="t73d-c8-3" value="不能" data-fill data-label="表 7.3D 场景 8 能不能做" data-text="不能" data-req><span>不能</span></label></span></td><td data-lb="该怎么做"><input type="text" class="in" id="t73d-h8" data-fill data-label="表 7.3D 场景 8 该怎么做" aria-label="表 7.3D 场景 8 该怎么做"></td><td data-lb="出事了怎么办"><input type="text" class="in" id="t73d-x8" data-fill data-label="表 7.3D 场景 8 出事了怎么办" aria-label="表 7.3D 场景 8 出事了怎么办"></td><td data-lb="讲师评分"><span class="rg" role="radiogroup" aria-label="表 7.3D 场景 8 讲师评分"><label class="ro" for="t73d-g8-1"><input type="radio" name="t73d-g8" id="t73d-g8-1" value="对" data-fill data-label="表 7.3D 场景 8 讲师评分" data-text="对"><span>对</span></label><label class="ro" for="t73d-g8-2"><input type="radio" name="t73d-g8" id="t73d-g8-2" value="部分对" data-fill data-label="表 7.3D 场景 8 讲师评分" data-text="部分对"><span>部分对</span></label><label class="ro" for="t73d-g8-3"><input type="radio" name="t73d-g8" id="t73d-g8-3" value="错" data-fill data-label="表 7.3D 场景 8 讲师评分" data-text="错"><span>错</span></label></span></td></tr><tr><td class="rh n">09</td><td data-lb="场景"><input type="text" class="in" id="t73d-s9" data-fill data-label="表 7.3D 场景 9" aria-label="表 7.3D 场景 9"></td><td data-lb="能不能做"><span class="rg" role="radiogroup" aria-label="表 7.3D 场景 9 能不能做"><label class="ro" for="t73d-c9-1"><input type="radio" name="t73d-c9" id="t73d-c9-1" value="能" data-fill data-label="表 7.3D 场景 9 能不能做" data-text="能" data-req><span>能</span></label><label class="ro" for="t73d-c9-2"><input type="radio" name="t73d-c9" id="t73d-c9-2" value="有条件" data-fill data-label="表 7.3D 场景 9 能不能做" data-text="有条件" data-req><span>有条件</span></label><label class="ro" for="t73d-c9-3"><input type="radio" name="t73d-c9" id="t73d-c9-3" value="不能" data-fill data-label="表 7.3D 场景 9 能不能做" data-text="不能" data-req><span>不能</span></label></span></td><td data-lb="该怎么做"><input type="text" class="in" id="t73d-h9" data-fill data-label="表 7.3D 场景 9 该怎么做" aria-label="表 7.3D 场景 9 该怎么做"></td><td data-lb="出事了怎么办"><input type="text" class="in" id="t73d-x9" data-fill data-label="表 7.3D 场景 9 出事了怎么办" aria-label="表 7.3D 场景 9 出事了怎么办"></td><td data-lb="讲师评分"><span class="rg" role="radiogroup" aria-label="表 7.3D 场景 9 讲师评分"><label class="ro" for="t73d-g9-1"><input type="radio" name="t73d-g9" id="t73d-g9-1" value="对" data-fill data-label="表 7.3D 场景 9 讲师评分" data-text="对"><span>对</span></label><label class="ro" for="t73d-g9-2"><input type="radio" name="t73d-g9" id="t73d-g9-2" value="部分对" data-fill data-label="表 7.3D 场景 9 讲师评分" data-text="部分对"><span>部分对</span></label><label class="ro" for="t73d-g9-3"><input type="radio" name="t73d-g9" id="t73d-g9-3" value="错" data-fill data-label="表 7.3D 场景 9 讲师评分" data-text="错"><span>错</span></label></span></td></tr><tr><td class="rh n">10</td><td data-lb="场景"><input type="text" class="in" id="t73d-s10" data-fill data-label="表 7.3D 场景 10" aria-label="表 7.3D 场景 10"></td><td data-lb="能不能做"><span class="rg" role="radiogroup" aria-label="表 7.3D 场景 10 能不能做"><label class="ro" for="t73d-c10-1"><input type="radio" name="t73d-c10" id="t73d-c10-1" value="能" data-fill data-label="表 7.3D 场景 10 能不能做" data-text="能" data-req><span>能</span></label><label class="ro" for="t73d-c10-2"><input type="radio" name="t73d-c10" id="t73d-c10-2" value="有条件" data-fill data-label="表 7.3D 场景 10 能不能做" data-text="有条件" data-req><span>有条件</span></label><label class="ro" for="t73d-c10-3"><input type="radio" name="t73d-c10" id="t73d-c10-3" value="不能" data-fill data-label="表 7.3D 场景 10 能不能做" data-text="不能" data-req><span>不能</span></label></span></td><td data-lb="该怎么做"><input type="text" class="in" id="t73d-h10" data-fill data-label="表 7.3D 场景 10 该怎么做" aria-label="表 7.3D 场景 10 该怎么做"></td><td data-lb="出事了怎么办"><input type="text" class="in" id="t73d-x10" data-fill data-label="表 7.3D 场景 10 出事了怎么办" aria-label="表 7.3D 场景 10 出事了怎么办"></td><td data-lb="讲师评分"><span class="rg" role="radiogroup" aria-label="表 7.3D 场景 10 讲师评分"><label class="ro" for="t73d-g10-1"><input type="radio" name="t73d-g10" id="t73d-g10-1" value="对" data-fill data-label="表 7.3D 场景 10 讲师评分" data-text="对"><span>对</span></label><label class="ro" for="t73d-g10-2"><input type="radio" name="t73d-g10" id="t73d-g10-2" value="部分对" data-fill data-label="表 7.3D 场景 10 讲师评分" data-text="部分对"><span>部分对</span></label><label class="ro" for="t73d-g10-3"><input type="radio" name="t73d-g10" id="t73d-g10-3" value="错" data-fill data-label="表 7.3D 场景 10 讲师评分" data-text="错"><span>错</span></label></span></td></tr></tbody></table></div><div class="result" id="t73d-res" data-copy aria-live="polite"><h4>场景得分</h4><div class="rbody">—</div></div></section><section class="sheet core" id="t7-4" data-sid="t7-4" data-title="表 7.4 30 天执行表与陪跑节点"><div class="sh-head"><span class="code">表 7.4</span><h2>30 天执行表与陪跑节点</h2><div class="sh-meta"><span class="chip dx">计划</span><span class="chip ref">记录</span><span class="chip calc">自动计算</span><span>结营当天排好 · 第 7、14、30 天交</span><a href="outline-v5.html#x7-4">大纲 7.4</a><span class="prog" data-prog="t7-4">选填</span></div></div><p class="howfill"><b>怎么填</b>填上结营日期，三个交作业的日子会自动算出来。没达标的出课标准写进下面，定好补的动作和截止日期。第 30 天交第一单完整复盘，按最下面的格式填。</p><div class="fgrid c2"><div class="f"><span class="fl">结营日期</span><input type="date" class="in date" id="t74-start" data-fill data-label="表 7.4 结营日期" aria-label="表 7.4 结营日期" data-req></div><div class="f"><span class="fl">我走的路</span><select class="in sel" id="t74-path" data-fill data-label="表 7.4 我走的路" aria-label="表 7.4 我走的路" data-req><option value="">请选择</option><option value="关系路径">关系路径</option><option value="内容路径">内容路径</option><option value="付费路径">付费路径</option><option value="本地路径">本地路径</option><option value="平台路径">平台路径</option></select></div></div><div class="tscroll"><table class="wt stack"><thead><tr><th>节点</th><th>交什么</th><th>截止日期</th><th>我要交的</th><th>已交</th><th>讲师反馈</th></tr></thead><tbody><tr><td class="rh">第 7 天</td><td data-lb="交什么">所选路径的第一批动作记录<small>内容路径交视频，关系路径交触达记录，本地路径交入驻或地推记录，付费路径交试投数据，平台路径交发帖记录</small></td><td class="calc" data-lb="截止日期"><span id="t74-due7">—</span></td><td data-lb="我要交的"><input type="text" class="in" id="t74-mine7" data-fill data-label="表 7.4 第 7 天 我要交的" aria-label="表 7.4 第 7 天 我要交的" data-req placeholder="例：7 天触达记录，共 70 人"></td><td data-lb="已交"><label class="ck" for="t74-done7"><input type="checkbox" id="t74-done7" data-fill data-label="表 7.4 第 7 天 已交" aria-label="表 7.4 第 7 天 已交"><span></span></label></td><td data-lb="讲师反馈"><input type="text" class="in" id="t74-fb7" data-fill data-label="表 7.4 第 7 天 讲师反馈" aria-label="表 7.4 第 7 天 讲师反馈"></td></tr><tr><td class="rh">第 14 天</td><td data-lb="交什么">加微记录与标签体系截图<small>标签要含路径来源</small></td><td class="calc" data-lb="截止日期"><span id="t74-due14">—</span></td><td data-lb="我要交的"><input type="text" class="in" id="t74-mine14" data-fill data-label="表 7.4 第 14 天 我要交的" aria-label="表 7.4 第 14 天 我要交的" data-req></td><td data-lb="已交"><label class="ck" for="t74-done14"><input type="checkbox" id="t74-done14" data-fill data-label="表 7.4 第 14 天 已交" aria-label="表 7.4 第 14 天 已交"><span></span></label></td><td data-lb="讲师反馈"><input type="text" class="in" id="t74-fb14" data-fill data-label="表 7.4 第 14 天 讲师反馈" aria-label="表 7.4 第 14 天 讲师反馈"></td></tr><tr><td class="rh">第 30 天</td><td data-lb="交什么">第一单完整复盘<small>来源路径、鉴定处理方式、收价、出价、渠道、天数、毛利，以及来源核查、协议、存证是否齐全</small></td><td class="calc" data-lb="截止日期"><span id="t74-due30">—</span></td><td data-lb="我要交的"><input type="text" class="in" id="t74-mine30" data-fill data-label="表 7.4 第 30 天 我要交的" aria-label="表 7.4 第 30 天 我要交的" data-req></td><td data-lb="已交"><label class="ck" for="t74-done30"><input type="checkbox" id="t74-done30" data-fill data-label="表 7.4 第 30 天 已交" aria-label="表 7.4 第 30 天 已交"><span></span></label></td><td data-lb="讲师反馈"><input type="text" class="in" id="t74-fb30" data-fill data-label="表 7.4 第 30 天 讲师反馈" aria-label="表 7.4 第 30 天 讲师反馈"></td></tr></tbody></table></div><h3 class="sub-h">没达标的出课标准，写进 30 天</h3><div class="tscroll"><table class="wt stack"><thead><tr><th>#</th><th>没达标的项</th><th>哪一站</th><th>补的动作</th><th>截止日期</th><th>已补</th></tr></thead><tbody><tr><td class="rh n">1</td><td data-lb="没达标的项"><input type="text" class="in" id="t74-g1" data-fill data-label="表 7.4 没达标的项 1" aria-label="表 7.4 没达标的项 1" placeholder="例：兜底资源还差 1 个同行复核"></td><td data-lb="哪一站"><select class="in sel" id="t74-gs1" data-fill data-label="表 7.4 没达标的项 1 哪一站" aria-label="表 7.4 没达标的项 1 哪一站"><option value="">请选择</option><option value="定位">定位</option><option value="获客">获客</option><option value="承接">承接</option><option value="转化">转化</option><option value="鉴定">鉴定</option><option value="交易闭环">交易闭环</option><option value="结营">结营</option></select></td><td data-lb="补的动作"><input type="text" class="in" id="t74-ga1" data-fill data-label="表 7.4 没达标的项 1 补的动作" aria-label="表 7.4 没达标的项 1 补的动作"></td><td data-lb="截止日期"><input type="date" class="in date" id="t74-gd1" data-fill data-label="表 7.4 没达标的项 1 截止日期" aria-label="表 7.4 没达标的项 1 截止日期"></td><td data-lb="已补"><label class="ck" for="t74-gc1"><input type="checkbox" id="t74-gc1" data-fill data-label="表 7.4 没达标的项 1 已补" aria-label="表 7.4 没达标的项 1 已补"><span></span></label></td></tr><tr><td class="rh n">2</td><td data-lb="没达标的项"><input type="text" class="in" id="t74-g2" data-fill data-label="表 7.4 没达标的项 2" aria-label="表 7.4 没达标的项 2"></td><td data-lb="哪一站"><select class="in sel" id="t74-gs2" data-fill data-label="表 7.4 没达标的项 2 哪一站" aria-label="表 7.4 没达标的项 2 哪一站"><option value="">请选择</option><option value="定位">定位</option><option value="获客">获客</option><option value="承接">承接</option><option value="转化">转化</option><option value="鉴定">鉴定</option><option value="交易闭环">交易闭环</option><option value="结营">结营</option></select></td><td data-lb="补的动作"><input type="text" class="in" id="t74-ga2" data-fill data-label="表 7.4 没达标的项 2 补的动作" aria-label="表 7.4 没达标的项 2 补的动作"></td><td data-lb="截止日期"><input type="date" class="in date" id="t74-gd2" data-fill data-label="表 7.4 没达标的项 2 截止日期" aria-label="表 7.4 没达标的项 2 截止日期"></td><td data-lb="已补"><label class="ck" for="t74-gc2"><input type="checkbox" id="t74-gc2" data-fill data-label="表 7.4 没达标的项 2 已补" aria-label="表 7.4 没达标的项 2 已补"><span></span></label></td></tr><tr><td class="rh n">3</td><td data-lb="没达标的项"><input type="text" class="in" id="t74-g3" data-fill data-label="表 7.4 没达标的项 3" aria-label="表 7.4 没达标的项 3"></td><td data-lb="哪一站"><select class="in sel" id="t74-gs3" data-fill data-label="表 7.4 没达标的项 3 哪一站" aria-label="表 7.4 没达标的项 3 哪一站"><option value="">请选择</option><option value="定位">定位</option><option value="获客">获客</option><option value="承接">承接</option><option value="转化">转化</option><option value="鉴定">鉴定</option><option value="交易闭环">交易闭环</option><option value="结营">结营</option></select></td><td data-lb="补的动作"><input type="text" class="in" id="t74-ga3" data-fill data-label="表 7.4 没达标的项 3 补的动作" aria-label="表 7.4 没达标的项 3 补的动作"></td><td data-lb="截止日期"><input type="date" class="in date" id="t74-gd3" data-fill data-label="表 7.4 没达标的项 3 截止日期" aria-label="表 7.4 没达标的项 3 截止日期"></td><td data-lb="已补"><label class="ck" for="t74-gc3"><input type="checkbox" id="t74-gc3" data-fill data-label="表 7.4 没达标的项 3 已补" aria-label="表 7.4 没达标的项 3 已补"><span></span></label></td></tr><tr><td class="rh n">4</td><td data-lb="没达标的项"><input type="text" class="in" id="t74-g4" data-fill data-label="表 7.4 没达标的项 4" aria-label="表 7.4 没达标的项 4"></td><td data-lb="哪一站"><select class="in sel" id="t74-gs4" data-fill data-label="表 7.4 没达标的项 4 哪一站" aria-label="表 7.4 没达标的项 4 哪一站"><option value="">请选择</option><option value="定位">定位</option><option value="获客">获客</option><option value="承接">承接</option><option value="转化">转化</option><option value="鉴定">鉴定</option><option value="交易闭环">交易闭环</option><option value="结营">结营</option></select></td><td data-lb="补的动作"><input type="text" class="in" id="t74-ga4" data-fill data-label="表 7.4 没达标的项 4 补的动作" aria-label="表 7.4 没达标的项 4 补的动作"></td><td data-lb="截止日期"><input type="date" class="in date" id="t74-gd4" data-fill data-label="表 7.4 没达标的项 4 截止日期" aria-label="表 7.4 没达标的项 4 截止日期"></td><td data-lb="已补"><label class="ck" for="t74-gc4"><input type="checkbox" id="t74-gc4" data-fill data-label="表 7.4 没达标的项 4 已补" aria-label="表 7.4 没达标的项 4 已补"><span></span></label></td></tr><tr><td class="rh n">5</td><td data-lb="没达标的项"><input type="text" class="in" id="t74-g5" data-fill data-label="表 7.4 没达标的项 5" aria-label="表 7.4 没达标的项 5"></td><td data-lb="哪一站"><select class="in sel" id="t74-gs5" data-fill data-label="表 7.4 没达标的项 5 哪一站" aria-label="表 7.4 没达标的项 5 哪一站"><option value="">请选择</option><option value="定位">定位</option><option value="获客">获客</option><option value="承接">承接</option><option value="转化">转化</option><option value="鉴定">鉴定</option><option value="交易闭环">交易闭环</option><option value="结营">结营</option></select></td><td data-lb="补的动作"><input type="text" class="in" id="t74-ga5" data-fill data-label="表 7.4 没达标的项 5 补的动作" aria-label="表 7.4 没达标的项 5 补的动作"></td><td data-lb="截止日期"><input type="date" class="in date" id="t74-gd5" data-fill data-label="表 7.4 没达标的项 5 截止日期" aria-label="表 7.4 没达标的项 5 截止日期"></td><td data-lb="已补"><label class="ck" for="t74-gc5"><input type="checkbox" id="t74-gc5" data-fill data-label="表 7.4 没达标的项 5 已补" aria-label="表 7.4 没达标的项 5 已补"><span></span></label></td></tr></tbody></table></div><h3 class="sub-h">第 30 天：第一单完整复盘</h3><div class="fgrid c2"><div class="f"><span class="fl">来源路径</span><select class="in sel" id="t74-f-path" data-fill data-label="表 7.4 第一单 来源路径" aria-label="表 7.4 第一单 来源路径"><option value="">请选择</option><option value="关系路径">关系路径</option><option value="内容路径">内容路径</option><option value="付费路径">付费路径</option><option value="本地路径">本地路径</option><option value="平台路径">平台路径</option></select></div><div class="f"><span class="fl">鉴定处理方式</span><select class="in sel" id="t74-f-auth" data-fill data-label="表 7.4 第一单 鉴定处理方式" aria-label="表 7.4 第一单 鉴定处理方式"><option value="">请选择</option><option value="自己判">自己判</option><option value="送机构鉴定">送机构鉴定</option><option value="上游兜底">上游兜底</option><option value="同行复核">同行复核</option><option value="居间撮合">居间撮合</option></select></div><div class="f"><span class="fl">收价</span><span class="numw"><input type="number" class="in num" id="t74-f-buy" inputmode="decimal" step="any" min="0" data-fill data-label="表 7.4 第一单 收价" aria-label="表 7.4 第一单 收价"><span class="u">元</span></span></div><div class="f"><span class="fl">出价</span><span class="numw"><input type="number" class="in num" id="t74-f-sell" inputmode="decimal" step="any" min="0" data-fill data-label="表 7.4 第一单 出价" aria-label="表 7.4 第一单 出价"><span class="u">元</span></span></div><div class="f"><span class="fl">渠道费用（佣金、物流、鉴定）</span><span class="numw"><input type="number" class="in num" id="t74-f-fee" inputmode="decimal" step="any" min="0" data-fill data-label="表 7.4 第一单 渠道费用" aria-label="表 7.4 第一单 渠道费用"><span class="u">元</span></span></div><div class="f"><span class="fl">出货渠道</span><select class="in sel" id="t74-f-ch" data-fill data-label="表 7.4 第一单 出货渠道" aria-label="表 7.4 第一单 出货渠道"><option value="">请选择</option><option value="上游与同行直出">上游与同行直出</option><option value="得物">得物</option><option value="平台寄卖">平台寄卖</option><option value="直播间寄卖">直播间寄卖</option><option value="B 端平台">B 端平台</option><option value="自己零售">自己零售</option><option value="拍卖">拍卖</option><option value="其他出口">其他出口</option></select></div><div class="f"><span class="fl">从收到出用了几天</span><span class="numw"><input type="number" class="in num" id="t74-f-days" inputmode="decimal" step="any" min="0" data-fill data-label="表 7.4 第一单 天数" aria-label="表 7.4 第一单 天数"><span class="u">天</span></span></div><div class="f"><span class="fl">毛利</span><span id="t74-f-gp">—</span></div><div class="f"><span class="fl">来源核查</span><label class="ck" for="t74-f-src"><input type="checkbox" id="t74-f-src" data-fill data-label="表 7.4 第一单 来源核查" aria-label="表 7.4 第一单 来源核查"><span>齐全</span></label></div><div class="f"><span class="fl">协议</span><label class="ck" for="t74-f-agr"><input type="checkbox" id="t74-f-agr" data-fill data-label="表 7.4 第一单 协议" aria-label="表 7.4 第一单 协议"><span>齐全</span></label></div><div class="f"><span class="fl">存证</span><label class="ck" for="t74-f-evi"><input type="checkbox" id="t74-f-evi" data-fill data-label="表 7.4 第一单 存证" aria-label="表 7.4 第一单 存证"><span>齐全</span></label></div></div><div class="result" id="t74-res" data-copy aria-live="polite"><h4>30 天节点</h4><div class="rbody">—</div></div></section><section class="sheet core" id="t7-5" data-sid="t7-5" data-title="表 7.5 出课标准逐项确认"><div class="sh-head"><span class="code">表 7.5</span><h2>出课标准逐项确认</h2><div class="sh-meta"><span class="chip sign">确认单</span><span class="chip calc">自动计算</span><span>结营 · 7.5 当面确认</span><a href="outline-v5.html#x7-5">大纲 7.5</a><span class="prog" data-prog="t7-5">选填</span></div></div><p class="howfill"><b>怎么填</b>六站加结营的出课标准，逐项当面确认到手，缺哪项当场补；补不上的，写进表 7.4，并在最右一列勾上。"30 天后应该做到"是陪跑的考核口径。</p><div class="tscroll"><table class="wt stack wide"><thead><tr><th>模块</th><th>出课当天能做到</th><th>30 天后应该做到</th><th>对应的表</th><th>确认</th><th>没达标已写进 7.4</th></tr></thead><tbody><tr><td class="rh">一 定位</td><td data-lb="出课当天能做到">说清三张牌、每天该完成多少动作 · 说得出自己最可能踩的三类风险</td><td class="sm" data-lb="30 天后应该做到">起步路径跑通一轮，用真实数据替换测算表的假设 · 止损线没破过</td><td class="sm" data-lb="对应的表"><a href="positioning-diagnosis.html#t1-5b">表 1.5B</a> · <a href="positioning-diagnosis.html#t1-4">1.4</a> · <a href="positioning-diagnosis.html#t1-10">1.10</a></td><td data-lb="确认"><span class="rg col nw" role="radiogroup" aria-label="表 7.5 一 定位 出课当天"><label class="ro" for="t75-s1-1"><input type="radio" name="t75-s1" id="t75-s1-1" value="已达标" data-fill data-label="表 7.5 一 定位 出课当天" data-text="已达标" data-req><span>已达标</span></label><label class="ro" for="t75-s1-2"><input type="radio" name="t75-s1" id="t75-s1-2" value="没达标" data-fill data-label="表 7.5 一 定位 出课当天" data-text="没达标" data-req><span>没达标</span></label></span></td><td data-lb="没达标已写进 7.4"><label class="ck" for="t75-m1"><input type="checkbox" id="t75-m1" data-fill data-label="表 7.5 一 定位 没达标已写进表 7.4" aria-label="表 7.5 一 定位 没达标已写进表 7.4"><span></span></label></td></tr><tr><td class="rh">二 获客</td><td data-lb="出课当天能做到">选定一条路并说清为什么 · 完成该路径的启动动作 · 说得出这条路最可能翻车的三件事</td><td class="sm" data-lb="30 天后应该做到">所选路径连续跑满 30 天，有可分析的数据 · 没有因为违规被限流或封号</td><td class="sm" data-lb="对应的表"><a href="acquisition-diagnosis.html#t2-1b">表 2.1B</a> · <a href="acquisition-diagnosis.html#t2-7b">2.7B</a> · <a href="acquisition-diagnosis.html#t2-8">2.8</a></td><td data-lb="确认"><span class="rg col nw" role="radiogroup" aria-label="表 7.5 二 获客 出课当天"><label class="ro" for="t75-s2-1"><input type="radio" name="t75-s2" id="t75-s2-1" value="已达标" data-fill data-label="表 7.5 二 获客 出课当天" data-text="已达标" data-req><span>已达标</span></label><label class="ro" for="t75-s2-2"><input type="radio" name="t75-s2" id="t75-s2-2" value="没达标" data-fill data-label="表 7.5 二 获客 出课当天" data-text="没达标" data-req><span>没达标</span></label></span></td><td data-lb="没达标已写进 7.4"><label class="ck" for="t75-m2"><input type="checkbox" id="t75-m2" data-fill data-label="表 7.5 二 获客 没达标已写进表 7.4" aria-label="表 7.5 二 获客 没达标已写进表 7.4"><span></span></label></td></tr><tr><td class="rh">三 承接</td><td data-lb="出课当天能做到">钩子话术写完 · 标签体系建完并导入真实好友 · 私域号归属登记完</td><td class="sm" data-lb="30 天后应该做到">能算出公域转私域转化率，知道卡在哪一步 · 好友和标签至少备份过一次</td><td class="sm" data-lb="对应的表"><a href="intake-diagnosis.html#t3-2">表 3.2</a> · <a href="intake-diagnosis.html#t3-4b">3.4B</a> · <a href="intake-diagnosis.html#t3-1a">3.1A</a></td><td data-lb="确认"><span class="rg col nw" role="radiogroup" aria-label="表 7.5 三 承接 出课当天"><label class="ro" for="t75-s3-1"><input type="radio" name="t75-s3" id="t75-s3-1" value="已达标" data-fill data-label="表 7.5 三 承接 出课当天" data-text="已达标" data-req><span>已达标</span></label><label class="ro" for="t75-s3-2"><input type="radio" name="t75-s3" id="t75-s3-2" value="没达标" data-fill data-label="表 7.5 三 承接 出课当天" data-text="没达标" data-req><span>没达标</span></label></span></td><td data-lb="没达标已写进 7.4"><label class="ck" for="t75-m3"><input type="checkbox" id="t75-m3" data-fill data-label="表 7.5 三 承接 没达标已写进表 7.4" aria-label="表 7.5 三 承接 没达标已写进表 7.4"><span></span></label></td></tr><tr><td class="rh">四 转化</td><td data-lb="出课当天能做到">微信改完 · 问诊对练通过 · 收到第一批可用的客户图</td><td class="sm" data-lb="30 天后应该做到">朋友圈稳定输出 · 能把陌生咨询聊到愿意发图报价 · 问诊时会记下来源异常</td><td class="sm" data-lb="对应的表"><a href="conversion-diagnosis.html#t4-1">表 4.1</a> · <a href="conversion-diagnosis.html#t4-3a">4.3A</a> · <a href="conversion-diagnosis.html#t4-4b">4.4B</a></td><td data-lb="确认"><span class="rg col nw" role="radiogroup" aria-label="表 7.5 四 转化 出课当天"><label class="ro" for="t75-s4-1"><input type="radio" name="t75-s4" id="t75-s4-1" value="已达标" data-fill data-label="表 7.5 四 转化 出课当天" data-text="已达标" data-req><span>已达标</span></label><label class="ro" for="t75-s4-2"><input type="radio" name="t75-s4" id="t75-s4-2" value="没达标" data-fill data-label="表 7.5 四 转化 出课当天" data-text="没达标" data-req><span>没达标</span></label></span></td><td data-lb="没达标已写进 7.4"><label class="ck" for="t75-m4"><input type="checkbox" id="t75-m4" data-fill data-label="表 7.5 四 转化 没达标已写进表 7.4" aria-label="表 7.5 四 转化 没达标已写进表 7.4"><span></span></label></td></tr><tr><td class="rh">五 鉴定</td><td data-lb="出课当天能做到">常见款走完整动线并给出判断 · 30 秒排除明显假货 · 说得出每种情况走决策表哪一条</td><td class="sm" data-lb="30 天后应该做到">主打品类常见款独立判定 · 兜底体系建起来 · 没有因为逞强收错货</td><td class="sm" data-lb="对应的表"><a href="authentication-diagnosis.html#t5-3a">表 5.3A</a> · <a href="authentication-diagnosis.html#t5-3b">5.3B</a> · <a href="authentication-diagnosis.html#t5-2a">5.2A</a></td><td data-lb="确认"><span class="rg col nw" role="radiogroup" aria-label="表 7.5 五 鉴定 出课当天"><label class="ro" for="t75-s5-1"><input type="radio" name="t75-s5" id="t75-s5-1" value="已达标" data-fill data-label="表 7.5 五 鉴定 出课当天" data-text="已达标" data-req><span>已达标</span></label><label class="ro" for="t75-s5-2"><input type="radio" name="t75-s5" id="t75-s5-2" value="没达标" data-fill data-label="表 7.5 五 鉴定 出课当天" data-text="没达标" data-req><span>没达标</span></label></span></td><td data-lb="没达标已写进 7.4"><label class="ck" for="t75-m5"><input type="checkbox" id="t75-m5" data-fill data-label="表 7.5 五 鉴定 没达标已写进表 7.4" aria-label="表 7.5 五 鉴定 没达标已写进表 7.4"><span></span></label></td></tr><tr><td class="rh">六 估价与报价</td><td data-lb="出课当天能做到">盲报误差进入可接受区间 · 十大场景对练通过 · 知道估不准时该问谁</td><td class="sm" data-lb="30 天后应该做到">有自己每周更新的行情表 · 报价不再被客户带着走</td><td class="sm" data-lb="对应的表"><a href="transaction-diagnosis.html#t6-2e">表 6.2E</a> · <a href="transaction-diagnosis.html#t6-3b">6.3B</a> · <a href="transaction-diagnosis.html#t6-2c">6.2C</a></td><td data-lb="确认"><span class="rg col nw" role="radiogroup" aria-label="表 7.5 六 估价与报价 出课当天"><label class="ro" for="t75-s6-1"><input type="radio" name="t75-s6" id="t75-s6-1" value="已达标" data-fill data-label="表 7.5 六 估价与报价 出课当天" data-text="已达标" data-req><span>已达标</span></label><label class="ro" for="t75-s6-2"><input type="radio" name="t75-s6" id="t75-s6-2" value="没达标" data-fill data-label="表 7.5 六 估价与报价 出课当天" data-text="没达标" data-req><span>没达标</span></label></span></td><td data-lb="没达标已写进 7.4"><label class="ck" for="t75-m6"><input type="checkbox" id="t75-m6" data-fill data-label="表 7.5 六 估价与报价 没达标已写进表 7.4" aria-label="表 7.5 六 估价与报价 没达标已写进表 7.4"><span></span></label></td></tr><tr><td class="rh">六 成交</td><td data-lb="出课当天能做到">照着 SOP 走完一遍模拟成交 · 十场景判断通过 · 协议填完自己的信息</td><td class="sm" data-lb="30 天后应该做到">完成第一单真实成交，全流程有单据、有协议、有存证</td><td class="sm" data-lb="对应的表"><a href="transaction-diagnosis.html#t6-4a">表 6.4A</a> · <a href="transaction-diagnosis.html#t6-4f">6.4F</a> · <a href="transaction-diagnosis.html#t6-4c">6.4C</a></td><td data-lb="确认"><span class="rg col nw" role="radiogroup" aria-label="表 7.5 六 成交 出课当天"><label class="ro" for="t75-s7-1"><input type="radio" name="t75-s7" id="t75-s7-1" value="已达标" data-fill data-label="表 7.5 六 成交 出课当天" data-text="已达标" data-req><span>已达标</span></label><label class="ro" for="t75-s7-2"><input type="radio" name="t75-s7" id="t75-s7-2" value="没达标" data-fill data-label="表 7.5 六 成交 出课当天" data-text="没达标" data-req><span>没达标</span></label></span></td><td data-lb="没达标已写进 7.4"><label class="ck" for="t75-m7"><input type="checkbox" id="t75-m7" data-fill data-label="表 7.5 六 成交 没达标已写进表 7.4" aria-label="表 7.5 六 成交 没达标已写进表 7.4"><span></span></label></td></tr><tr><td class="rh">六 出货</td><td data-lb="出课当天能做到">20 件货分渠道通过 · 加上至少 3 个真实渠道联系人</td><td class="sm" data-lb="30 天后应该做到">第一批货出掉并算清到手价 · 周转天数在健康线内 · 没有一单先货后款</td><td class="sm" data-lb="对应的表"><a href="transaction-diagnosis.html#t6-5a">表 6.5A</a> · <a href="transaction-diagnosis.html#t6-2a">6.2A</a></td><td data-lb="确认"><span class="rg col nw" role="radiogroup" aria-label="表 7.5 六 出货 出课当天"><label class="ro" for="t75-s8-1"><input type="radio" name="t75-s8" id="t75-s8-1" value="已达标" data-fill data-label="表 7.5 六 出货 出课当天" data-text="已达标" data-req><span>已达标</span></label><label class="ro" for="t75-s8-2"><input type="radio" name="t75-s8" id="t75-s8-2" value="没达标" data-fill data-label="表 7.5 六 出货 出课当天" data-text="没达标" data-req><span>没达标</span></label></span></td><td data-lb="没达标已写进 7.4"><label class="ck" for="t75-m8"><input type="checkbox" id="t75-m8" data-fill data-label="表 7.5 六 出货 没达标已写进表 7.4" aria-label="表 7.5 六 出货 没达标已写进表 7.4"><span></span></label></td></tr><tr><td class="rh">六 复购</td><td data-lb="出课当天能做到">台账建完并导入已有客户 · 转介绍话术写完</td><td class="sm" data-lb="30 天后应该做到">周复盘表连续填满四周 · 出现第一个复购或转介绍客户</td><td class="sm" data-lb="对应的表"><a href="transaction-diagnosis.html#t6-6a">表 6.6A</a> · <a href="transaction-diagnosis.html#t6-6b">6.6B</a></td><td data-lb="确认"><span class="rg col nw" role="radiogroup" aria-label="表 7.5 六 复购 出课当天"><label class="ro" for="t75-s9-1"><input type="radio" name="t75-s9" id="t75-s9-1" value="已达标" data-fill data-label="表 7.5 六 复购 出课当天" data-text="已达标" data-req><span>已达标</span></label><label class="ro" for="t75-s9-2"><input type="radio" name="t75-s9" id="t75-s9-2" value="没达标" data-fill data-label="表 7.5 六 复购 出课当天" data-text="没达标" data-req><span>没达标</span></label></span></td><td data-lb="没达标已写进 7.4"><label class="ck" for="t75-m9"><input type="checkbox" id="t75-m9" data-fill data-label="表 7.5 六 复购 没达标已写进表 7.4" aria-label="表 7.5 六 复购 没达标已写进表 7.4"><span></span></label></td></tr><tr><td class="rh">六 账 · 人 · 纠纷</td><td data-lb="出课当天能做到">三本台账建好 · 说得出每类风险的第一小时该做什么</td><td class="sm" data-lb="30 天后应该做到">每一单都有合同和存证 · 三本台账在记 · 没有踩过红线</td><td class="sm" data-lb="对应的表"><a href="transaction-diagnosis.html#t6-7a">表 6.7A</a> · <a href="transaction-diagnosis.html#t6-7c">6.7C</a></td><td data-lb="确认"><span class="rg col nw" role="radiogroup" aria-label="表 7.5 六 账 · 人 · 纠纷 出课当天"><label class="ro" for="t75-s10-1"><input type="radio" name="t75-s10" id="t75-s10-1" value="已达标" data-fill data-label="表 7.5 六 账 · 人 · 纠纷 出课当天" data-text="已达标" data-req><span>已达标</span></label><label class="ro" for="t75-s10-2"><input type="radio" name="t75-s10" id="t75-s10-2" value="没达标" data-fill data-label="表 7.5 六 账 · 人 · 纠纷 出课当天" data-text="没达标" data-req><span>没达标</span></label></span></td><td data-lb="没达标已写进 7.4"><label class="ck" for="t75-m10"><input type="checkbox" id="t75-m10" data-fill data-label="表 7.5 六 账 · 人 · 纠纷 没达标已写进表 7.4" aria-label="表 7.5 六 账 · 人 · 纠纷 没达标已写进表 7.4"><span></span></label></td></tr><tr><td class="rh">结营 风控总复盘</td><td data-lb="出课当天能做到">风险自查表填完 · 该签的协议齐全 · 应急卡随身</td><td class="sm" data-lb="30 天后应该做到">每周按自查表过一遍，风控三问进周复盘</td><td class="sm" data-lb="对应的表"><a href="#t7-3a">表 7.3A</a> · <a href="#t7-3b">7.3B</a> · <a href="#t7-3c">7.3C</a></td><td data-lb="确认"><span class="rg col nw" role="radiogroup" aria-label="表 7.5 结营 风控总复盘 出课当天"><label class="ro" for="t75-s11-1"><input type="radio" name="t75-s11" id="t75-s11-1" value="已达标" data-fill data-label="表 7.5 结营 风控总复盘 出课当天" data-text="已达标" data-req><span>已达标</span></label><label class="ro" for="t75-s11-2"><input type="radio" name="t75-s11" id="t75-s11-2" value="没达标" data-fill data-label="表 7.5 结营 风控总复盘 出课当天" data-text="没达标" data-req><span>没达标</span></label></span></td><td data-lb="没达标已写进 7.4"><label class="ck" for="t75-m11"><input type="checkbox" id="t75-m11" data-fill data-label="表 7.5 结营 风控总复盘 没达标已写进表 7.4" aria-label="表 7.5 结营 风控总复盘 没达标已写进表 7.4"><span></span></label></td></tr></tbody></table></div><div class="fblock" data-reqgroup data-reqmin="1"><div class="rg"><label class="ck" for="t75-kit"><input type="checkbox" id="t75-kit" data-fill data-label="表 7.5 交付资料逐项签收" aria-label="表 7.5 交付资料逐项签收"><span>交付资料清单逐项签收了</span></label></div></div><div class="signrow"><p class="pledge">以上逐项当面确认。没达标的项已写进 30 天执行表，按截止日期补齐。</p><div class="sg"><label for="t75-sign">学员签名</label><input type="text" class="in" id="t75-sign" data-fill data-label="表 7.5 学员签名" aria-label="表 7.5 学员签名" data-req></div><div class="sg"><label for="t75-teacher">讲师签名</label><input type="text" class="in" id="t75-teacher" data-fill data-label="表 7.5 讲师签名" aria-label="表 7.5 讲师签名" data-req></div><div class="sg"><label for="t75-date">日期</label><input type="text" class="in" id="t75-date" data-fill data-label="表 7.5 日期" aria-label="表 7.5 日期" data-req placeholder="例：2026-10-12"></div></div><div class="result" id="t75-res" data-copy aria-live="polite"><h4>确认结果</h4><div class="rbody">—</div></div></section><footer>结营复盘表 v1 · 对应大纲 v5 结营 · <a href="outline-v5.html">课程大纲 v5</a> · <a href="lesson-plan-v1.html">讲师教案 v1</a><br><b>说明：</b>表里的参考值、评级和"建议口径"是常见判断，开课前由讲师按本地行情校准；涉及法律和税务的内容只讲风险意识，具体以当地规定和律师、会计意见为准。</footer></div>
+<div class="dock" id="dock" role="region" aria-label="填写工具"><div class="dk-prog"><span>必填</span><b id="dk-done">0</b><span>/</span><span id="dk-total">0</span><span class="dk-bar"><i id="dk-bar"></i></span></div><button type="button" id="btn-export">导出已填写版</button><button type="button" id="btn-copy">复制全部填写</button><button type="button" id="btn-clear" class="warn">清除本机草稿</button><span class="dk-msg" id="dk-msg" role="status" aria-live="polite"></span></div><div class="copybox" id="copybox" hidden><p>浏览器没有允许自动复制。下面的文字已经选中，按 Ctrl + C（Mac 用 ⌘ + C）复制。</p><label class="vh" for="copytext">填写内容</label><textarea id="copytext" readonly rows="10"></textarea><button type="button" id="copyclose">关闭</button></div>
+<script type="application/json" id="ws-data" data-keep>{"ask": ["鉴定", "估价", "话术", "渠道", "选题"], "six": [["ky", "开口率", "%"], ["bj", "报价率", "%"], ["cj", "成交率", "%"], ["gp", "客单毛利", "元"], ["zz", "周转天数", "天"], ["jw", "每天加微", "个"]], "red": [["不问来源、不登记身份证就收货", "不做", "官司"], ["真假存疑的货包装成正品出", "不做", "官司"], ["和未成年人、非所有人交易", "不做", "官司"], ["书面或当面替客户下\"假货\"定论", "不做", "官司"], ["拿本职工作接触到的客户资料去开发", "不做", "官司"], ["没见到钱先发货，只看转账截图就发货", "不做", "亏钱"], ["先付款后验货，尤其是异地", "不做", "亏钱"], ["判不了硬判，怕丢单", "不做", "亏钱"], ["被价格诱惑，收下必拒清单上的货", "不做", "亏钱"], ["一个人带大额现金上门", "不做", "人身"], ["文案写\"最高价\"\"保真\"\"行业第一\"", "不做", "封号"], ["用外挂、群发软件、多开", "不做", "封号"], ["跟着\"买家\"去站外交易、点陌生链接", "不做", "封号"], ["每单签协议、关键项客户签字", "必须", "官司"], ["全程录像、关键部位拍照、一单一档", "必须", "官司"], ["成交实拍先授权再打码", "必须", "官司"], ["三个账户分开，大额转账备注货品和单号", "必须", "官司"], ["验完封签、拍特征点、当场交割", "必须", "亏钱"], ["收之前过出货预判三问", "必须", "亏钱"], ["止损线写死，到线就停下复盘", "必须", "亏钱"], ["单家账期设上限，滞销到预警线就降价", "必须", "亏钱"], ["异业、上游、出镜人、员工、合伙先签协议", "必须", "亏钱"], ["私域号归老板或公司、登记在册、定期备份", "必须", "封号"], ["风控三问进周复盘", "必须", "全部"]], "agr": ["回收协议", "寄卖协议", "代收 / 撮合协议", "异业合作协议", "上游合作协议", "出镜人合作协议", "员工协议", "合伙协议"], "std": ["一 定位", "二 获客", "三 承接", "四 转化", "五 鉴定", "六 估价与报价", "六 成交", "六 出货", "六 复购", "六 账 · 人 · 纠纷", "结营 风控总复盘"], "nodes": [7, 14, 30]}</script><script type="application/json" id="fill-state" data-doc="jieying-v1" data-file="closing-review" data-title="结营复盘表" data-keep>{}</script><script data-keep>
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id); };
+  var D = {};
+  try { D = JSON.parse($('ws-data').textContent) || {}; } catch (e) { D = {}; }
+  var stateEl = $('fill-state');
+  var DOC = (stateEl && stateEl.getAttribute('data-doc')) || 'worksheet-v1';
+  var FILE = (stateEl && stateEl.getAttribute('data-file')) || 'worksheet';
+  var TITLE = (stateEl && stateEl.getAttribute('data-title')) || document.title;
+  var KEY = 'fill:' + DOC;
+  var fields = [].slice.call(document.querySelectorAll('[data-fill]'));
+  var msgEl = $('dk-msg');
+  var has = function(o, k){ return Object.prototype.hasOwnProperty.call(o, k); };
+  function copyInto(d, s){ for (var k in s) { if (has(s, k)) d[k] = String(s[k]); } return d; }
+  function say(t){ if (msgEl) msgEl.textContent = t; }
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+  var baked = {};
+  try { baked = JSON.parse(stateEl ? stateEl.textContent : '{}') || {}; } catch (e) { baked = {}; }
+  var state = copyInto({}, baked);
+  var stored = null;
+  try { stored = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { stored = null; }
+  if (stored && typeof stored === 'object') copyInto(state, stored);
+
+  function keyOf(el){ return el.type === 'radio' ? el.name : el.id; }
+  function rv(name){ var c = document.querySelector('input[type="radio"][name="' + name + '"]:checked'); return c ? c.value : ''; }
+  function getVal(el){
+    if (el.type === 'checkbox') return el.checked ? '1' : '';
+    if (el.type === 'radio') return rv(el.name);
+    return el.value;
+  }
+  function setVal(el, v){
+    if (el.type === 'checkbox') el.checked = (v === '1');
+    else if (el.type === 'radio') el.checked = (el.value === v);
+    else el.value = v;
+  }
+  function resetDefault(el){
+    if (el.type === 'checkbox' || el.type === 'radio') el.checked = el.defaultChecked;
+    else if (el.tagName === 'SELECT') {
+      el.value = '';
+      [].forEach.call(el.options, function(o){ if (o.defaultSelected) el.value = o.value; });
+    } else el.value = el.defaultValue;
+  }
+  function autosize(el){
+    if (el.tagName !== 'TEXTAREA') return;
+    el.style.height = 'auto';
+    el.style.height = (el.scrollHeight + 2) + 'px';
+  }
+  fields.forEach(function(el){ var k = keyOf(el); if (has(state, k)) setVal(el, state[k]); });
+
+  function val(id){ var el = $(id); return el ? String(el.value || '').trim() : ''; }
+  function n(id){ var s = val(id); if (s === '') return NaN; var x = parseFloat(s); return isFinite(x) ? x : NaN; }
+  function nx(id){
+    var x = n(id);
+    if (!isNaN(x)) return { v: x, ex: false };
+    var el = $(id);
+    return { v: el ? parseFloat(el.getAttribute('data-ex')) : NaN, ex: true };
+  }
+  function ck(id){ var el = $(id); return !!(el && el.checked); }
+  function fm(x, d){ if (typeof x !== 'number' || !isFinite(x)) return '—'; return x.toLocaleString('zh-CN', { maximumFractionDigits: d || 0 }); }
+  function put(id, h){ var el = $(id); if (el) el.innerHTML = h; }
+  function box(id, h){ var el = $(id); if (!el) return; var b = el.querySelector('.rbody'); if (b) b.innerHTML = h; }
+  function p(t, cls){ return '<p' + (cls ? ' class="' + cls + '"' : '') + '>' + t + '</p>'; }
+  function warns(list){ return list.map(function(t){ return p(t, 'warn'); }).join(''); }
+  function bars(rows, max){
+    return '<div class="bars">' + rows.map(function(r){
+      var w = max > 0 ? Math.max(r[1] > 0 ? 2 : 0, r[1] / max * 100) : 0;
+      return '<span class="bl">' + r[0] + '</span><span class="bar" title="' + r[0] + '：' + r[1] + '"><i style="width:' + w.toFixed(1) + '%"></i></span><span class="bn">' + fm(r[1]) + '</span>';
+    }).join('') + '</div>';
+  }
+
+  function reqUnits(sec){
+    var done = 0, total = 0, seen = {};
+    [].forEach.call(sec.querySelectorAll('[data-req]'), function(el){
+      if (el.closest && el.closest('[hidden]')) return;
+      if (el.type === 'radio') {
+        if (seen[el.name]) return;
+        seen[el.name] = 1; total++;
+        if (rv(el.name)) done++;
+        return;
+      }
+      total++;
+      if (String(el.value).trim() !== '') done++;
+    });
+    [].forEach.call(sec.querySelectorAll('[data-reqgroup]'), function(g){
+      if (g.closest && g.closest('[hidden]')) return;
+      total++;
+      var c = g.querySelectorAll('input[type="checkbox"]:checked').length;
+      var mn = parseInt(g.getAttribute('data-reqmin') || '1', 10), mx = parseInt(g.getAttribute('data-reqmax') || '0', 10);
+      if (c >= mn && (!mx || c <= mx)) done++;
+    });
+    return [done, total];
+  }
+
+
+  function sumRange(prefix, from, to, suffix){
+    var s = 0, any = false;
+    for (var i = from; i <= to; i++) { var x = n(prefix + i + (suffix || '')); if (!isNaN(x)) { s += x; any = true; } }
+    return any ? s : NaN;
+  }
+  function selfCheck(prefix, key, resId){
+    var h = selfCheckHtml(prefix, key);
+    box(resId, h || p('还没作答。'));
+  }
+  function rt(name){ var c = document.querySelector('input[type="radio"][name="' + name + '"]:checked'); return c ? c.getAttribute('data-text') : ''; }
+  function ul(items){ return items.length ? '<ul class="plain">' + items.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ul>' : ''; }
+  function nck(prefix, from, to, suffix){ var c = 0; for (var i = from; i <= to; i++) { if (ck(prefix + i + (suffix || ''))) c++; } return c; }
+  function nval(prefix, from, to, suffix){ var c = 0; for (var i = from; i <= to; i++) { if (val(prefix + i + (suffix || ''))) c++; } return c; }
+  function found(text, words){
+    var f = words.filter(function(w){ return w && text.indexOf(w) >= 0; });
+    return f.filter(function(w){ return !f.some(function(o){ return o !== w && o.indexOf(w) >= 0; }); });
+  }
+  function hasDigit(s){ return /[0-9０-９]/.test(s); }
+  function pct(a, b){ return b > 0 ? fm(a / b * 100, 1) + '%' : '—'; }
+  function reqLine(sid, doneText){
+    var r = secReq(sid);
+    if (!r[0]) return '';
+    var full = r[1] > 0 && r[0] === r[1];
+    return p('必填 ' + r[0] + ' / ' + r[1] + (full ? '。' + (doneText || '这张表可以交了。') : '。'), full ? 'ok' : '');
+  }
+  function selfCheckHtml(prefix, key){
+    var list = D[key] || [], yes = [], maybe = [], ans = 0;
+    list.forEach(function(r, i){ var v = rv(prefix + (i + 1)); if (v) ans++; if (v === '有') yes.push(i); if (v === '可能') maybe.push(i); });
+    if (!ans) return '';
+    var h = p('已答 ' + ans + ' / ' + list.length + ' 条：有 <b>' + yes.length + '</b> 条，可能 ' + maybe.length + ' 条。', yes.length ? 'warn' : 'ok');
+    var all = yes.concat(maybe);
+    if (all.length) h += '<ul class="plain">' + all.map(function(i){ var r = list[i]; return '<li>' + ('0' + (i + 1)).slice(-2) + ' ' + r[0] + ' → ' + r[1] + '</li>'; }).join('') + '</ul>';
+    return h;
+  }
+  function mark(id, text, cls){ var el = $(id); if (el) { el.textContent = text; el.className = cls || ''; } }
+  function scoreRows(count, mine, key, outPrefix){
+    var done = 0, right = 0, pending = 0;
+    for (var i = 1; i <= count; i++) {
+      var a = mine(i), b = key(i);
+      if (a && b) { done++; if (a === b) { right++; mark(outPrefix + i, '对', 'ok'); } else mark(outPrefix + i, '错', 'warn'); }
+      else if (a) { pending++; mark(outPrefix + i, '等答案', ''); }
+      else mark(outPrefix + i, '—', '');
+    }
+    return { done: done, right: right, pending: pending };
+  }
+  function today0(){ var d = new Date(); d.setHours(0, 0, 0, 0); return d; }
+  function daysSince(s){
+    if (!s) return NaN;
+    var d = new Date(s + 'T00:00:00');
+    if (isNaN(d.getTime())) return NaN;
+    return Math.round((today0() - d) / 86400000);
+  }
+  function tally(values){ var c = {}; values.forEach(function(v){ if (v) c[v] = (c[v] || 0) + 1; }); return c; }
+  function secReq(sid){ var sec = $(sid); return sec ? reqUnits(sec) : [0, 0]; }
+  function status(sid, resId, doneText){
+    var r = secReq(sid);
+    if (!r[0]) { box(resId, p('还没填。')); return false; }
+    var full = r[1] > 0 && r[0] === r[1];
+    box(resId, p('必填 ' + r[0] + ' / ' + r[1] + (full ? '。' + (doneText || '这张表可以交了。') : '。'), full ? 'ok' : ''));
+    return full;
+  }
+
+    function addDays(s, k){ var d = new Date(s + 'T00:00:00'); d.setDate(d.getDate() + k); return d; }
+  function md(d){ return (d.getMonth() + 1) + ' 月 ' + d.getDate() + ' 日'; }
+
+  function calcT71(){
+    var fed = nck('t71-f', 1, 6), asked = nval('t71-q', 1, 5);
+    if (!fed && !asked) { box('t71-res', p('还没填。')); return; }
+    var h = p('喂进去 ' + fed + ' / 6 类资料；五类问题问了 ' + asked + ' / 5 类。', fed === 6 && asked === 5 ? 'ok' : '');
+    if (rv('t71-ok1') === '能') h += p('鉴定的答案选了"能直接用"：鉴定结论绝对不能只信 AI，走动线卡和兜底复核。', 'warn');
+    var noCheck = [];
+    D.ask.forEach(function(k, i){ if (val('t71-q' + (i + 1)) && !val('t71-c' + (i + 1))) noCheck.push(k); });
+    if (noCheck.length) h += p(noCheck.join('、') + '问了但还没写怎么复核。', 'warn');
+    box('t71-res', h);
+  }
+
+  function calcT72(){
+    var big = [], any = false;
+    D.six.forEach(function(s){
+      var a = n('t72-' + s[0] + '-a'), b = n('t72-' + s[0] + '-b');
+      if (isNaN(a) || isNaN(b)) { put('t72-' + s[0] + '-d', '—'); return; }
+      any = true;
+      var d = b - a;
+      put('t72-' + s[0] + '-d', (d > 0 ? '+' : '') + fm(d, 1) + ' ' + s[2]);
+      if (a !== 0 && Math.abs(d / a) >= 0.2) big.push(s[1] + '（假设 ' + fm(a, 1) + '，真实 ' + fm(b, 1) + '）');
+    });
+    var h = reqLine('t7-2', '校准完了。第一站表 1.7B 右边一列也填上。');
+    if (!h && !any) { box('t72-res', p('还没填。')); return; }
+    if (big.length) h += p('和第一站的假设差两成以上的：' + big.join('；') + '。按真实数重算一遍表 1.4 的每天动作量。', 'warn');
+    else if (any) h += p('真实数和假设差得不多。', 'ok');
+    var ch = [];
+    if (rv('t72-cat') === '换') ch.push('品类');
+    if (rv('t72-path') === '换') ch.push('路径');
+    if (ch.length) h += p('这次改了' + ch.join('和') + '：把新的起步模式、路径和风险敞口写进表 7.4 的 30 天执行表。');
+    box('t72-res', h);
+  }
+
+  function calcT73A(){
+    var c = { '做到了': 0, '有时': 0, '没做到': 0 }, ans = 0, gaps = {};
+    D.red.forEach(function(r, i){
+      var v = rv('t73a-r' + (i + 1));
+      if (!v) return;
+      ans++; c[v]++;
+      if (v !== '做到了') (gaps[r[2]] = gaps[r[2]] || []).push(('0' + (i + 1)).slice(-2) + ' ' + r[0] + (v === '有时' ? '（有时）' : ''));
+    });
+    var pre = n('t73a-pre'), post = n('t73a-post');
+    put('t73a-diff', !isNaN(pre) && !isNaN(post) ? (post - pre > 0 ? '多了 ' + (post - pre) + ' 题' : (post - pre < 0 ? '少了 ' + (pre - post) + ' 题' : '一样')) : '—');
+    if (!ans && isNaN(pre)) { box('t73a-res', p('还没作答。')); return; }
+    var h = p('已答 ' + ans + ' / ' + D.red.length + ' 条：做到了 ' + c['做到了'] + '，有时 ' + c['有时'] + '，没做到 <b>' + c['没做到'] + '</b>。', c['没做到'] || c['有时'] ? 'warn' : 'ok');
+    ['官司', '人身', '亏钱', '封号', '全部'].forEach(function(k){
+      if (gaps[k]) h += p('<b>会' + (k === '全部' ? '让所有漏洞一直漏' : (k === '人身' ? '出人身安全问题' : (k === '官司' ? '摊上官司' : k))) + '的：</b>') + ul(gaps[k]);
+    });
+    if (!isNaN(pre) && !isNaN(post)) h += p('课前风险自测选第三项 ' + pre + ' 题，结营 ' + post + ' 题。', post < pre ? 'ok' : '');
+    box('t73a-res', h);
+  }
+
+  function calcT73B(){
+    var need = 0, miss = [], noInfo = [];
+    D.agr.forEach(function(k, i){
+      var j = i + 1;
+      if (rv('t73b-n' + j) !== '需要') return;
+      need++;
+      if (!ck('t73b-r' + j)) miss.push(k);
+      else if (!ck('t73b-m' + j)) noInfo.push(k);
+    });
+    var h = reqLine('t7-3b', '');
+    if (!h) { box('t73b-res', p('还没核对。')); return; }
+    h += p('需要的协议 ' + need + ' 份。', !miss.length && !noInfo.length ? 'ok' : '');
+    if (miss.length) h += p('还没准备：' + miss.join('、') + '。当场补。', 'warn');
+    if (noInfo.length) h += p('准备了但还没填自己的信息：' + noInfo.join('、') + '。', 'warn');
+    box('t73b-res', h);
+  }
+
+  function calcT73C(){
+    var h = reqLine('t7-3c', '合订版应急卡齐了，随身带着。');
+    box('t73c-res', h || p('还没填。'));
+  }
+
+  function calcT73D(){
+    var c = { '对': 0, '部分对': 0, '错': 0 }, done = 0;
+    for (var i = 1; i <= 10; i++) { if (rv('t73d-c' + i)) done++; var g = rv('t73d-g' + i); if (g) c[g]++; }
+    if (!done) { box('t73d-res', p('还没判断。')); return; }
+    var graded = c['对'] + c['部分对'] + c['错'];
+    var h = p('判断了 ' + done + ' / 10 个场景。');
+    if (graded) h += p('讲师评了 ' + graded + ' 个：对 ' + c['对'] + '，部分对 ' + c['部分对'] + '，错 ' + c['错'] + '；得分 ' + fm((c['对'] + c['部分对'] * 0.5) / graded * 100) + ' 分。', c['错'] ? 'warn' : 'ok');
+    box('t73d-res', h);
+  }
+
+  function calcT74(){
+    var st = val('t74-start'), today = today0(), late = [];
+    D.nodes.forEach(function(d){
+      if (!st) { put('t74-due' + d, '—'); return; }
+      var due = addDays(st, d), done = ck('t74-done' + d);
+      if (!done && due < today) { mark('t74-due' + d, md(due) + '（已过）', 'warn'); late.push('第 ' + d + ' 天'); }
+      else mark('t74-due' + d, md(due), done ? 'ok' : '');
+    });
+    var b = n('t74-f-buy'), s = n('t74-f-sell'), f = n('t74-f-fee');
+    var gp = !isNaN(b) && !isNaN(s) ? s - b - (isNaN(f) ? 0 : f) : NaN;
+    put('t74-f-gp', isNaN(gp) ? '—' : fm(gp) + ' 元');
+    var h = reqLine('t7-4', '30 天执行表排好了。');
+    if (!h && !st) { box('t74-res', p('还没填。')); return; }
+    if (late.length) h += p(late.join('、') + '的作业过了截止日期还没交。', 'warn');
+    var gaps = nval('t74-g', 1, 5), fixed = nck('t74-gc', 1, 5);
+    if (gaps) h += p('没达标的项写了 ' + gaps + ' 条，已补 ' + fixed + ' 条。');
+    if (!isNaN(gp)) {
+      h += p('第一单：收 ' + fm(b) + ' 元，出 ' + fm(s) + ' 元，毛利 <b>' + fm(gp) + '</b> 元' + (val('t74-f-days') ? '，用了 ' + val('t74-f-days') + ' 天' : '') + '。', gp > 0 ? 'ok' : 'warn');
+      var m = [];
+      if (!ck('t74-f-src')) m.push('来源核查');
+      if (!ck('t74-f-agr')) m.push('协议');
+      if (!ck('t74-f-evi')) m.push('存证');
+      if (m.length) h += p('第一单的' + m.join('、') + '不齐全：每一单都要有合同和存证。', 'warn');
+    }
+    box('t74-res', h);
+  }
+
+  function calcT75(){
+    var ok = 0, no = [], loose = [];
+    D.std.forEach(function(m, i){
+      var v = rv('t75-s' + (i + 1));
+      if (v === '已达标') ok++;
+      if (v === '没达标') { no.push(m); if (!ck('t75-m' + (i + 1))) loose.push(m); }
+    });
+    var h = reqLine('t7-5', '出课标准确认完成，学员和讲师都签了字。');
+    if (!h) { box('t75-res', p('还没确认。')); return; }
+    h += p('已达标 ' + ok + ' / ' + D.std.length + ' 个模块。', no.length ? '' : 'ok');
+    if (no.length) h += p('没达标：' + no.join('、') + '。', 'warn');
+    if (loose.length) h += p(loose.join('、') + '还没写进表 7.4：没达标的项都要写进 30 天执行表。', 'warn');
+    box('t75-res', h);
+  }
+
+  var CALCS = [calcT71, calcT72, calcT73A, calcT73B, calcT73C, calcT73D, calcT74, calcT75];
+
+
+  var dkDone = $('dk-done'), dkTotal = $('dk-total'), dkBar = $('dk-bar');
+  function progress(){
+    var done = 0, total = 0;
+    [].forEach.call(document.querySelectorAll('[data-sid]'), function(sec){
+      var sid = sec.getAttribute('data-sid');
+      var skip = typeof skipSec === 'function' && skipSec(sec);
+      sec.classList.toggle('skip', !!skip);
+      var r = skip ? [0, 0] : reqUnits(sec);
+      done += r[0]; total += r[1];
+      [].forEach.call(document.querySelectorAll('[data-prog="' + sid + '"]'), function(el){
+        el.textContent = skip ? '不是你的路，可跳过' : (r[1] ? '必填 ' + r[0] + ' / ' + r[1] : '选填');
+        el.classList.toggle('done', !skip && !!r[1] && r[0] === r[1]);
+      });
+      [].forEach.call(document.querySelectorAll('[data-st="' + sid + '"]'), function(el){
+        el.textContent = skip ? '不用交' : (!r[1] ? '选填' : (r[0] === r[1] ? '已完成' : (r[0] ? '填了 ' + r[0] + ' / ' + r[1] : '未开始')));
+        el.className = 'st' + (skip ? ' skip' : (r[1] && r[0] === r[1] ? ' done' : (r[0] ? ' part' : '')));
+      });
+    });
+    var who = $('who');
+    if (who) { var r2 = reqUnits(who); done += r2[0]; total += r2[1]; }
+    if (dkDone) dkDone.textContent = done;
+    if (dkTotal) dkTotal.textContent = total;
+    if (dkBar) dkBar.style.width = (total ? Math.round(done / total * 100) : 0) + '%';
+  }
+
+  function recalc(){
+    CALCS.forEach(function(f){ try { f(); } catch (err) { if (window.console) console.error(err); } });
+    progress();
+  }
+
+  var saveTimer = null;
+  function save(){
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function(){
+      try { localStorage.setItem(KEY, JSON.stringify(state)); say('已自动保存到本机浏览器'); }
+      catch (e) { say('这里无法自动保存，请用"导出已填写版"留存'); }
+    }, 400);
+  }
+  fields.forEach(function(el){
+    var ev = (el.type === 'checkbox' || el.type === 'radio' || el.tagName === 'SELECT') ? 'change' : 'input';
+    el.addEventListener(ev, function(){
+      state[keyOf(el)] = getVal(el);
+      autosize(el);
+      recalc();
+      save();
+    });
+  });
+  var tas = fields.filter(function(el){ return el.tagName === 'TEXTAREA'; });
+  tas.forEach(autosize);
+  recalc();
+  var rz = null;
+  window.addEventListener('resize', function(){ clearTimeout(rz); rz = setTimeout(function(){ tas.forEach(autosize); }, 150); });
+
+  var framed = false;
+  try { framed = window.self !== window.top; } catch (e) { framed = true; }
+  var dlReady = (window.claude && typeof window.claude.use === 'function')
+    ? Promise.resolve(window.claude.use('downloads')).catch(function(){ return null; })
+    : Promise.resolve(null);
+  function stamp(){
+    var d = new Date(), q = function(x){ return (x < 10 ? '0' : '') + x; };
+    return d.getFullYear() + q(d.getMonth() + 1) + q(d.getDate()) + '-' + q(d.getHours()) + q(d.getMinutes());
+  }
+  function buildExport(){
+    var root = document.documentElement.cloneNode(true);
+    fields.forEach(function(el){
+      var c = root.querySelector('#' + el.id);
+      if (!c) return;
+      if (el.tagName === 'TEXTAREA') { c.textContent = el.value; c.removeAttribute('style'); }
+      else if (el.type === 'checkbox' || el.type === 'radio') { if (el.checked) c.setAttribute('checked', ''); else c.removeAttribute('checked'); }
+      else if (el.tagName === 'SELECT') {
+        [].forEach.call(c.options, function(o){ if (o.value === el.value && el.value !== '') o.setAttribute('selected', ''); else o.removeAttribute('selected'); });
+      } else c.setAttribute('value', el.value);
+    });
+    [].forEach.call(root.querySelectorAll('script:not([data-keep])'), function(s){ s.parentNode.removeChild(s); });
+    var st = root.querySelector('#fill-state');
+    if (st) {
+      st.textContent = JSON.stringify(state).replace(/</g, '\\u003c');
+      st.setAttribute('data-doc', DOC.replace(/-\d{8}-\d{4}$/, '') + '-' + stamp());
+    }
+    [].forEach.call(root.querySelectorAll('.index a.on'), function(a){ a.classList.remove('on'); });
+    var m = root.querySelector('#dk-msg'); if (m) m.textContent = '';
+    var cb = root.querySelector('#copybox'); if (cb) cb.setAttribute('hidden', '');
+    return '<!DOCTYPE html>\n' + root.outerHTML;
+  }
+  $('btn-export').addEventListener('click', function(){
+    var html = buildExport();
+    var name = FILE + '-filled-' + stamp().slice(0, 8) + '.html';
+    dlReady.then(function(dl){
+      if (dl) {
+        return dl.save({ filename: name, data: html }).then(function(){ say('已导出：' + name); }, function(err){
+          var c = err && err.code;
+          say(c === 'declined' ? '已取消导出' : (c === 'rate_limited' ? '稍等几秒再试' : '这里暂时不能导出，可以用"复制全部填写"'));
+        });
+      }
+      if (framed) { say('这个页面里不能直接下载。可以用"复制全部填写"，或把 HTML 文件存到本地打开后再导出'); return; }
+      var url = URL.createObjectURL(new Blob([html], { type: 'text/html;charset=utf-8' }));
+      var a = document.createElement('a');
+      a.href = url; a.download = name; a.style.display = 'none';
+      document.body.appendChild(a); a.click();
+      setTimeout(function(){ URL.revokeObjectURL(url); a.parentNode.removeChild(a); }, 1500);
+      say('已导出到下载文件夹：' + name);
+    });
+  });
+
+  function unitOf(el){ var u = el.parentNode && el.parentNode.querySelector ? el.parentNode.querySelector('.u') : null; return u ? u.textContent : ''; }
+  function buildText(){
+    var out = [], head = [];
+    ['w-name', 'w-class', 'w-date', 'w-teacher'].forEach(function(id){
+      var el = $(id);
+      if (el && el.value.trim()) head.push(el.getAttribute('data-label') + '：' + el.value.trim());
+    });
+    [].forEach.call(document.querySelectorAll('[data-sid]'), function(sec){
+      var lines = [], seen = {};
+      [].forEach.call(sec.querySelectorAll('[data-fill]'), function(el){
+        var lb = (el.getAttribute('data-label') || el.id).replace(/^表 [0-9.A-Z]+ ?/, '');
+        if (el.type === 'radio') {
+          if (seen[el.name]) return;
+          seen[el.name] = 1;
+          var c = sec.querySelector('input[type="radio"][name="' + el.name + '"]:checked');
+          if (c) lines.push('· ' + lb + '：' + c.getAttribute('data-text'));
+          return;
+        }
+        if (el.type === 'checkbox') { if (el.checked) lines.push('· ✓ ' + lb); return; }
+        var v = String(el.value).trim();
+        if (v) lines.push('· ' + lb + '：' + v + unitOf(el));
+      });
+      if (!lines.length) return;
+      var rb = sec.querySelector('.result .rbody');
+      var rt = rb ? rb.innerText.trim() : '';
+      out.push('【' + sec.getAttribute('data-title') + '】\n' + lines.join('\n') + (rt ? '\n→ ' + rt.replace(/\n+/g, '\n→ ') : ''));
+    });
+    if (!out.length) return '';
+    return TITLE + ' · 填写内容\n' + (head.length ? head.join('　') + '\n' : '') + '\n' + out.join('\n\n');
+  }
+  var copyBox = $('copybox'), copyText = $('copytext');
+  $('copyclose').addEventListener('click', function(){ copyBox.hidden = true; });
+  $('btn-copy').addEventListener('click', function(){
+    var t = buildText();
+    if (!t) { say('还没有填写任何内容'); return; }
+    var fallback = function(){ copyText.value = t; copyBox.hidden = false; copyText.focus(); copyText.select(); say('已选中，按 Ctrl + C 复制'); };
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function(){ say('已复制，可以粘贴到微信或文档'); }, fallback);
+      else fallback();
+    } catch (e) { fallback(); }
+  });
+
+  var btnClear = $('btn-clear'), armed = false, armTimer = null;
+  function disarm(){ armed = false; clearTimeout(armTimer); btnClear.textContent = '清除本机草稿'; btnClear.classList.remove('armed'); }
+  btnClear.addEventListener('click', function(){
+    if (!armed) {
+      armed = true; btnClear.textContent = '再点一次确认清除'; btnClear.classList.add('armed');
+      armTimer = setTimeout(disarm, 4000);
+      return;
+    }
+    disarm();
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    state = copyInto({}, baked);
+    fields.forEach(function(el){ var k = keyOf(el); if (has(baked, k)) setVal(el, baked[k]); else resetDefault(el); autosize(el); });
+    recalc();
+    say('已清除本机草稿');
+  });
+
+  var links = [].slice.call(document.querySelectorAll('.index a'));
+  var map = {};
+  links.forEach(function(a){ var el = document.getElementById(a.getAttribute('href').slice(1)); if (el) map[el.id] = a; });
+  var targets = Object.keys(map).map(function(id){ return document.getElementById(id); });
+  if (!('IntersectionObserver' in window) || !targets.length) return;
+  var current = null, bar = document.querySelector('.index-inner');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      if (current) current.classList.remove('on');
+      current = map[en.target.id];
+      current.classList.add('on');
+      var r = current.getBoundingClientRect(), b = bar.getBoundingClientRect();
+      if (r.left < b.left || r.right > b.right) bar.scrollLeft += r.left - b.left - 20;
+    });
+  }, { rootMargin: '-15% 0px -75% 0px' });
+  targets.forEach(function(t){ io.observe(t); });
+})();
+</script>
+</body>
+</html>

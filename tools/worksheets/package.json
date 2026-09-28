@@ -1,0 +1,12 @@
+{
+  "name": "worksheets",
+  "version": "1.0.0",
+  "description": "诊断表 Word 版生成（docx）",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "docx": "^9.8.0"
+  }
+}
