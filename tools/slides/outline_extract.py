@@ -9,13 +9,14 @@ a = html.index('<section class="stage" id="%s"' % SID)
 b = html.index('<section class="stage"', a + 10)
 seg = html[a:b]
 
-STYLE = {'t-risk': 'risk', 't-mv': 'mv', 't-new': 'new', 't-from': 'from', 't-core': 'core'}
+STYLE = {'t-risk': 'risk', 't-mv': 'mv', 't-new': 'new', 't-from': 'from', 't-core': 'core', 't-full': 'full'}
+TAGS = ('risk', 'mv', 'new', 'from', 'core', 'full')
 
 
 class P(HTMLParser):
     def __init__(self):
         super().__init__()
-        self.stack = []      # 每层：(tag, style)
+        self.stack = []      # 每层：(tag, style, class)
         self.cur = None      # 正在收集的文字块：{'kind', 'runs'}
         self.out = []        # 按顺序的块
         self.cell = None
@@ -25,7 +26,7 @@ class P(HTMLParser):
 
     def style(self):
         st = ''
-        for tag, s in self.stack:
+        for tag, s, c in self.stack:
             if s: st = s
         return st
 
@@ -41,7 +42,7 @@ class P(HTMLParser):
         if tag == 'a' and 'tref' in cls.split(): s = 'tref'
         if tag == 'span' and 'lb' in cls.split(): s = 'lb'
         if tag == 'span' and not cls: s = 'sub'
-        self.stack.append((tag, s))
+        self.stack.append((tag, s, cls))
         if tag in ('h2', 'h3', 'h4'):
             self.cur = {'kind': tag, 'id': at.get('id'), 'cls': cls, 'runs': []}
         elif tag == 'li':
@@ -51,7 +52,9 @@ class P(HTMLParser):
         elif tag == 'div' and cls.startswith('note'):
             self.cur = {'kind': 'note', 'runs': []}
         elif tag == 'div' and cls in ('output', 'deliver'):
-            self.out.append({'kind': cls})
+            # 放在某条路径块里面的（如"关系路径 · 30 天目标"）归到那一节，站末的才是整站的出课标准
+            inblock = any(t == 'div' and 'block' in c.split() for t, _, c in self.stack[:-1])
+            self.out.append({'kind': cls, 'inblock': inblock})
         elif tag == 'nav':
             self.out.append({'kind': 'nav'})
             self.in_nav = True
@@ -66,7 +69,7 @@ class P(HTMLParser):
 
     def handle_endtag(self, tag):
         while self.stack:
-            t, _ = self.stack.pop()
+            t, _, _ = self.stack.pop()
             if t == tag: break
         if tag in ('h2', 'h3', 'h4', 'li', 'p') and self.cur and self.cur['kind'] in (tag, 'li', 'p', 'h2', 'h3', 'h4'):
             if self.cur['kind'] == tag:
@@ -132,7 +135,7 @@ p = P()
 p.feed(seg)
 
 D = {'title': None, 'goal': None, 'nav': [], 'h': {}, 'order': [], 'output': [], 'deliver': []}
-last = cur = ctx = None
+last = cur = ctx = cur_h3 = None
 for blk in p.out:
     k = blk['kind']
     if k == 'h2':
@@ -146,22 +149,28 @@ for blk in p.out:
         head = ''.join(t for t, s in runs if s == '').strip()
         m = re.match(r'([\d.]+)\s+(.*)$', head)
         num, title = (m.group(1), m.group(2)) if m else ('', head)
-        key = blk['id'] or (last + '/act')
-        D['h'][key] = {'level': k, 'num': num, 'title': title,
-                       'tags': [[t.strip(), s] for t, s in runs if s in ('risk', 'mv', 'new', 'from')],
-                       'tref': ''.join(t for t, s in runs if s == 'tref').strip(), 'ul': [], 'intro': None, 'note': None, 'table': None}
+        key = blk['id'] or (last + '/' + title)  # 没有编号的小标题（课堂动作、某某风控）挂在前一个有编号的标题下
+        assert key not in D['h'], key
+        D['h'][key] = {'level': k, 'num': num, 'title': title, 'rk': 'rk' in blk['cls'].split(),
+                       'tags': [[t.strip(), s] for t, s in runs if s in TAGS],
+                       'tref': ''.join(t for t, s in runs if s == 'tref').strip(), 'ul': [], 'intro': None, 'note': None, 'table': None,
+                       'output': None}
         D['order'].append(key)
         if blk['id']: last = blk['id']
+        if k == 'h3': cur_h3 = key
         cur, ctx = key, None
     elif k == 'li':
         if ctx in ('output', 'deliver'): D[ctx].append(blk['runs'])
         else: D['h'][cur]['ul'].append(blk['runs'])
-    elif k == 'p' and 'intro' in blk['cls']:
+    elif k == 'p' and ('intro' in blk['cls'] or 'lead' in blk['cls']):
         D['h'][cur]['intro'] = blk['runs']
     elif k == 'note':
         D['h'][cur]['note'] = blk['runs']
     elif k == 'table':
         D['h'][cur]['table'] = {'head': blk['head'], 'rows': blk['rows']}
+    elif k in ('output', 'deliver') and blk['inblock']:
+        rr = blk.get('runs', [])
+        D['h'][cur_h3]['output'] = {'label': ''.join(t for t, s in rr if s == 'lb').strip(), 'runs': tidy([[t, s] for t, s in rr if s != 'lb'])}
     elif k in ('output', 'deliver'):
         ctx = k
         rr = blk.get('runs', [])
